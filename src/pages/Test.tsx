@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useEffect } from "react";
+import AA from "../test.json";
 
 const Test = () => {
+  const [count, setCount] = useState(0);
+
+  const onClickHandler = () => {
+    setCount(count + 1);
+  };
+  useEffect(() => {
+    if (count === 10) {
+      setCount(0);
+    }
+    console.log(AA.questions[count]);
+  }, [count]);
+
   return (
     <BackGround>
       <Wrap>
         <StatusBar></StatusBar>
-        <Image />
-        <TestContainer></TestContainer>
+        <Image>{AA.questions[count].image}</Image>
+        <TestContainer>{AA.questions[count].question}</TestContainer>
         <AnswerContainer>
-          <Answer></Answer>
-          <Answer></Answer>
+          <Answer onClick={onClickHandler}>
+            {AA.questions[count].score01[0]}
+          </Answer>
+          <Answer onClick={onClickHandler}>
+            {AA.questions[count].score02[0]}
+          </Answer>
         </AnswerContainer>
       </Wrap>
     </BackGround>
@@ -20,7 +38,7 @@ const Test = () => {
 export default Test;
 
 const BackGround = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: white;
   display: flex;
@@ -28,8 +46,8 @@ const BackGround = styled.div`
 `;
 
 const Wrap = styled.div`
-  width: 70%;
-  height: 100%;
+  width: 70vw;
+  height: 100vh;
   background-color: #fcdddd;
   display: flex;
   flex-direction: column;
@@ -59,6 +77,8 @@ const TestContainer = styled.div`
   height: 200px;
   background-color: white;
   position: relative;
+  padding: 20px;
+
   top: 120px;
 `;
 
@@ -80,5 +100,7 @@ const Answer = styled.div`
   height: 100px;
   background-color: white;
   position: relative;
+  padding: 20px;
+
   border-radius: 30px;
 `;
