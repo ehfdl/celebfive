@@ -1,7 +1,7 @@
 import React from "react";
 
 const firebase = () => {
-  return <div></div>;
+  return <div>dev</div>;
 };
 
 export default firebase;
