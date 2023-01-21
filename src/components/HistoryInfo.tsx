@@ -2,8 +2,9 @@ import styled from "styled-components";
 import HistoryCard from "./HistoryCard";
 import CustomButton from "../UI/CustomButton";
 import HistoryBox from "../UI/HistoryBox";
-import Login from "./Login";
+
 import { useState } from "react";
+import Modal from "./Modal";
 
 export const HistoryInfo = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -15,7 +16,7 @@ export const HistoryInfo = () => {
 
   return (
     <>
-      {modalOpen && <Login setModalOpen={setModalOpen} />}
+      {modalOpen && <Modal setModalOpen={setModalOpen} />}
       <HistoryBox>
         <HistoryCard />
       </HistoryBox>
