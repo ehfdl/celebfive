@@ -11,16 +11,77 @@ export const HistoryCard = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        margin: "10% 0",
       }}
     >
       <HistoryCardSection>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
         eius, doloremque dignissimos ad dolore molestias voluptate atque
         quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
-        saepe repudiandae neque!
+        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
+        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
+        dolores sint fuga eos culpa saepe repudiandae neque! Lorem, ipsum dolor
+        sit amet consectetur adipisicing elit. Laudantium eius, doloremque
+        dignissimos ad dolore molestias voluptate atque quibusdam recusandae cum
+        quisquam reiciendis dolores sint fuga eos culpa saepe repudiandae neque!
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+        eius, doloremque dignissimos ad dolore molestias voluptate atque
+        quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
+        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
+        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
+        dolores sint fuga eos culpa saepe repudiandae neque! Lorem, ipsum dolor
+        sit amet consectetur adipisicing elit. Laudantium eius, doloremque
+        dignissimos ad dolore molestias voluptate atque quibusdam recusandae cum
+        quisquam reiciendis dolores sint fuga eos culpa saepe repudiandae neque!
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+        eius, doloremque dignissimos ad dolore molestias voluptate atque
+        quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
+        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
+        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
+        dolores sint fuga eos culpa saepe repudiandae neque! Lorem, ipsum dolor
+        sit amet consectetur adipisicing elit. Laudantium eius, doloremque
+        dignissimos ad dolore molestias voluptate atque quibusdam recusandae cum
+        quisquam reiciendis dolores sint fuga eos culpa saepe repudiandae neque!
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+        eius, doloremque dignissimos ad dolore molestias voluptate atque
+        quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
+        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
+        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
+        dolores sint fuga eos culpa saepe repudiandae neque! Lorem, ipsum dolor
+        sit amet consectetur adipisicing elit. Laudantium eius, doloremque
+        dignissimos ad dolore molestias voluptate atque quibusdam recusandae cum
+        quisquam reiciendis dolores sint fuga eos culpa saepe repudiandae neque!
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+        eius, doloremque dignissimos ad dolore molestias voluptate atque
+        quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
+        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
+        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
+        dolores sint fuga eos culpa saepe repudiandae neque! Lorem, ipsum dolor
+        sit amet consectetur adipisicing elit. Laudantium eius, doloremque
+        dignissimos ad dolore molestias voluptate atque quibusdam recusandae cum
+        quisquam reiciendis dolores sint fuga eos culpa saepe repudiandae neque!
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+        eius, doloremque dignissimos ad dolore molestias voluptate atque
+        quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
+        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
+        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
+        dolores sint fuga eos culpa saepe repudiandae neque! Lorem, ipsum dolor
+        sit amet consectetur adipisicing elit. Laudantium eius, doloremque
+        dignissimos ad dolore molestias voluptate atque quibusdam recusandae cum
+        quisquam reiciendis dolores sint fuga eos culpa saepe repudiandae neque!
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+        eius, doloremque dignissimos ad dolore molestias voluptate atque
+        quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
+        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
+        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
+        dolores sint fuga eos culpa saepe repudiandae neque!
       </HistoryCardSection>
-      ;
     </Fade>
   );
 };
@@ -29,6 +90,7 @@ const HistoryCardSection = styled.div`
   width: 80%;
   height: 80%;
   background-color: #fff;
+  padding: 5rem;
 `;
 
 export default HistoryCard;
