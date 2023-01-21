@@ -35,6 +35,7 @@ const ButtonStyle = styled.button<IButtonType>`
   font-size: ${(props) => props.fontSize || "1.2rem"};
   font-weight: ${(props) => props.fontWeight || "bold"};
   text-align: ${(props) => props.textAlign || "center"};
+  cursor: pointer;
 `;
 
 export default Button;
