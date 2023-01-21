@@ -3,9 +3,11 @@ import styled from "styled-components";
 
 function Main() {
   return (
-    <MainContainer>
-      <HistoryInfo />
-    </MainContainer>
+    <>
+      <MainContainer>
+        <HistoryInfo />
+      </MainContainer>
+    </>
   );
 }
 

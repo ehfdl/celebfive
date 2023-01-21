@@ -2,10 +2,20 @@ import styled from "styled-components";
 import HistoryCard from "./HistoryCard";
 import CustomButton from "../UI/CustomButton";
 import HistoryBox from "../UI/HistoryBox";
+import Login from "./Login";
+import { useState } from "react";
 
 export const HistoryInfo = () => {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
   return (
     <>
+      {modalOpen && <Login setModalOpen={setModalOpen} />}
       <HistoryBox>
         <HistoryCard />
       </HistoryBox>
@@ -19,7 +29,7 @@ export const HistoryInfo = () => {
         <HistoryCard />
       </HistoryBox>
       <ButtonBox>
-        <CustomButton>테스트 하러가기</CustomButton>
+        <CustomButton onClick={openModal}>테스트 하러가기</CustomButton>
       </ButtonBox>
     </>
   );
