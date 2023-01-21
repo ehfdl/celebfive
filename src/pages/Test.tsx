@@ -2,31 +2,53 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useEffect } from "react";
 import AA from "../test.json";
+import { useNavigate } from "react-router-dom";
+
+interface StatusBarProps {
+  count: number;
+}
 
 const Test = () => {
+  const navigate = useNavigate();
   const [count, setCount] = useState(0);
+  const [score, setScore] = useState(0);
 
-  const onClickHandler = () => {
-    setCount(count + 1);
+  const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const value = (event.target as HTMLInputElement).value;
+
+    setScore((prev) => prev + Number(value));
+    setCount((prev) => prev + 1);
   };
+
   useEffect(() => {
     if (count === 10) {
       setCount(0);
+      navigate("/result", { state: score });
+      console.log(count);
     }
-    console.log(AA.questions[count]);
   }, [count]);
 
   return (
     <BackGround>
       <Wrap>
-        <StatusBar></StatusBar>
-        <Image>{AA.questions[count].image}</Image>
+        <StatusBarBox>
+          <StatusBar count={count} />
+        </StatusBarBox>
+        <Image>
+          <img src={AA.questions[count].image} />
+        </Image>
         <TestContainer>{AA.questions[count].question}</TestContainer>
         <AnswerContainer>
-          <Answer onClick={onClickHandler}>
+          <Answer
+            onClick={onClickHandler}
+            value={AA.questions[count].score01[1]}
+          >
             {AA.questions[count].score01[0]}
           </Answer>
-          <Answer onClick={onClickHandler}>
+          <Answer
+            onClick={onClickHandler}
+            value={AA.questions[count].score02[1]}
+          >
             {AA.questions[count].score02[0]}
           </Answer>
         </AnswerContainer>
@@ -54,10 +76,17 @@ const Wrap = styled.div`
   align-items: center;
 `;
 
-const StatusBar = styled.div`
+const StatusBarBox = styled.div`
   width: 80%;
   height: 50px;
   position: relative;
+  top: 50px;
+  border-radius: 20px;
+  background-color: white;
+`;
+const StatusBar = styled.div`
+  width: ${(props: StatusBarProps) => (props.count + 1) * 10}%;
+  height: 50px;
   top: 50px;
   border-radius: 20px;
   background-color: #ff6f6f;
@@ -69,6 +98,7 @@ const Image = styled.div`
   border-radius: 50%;
   background-color: white;
   position: relative;
+  overflow: hidden;
   top: 80px;
 `;
 
@@ -78,7 +108,7 @@ const TestContainer = styled.div`
   background-color: white;
   position: relative;
   padding: 20px;
-
+  font-size: 24px;
   top: 120px;
 `;
 
@@ -95,12 +125,13 @@ const AnswerContainer = styled.div`
   gap: 40px;
 `;
 
-const Answer = styled.div`
+const Answer = styled.button`
   width: 80%;
   height: 100px;
   background-color: white;
   position: relative;
   padding: 20px;
-
+  border-style: none;
+  font-size: 24px;
   border-radius: 30px;
 `;
