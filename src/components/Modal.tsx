@@ -33,6 +33,7 @@ const Modal = ({ setModalOpen }: LoginProps) => {
         .catch((event: any) => {
           alert(event);
         });
+      navigate("/test ");
     }
     if (!signDisplay) {
       setSignDisplay(true);
@@ -50,7 +51,7 @@ const Modal = ({ setModalOpen }: LoginProps) => {
         .catch((event) => {
           alert(event);
         });
-      navigate("/");
+      navigate("/test");
     }
     if (signDisplay) {
       setSignDisplay(false);
