@@ -1,6 +1,5 @@
 import HistoryInfo from "../components/HistoryInfo";
 import styled from "styled-components";
-import { Fade } from "react-awesome-reveal";
 
 function Main() {
   return (
@@ -12,7 +11,7 @@ function Main() {
 
 const MainContainer = styled.div`
   width: 100%;
-  height: 2000px;
+  /* height: 80%; */
   margin: 0 auto;
 `;
 

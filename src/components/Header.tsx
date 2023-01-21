@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Header = () => {
   return (
     <HeaderWrapper>
-      <h2>셀럽파이브</h2>
+      <HeaderTitle>셀럽파이브</HeaderTitle>
       <LoginButton>Login</LoginButton>
     </HeaderWrapper>
   );
@@ -14,6 +14,14 @@ const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+`;
+
+const HeaderTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
 `;
 
 const LoginButton = styled.button`
