@@ -1,5 +1,10 @@
+import Login from "../components/Login";
 function Main() {
-  return <div>야호!</div>;
+  return (
+    <>
+      <Login />
+    </>
+  );
 }
 
 export default Main;
