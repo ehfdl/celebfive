@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { auth } from "./firebase";
+import { GlobalStyle } from "./Global-style";
 console.log(auth);
 
 const root = ReactDOM.createRoot(
@@ -9,6 +10,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <GlobalStyle />
     <App />
   </React.StrictMode>
 );

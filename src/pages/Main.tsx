@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-import Login from "../components/Login";
-function Main() {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
+import HistoryInfo from "../components/HistoryInfo";
+import styled from "styled-components";
 
-  const openModal = () => {
-    setModalOpen(true);
-  };
+function Main() {
   return (
     <>
-      <button onClick={openModal}>테스트 하러가기</button>
-      {modalOpen && <Login setModalOpen={setModalOpen} />}
+      <MainContainer>
+        <HistoryInfo />
+      </MainContainer>
     </>
   );
 }
+
+const MainContainer = styled.div`
+  width: 100%;
+  /* height: 80%; */
+  margin: 0 auto;
+`;
 
 export default Main;

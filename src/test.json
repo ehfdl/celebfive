@@ -1,0 +1,70 @@
+{
+  "questions": [
+    {
+      "question": "성별이 뭐에유?",
+      "image": "http://file3.instiz.net/data/file3/2023/01/02/7/e/9/7e9307832057aa220eb451e847590232.jpg",
+      "score01": ["남자", 1],
+      "score02": ["여자", 2]
+    },
+    {
+      "question": "겸상할거에요?",
+      "image": "https://i.ytimg.com/vi/JBwIdrir5vw/maxresdefault.jpg",
+      "score01": ["남자2", 2],
+      "score02": ["여자2", 1]
+    },
+    {
+      "question": "셋",
+      "image": "https://img.hankyung.com/photo/202301/03.32273350.3.jpg",
+      "score01": ["남자3", 2],
+      "score02": ["여자3", 1]
+    },
+    {
+      "question": "ㄴㅅ",
+      "image": "https://cdn.topstarnews.net/news/photo/202301/14901010_1057057_227.jpg",
+      "score01": ["남자4", 5],
+      "score02": ["여자4", 4]
+    },
+    {
+      "question": "다섯",
+      "image": "https://cdn.topstarnews.net/news/photo/202211/14788490_1033306_392.jpg",
+      "score01": ["남자5", 2],
+      "score02": ["여자5", 5]
+    },
+    {
+      "question": "여섯",
+      "image": "https://i.ytimg.com/vi/60RaggLgggE/maxresdefault.jpg",
+      "score01": ["남자6", 2],
+      "score02": ["여자6", 6]
+    },
+    {
+      "question": "일곱",
+      "image": "https://i.ytimg.com/vi/0qnfBUeaeVM/maxresdefault.jpg",
+      "score01": ["남자7", 2],
+      "score02": ["여자7", 7]
+    },
+    {
+      "question": "여달",
+      "image": "이미지에용8",
+      "score01": ["남자8", 2],
+      "score02": ["여자8", 8]
+    },
+    {
+      "question": "아홉",
+      "image": "이미지에용9",
+      "score01": ["남자9", 2],
+      "score02": ["여자9", 9]
+    },
+    {
+      "question": "열",
+      "image": "이미지에용10",
+      "score01": ["남자10", 10],
+      "score02": ["여자10", 10]
+    },
+    {
+      "question": "열허너",
+      "image": "이미지에용10",
+      "score01": ["남자10", 10],
+      "score02": ["여자10", 10]
+    }
+  ]
+}
