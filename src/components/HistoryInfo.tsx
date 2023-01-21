@@ -1,65 +1,35 @@
-import React from "react";
 import styled from "styled-components";
 import HistoryCard from "./HistoryCard";
-import { Fade } from "react-awesome-reveal";
+import CustomButton from "../UI/CustomButton";
+import HistoryBox from "../UI/HistoryBox";
 
 export const HistoryInfo = () => {
   return (
     <>
-      <HistorySectionCorea>
+      <HistoryBox>
         <HistoryCard />
-      </HistorySectionCorea>
-      <HistorySectionJosun>
+      </HistoryBox>
+      <HistoryBox backgroundColor={"#23daaf"}>
         <HistoryCard />
-      </HistorySectionJosun>
-      <HistorySectionIljea>
+      </HistoryBox>
+      <HistoryBox backgroundColor={"#a143e8"}>
         <HistoryCard />
-      </HistorySectionIljea>
-      <HistorySectionModern>
+      </HistoryBox>
+      <HistoryBox backgroundColor={"#e84343"}>
         <HistoryCard />
-      </HistorySectionModern>
+      </HistoryBox>
+      <ButtonBox>
+        <CustomButton>테스트 하러가기</CustomButton>
+      </ButtonBox>
     </>
   );
 };
 
-const HistorySectionCorea = styled.div`
+const ButtonBox = styled.div`
   display: flex;
-  flex-direction: column;
-  background-color: #ffe818;
-  height: 50%;
-  width: 100%;
-  align-items: center;
   justify-content: center;
-`;
-
-const HistorySectionJosun = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #23daaf;
-  height: 50%;
-  width: 100%;
   align-items: center;
-  justify-content: center;
-`;
-
-const HistorySectionIljea = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #a143e8;
-  height: 50%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-`;
-
-const HistorySectionModern = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #e84343;
-  height: 50%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
+  margin-top: 1.5rem;
 `;
 
 export default HistoryInfo;
