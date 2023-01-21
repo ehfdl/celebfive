@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export interface IButtonType {
   children: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   backgroundColor?: string;
   height?: number;
   border?: string;
@@ -17,10 +18,12 @@ export interface IButtonType {
 export const Button = (props: IButtonType) => {
   return (
     <div>
-      <ButtonStyle backgroundColor={props.backgroundColor}>
+      <ButtonStyle
+        backgroundColor={props.backgroundColor}
+        onClick={props.onClick}
+      >
         {props.children}
       </ButtonStyle>
-      ;
     </div>
   );
 };
