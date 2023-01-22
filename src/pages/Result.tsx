@@ -81,6 +81,7 @@ const TextWrap = styled.div`
   width: 50%;
   min-height: 200px;
   background-color: #ff6f6f;
+  color: white;
   border: 1px solid black;
   padding: 20px;
 `;
