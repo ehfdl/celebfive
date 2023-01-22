@@ -3,8 +3,8 @@
     {
       "question": "성별이 뭐에유?",
       "image": "http://file3.instiz.net/data/file3/2023/01/02/7/e/9/7e9307832057aa220eb451e847590232.jpg",
-      "score01": ["남자", 1],
-      "score02": ["여자", 2]
+      "score01": ["남자", 2],
+      "score02": ["여자", 1]
     },
     {
       "question": "겸상할거에요?",
@@ -21,50 +21,64 @@
     {
       "question": "ㄴㅅ",
       "image": "https://cdn.topstarnews.net/news/photo/202301/14901010_1057057_227.jpg",
-      "score01": ["남자4", 5],
-      "score02": ["여자4", 4]
+      "score01": ["남자4", 2],
+      "score02": ["여자4", 1]
     },
     {
       "question": "다섯",
       "image": "https://cdn.topstarnews.net/news/photo/202211/14788490_1033306_392.jpg",
       "score01": ["남자5", 2],
-      "score02": ["여자5", 5]
+      "score02": ["여자5", 1]
     },
     {
       "question": "여섯",
       "image": "https://i.ytimg.com/vi/60RaggLgggE/maxresdefault.jpg",
       "score01": ["남자6", 2],
-      "score02": ["여자6", 6]
+      "score02": ["여자6", 1]
     },
     {
       "question": "일곱",
       "image": "https://i.ytimg.com/vi/0qnfBUeaeVM/maxresdefault.jpg",
       "score01": ["남자7", 2],
-      "score02": ["여자7", 7]
+      "score02": ["여자7", 1]
     },
     {
       "question": "여달",
       "image": "이미지에용8",
       "score01": ["남자8", 2],
-      "score02": ["여자8", 8]
+      "score02": ["여자8", 1]
     },
     {
       "question": "아홉",
       "image": "이미지에용9",
       "score01": ["남자9", 2],
-      "score02": ["여자9", 9]
+      "score02": ["여자9", 1]
     },
     {
       "question": "열",
       "image": "이미지에용10",
-      "score01": ["남자10", 10],
-      "score02": ["여자10", 10]
+      "score01": ["남자10", 2],
+      "score02": ["여자10", 1]
     },
     {
       "question": "열허너",
       "image": "이미지에용10",
       "score01": ["남자10", 10],
       "score02": ["여자10", 10]
+    }
+  ],
+  "results": [
+    {
+      "result": ["고려인", "고려땐 여성인권이 잘 되있었습니다."]
+    },
+    {
+      "result": ["조선인", "조선시대에 꼰대들이 널렸습니다."]
+    },
+    {
+      "result": ["을사오적", "나쁜놈!!"]
+    },
+    {
+      "result": ["현대인", "평등한 세상에 살고 있습니다!!"]
     }
   ]
 }

@@ -24,7 +24,6 @@ const Test = () => {
     if (count === 10) {
       setCount(0);
       navigate("/result", { state: score });
-      console.log(count);
     }
   }, [count]);
 
@@ -60,26 +59,27 @@ const Test = () => {
 export default Test;
 
 const BackGround = styled.div`
-  width: 100vw;
-  height: 100vh;
+  max-width: 100vw;
+  width: 100%;
   background-color: white;
   display: flex;
   justify-content: center;
 `;
 
 const Wrap = styled.div`
-  width: 70vw;
-  height: 100vh;
+  max-width: 1100px;
+  width: 100%;
   background-color: #fcdddd;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 50px 20px 30px 20px;
+  gap: 20px;
 `;
 
 const StatusBarBox = styled.div`
   width: 80%;
   height: 50px;
-  position: relative;
   top: 50px;
   border-radius: 20px;
   background-color: white;
@@ -97,39 +97,34 @@ const Image = styled.div`
   height: 250px;
   border-radius: 50%;
   background-color: white;
-  position: relative;
   overflow: hidden;
   top: 80px;
 `;
 
 const TestContainer = styled.div`
   width: 75%;
-  height: 200px;
+  margin-top: 70px;
   background-color: white;
-  position: relative;
-  padding: 20px;
+  padding: 30px;
   font-size: 24px;
   top: 120px;
 `;
 
 const AnswerContainer = styled.div`
   width: 75%;
-  height: 350px;
   background-color: #ff6f6f;
-  position: relative;
   top: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 40px;
+  padding: 50px 10px 50px 10px;
 `;
 
 const Answer = styled.button`
   width: 80%;
-  height: 100px;
   background-color: white;
-  position: relative;
   padding: 20px;
   border-style: none;
   font-size: 24px;
