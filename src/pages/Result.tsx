@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
+import kakaoShare from "../kakao";
+import Button from "../UI/CustomButton";
 import AA from "../test.json";
 
 const Result = () => {
   const { state } = useLocation();
   const [result, setResult] = useState("");
   const [resultText, setResultText] = useState("");
-  console.log(state);
 
   useEffect(() => {
     if (state >= 18) {
@@ -33,7 +34,7 @@ const Result = () => {
           <SubTitle>당신은 {result} 입니다!</SubTitle>
         </TitleWrap>
         <TextWrap>{resultText}</TextWrap>
-        <ShareBtn>공유하기</ShareBtn>
+        <Button onClick={kakaoShare}>공유하기</Button>
         <CommentsWrap></CommentsWrap>
       </Wrap>
     </BackGround>

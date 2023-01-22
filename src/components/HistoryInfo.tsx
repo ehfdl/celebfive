@@ -4,8 +4,9 @@ import CustomButton from "../UI/CustomButton";
 import HistoryBox from "../UI/HistoryBox";
 import Login from "./Login";
 import { useState } from "react";
+import { IHIstoryType } from "./HistoryCard";
 
-export const HistoryInfo = () => {
+export const HistoryInfo = (props: IHIstoryType) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const openModal = () => {
@@ -16,6 +17,9 @@ export const HistoryInfo = () => {
   return (
     <>
       {modalOpen && <Login setModalOpen={setModalOpen} />}
+      <HistoryBox backgroundColor={"#fff"}>
+        <HistoryCard>가나다라</HistoryCard>
+      </HistoryBox>
       <HistoryBox>
         <HistoryCard />
       </HistoryBox>

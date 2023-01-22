@@ -2,7 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Fade } from "react-awesome-reveal";
 
-export const HistoryCard = () => {
+export type IHIstoryType = {
+  children?: string;
+};
+
+export const HistoryCard = (props: IHIstoryType) => {
   return (
     <Fade
       style={{
@@ -13,75 +17,7 @@ export const HistoryCard = () => {
         alignItems: "center",
       }}
     >
-      <HistoryCardSection>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-        eius, doloremque dignissimos ad dolore molestias voluptate atque
-        quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
-        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
-        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
-        dolores sint fuga eos culpa saepe repudiandae neque! Lorem, ipsum dolor
-        sit amet consectetur adipisicing elit. Laudantium eius, doloremque
-        dignissimos ad dolore molestias voluptate atque quibusdam recusandae cum
-        quisquam reiciendis dolores sint fuga eos culpa saepe repudiandae neque!
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-        eius, doloremque dignissimos ad dolore molestias voluptate atque
-        quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
-        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
-        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
-        dolores sint fuga eos culpa saepe repudiandae neque! Lorem, ipsum dolor
-        sit amet consectetur adipisicing elit. Laudantium eius, doloremque
-        dignissimos ad dolore molestias voluptate atque quibusdam recusandae cum
-        quisquam reiciendis dolores sint fuga eos culpa saepe repudiandae neque!
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-        eius, doloremque dignissimos ad dolore molestias voluptate atque
-        quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
-        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
-        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
-        dolores sint fuga eos culpa saepe repudiandae neque! Lorem, ipsum dolor
-        sit amet consectetur adipisicing elit. Laudantium eius, doloremque
-        dignissimos ad dolore molestias voluptate atque quibusdam recusandae cum
-        quisquam reiciendis dolores sint fuga eos culpa saepe repudiandae neque!
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-        eius, doloremque dignissimos ad dolore molestias voluptate atque
-        quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
-        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
-        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
-        dolores sint fuga eos culpa saepe repudiandae neque! Lorem, ipsum dolor
-        sit amet consectetur adipisicing elit. Laudantium eius, doloremque
-        dignissimos ad dolore molestias voluptate atque quibusdam recusandae cum
-        quisquam reiciendis dolores sint fuga eos culpa saepe repudiandae neque!
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-        eius, doloremque dignissimos ad dolore molestias voluptate atque
-        quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
-        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
-        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
-        dolores sint fuga eos culpa saepe repudiandae neque! Lorem, ipsum dolor
-        sit amet consectetur adipisicing elit. Laudantium eius, doloremque
-        dignissimos ad dolore molestias voluptate atque quibusdam recusandae cum
-        quisquam reiciendis dolores sint fuga eos culpa saepe repudiandae neque!
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-        eius, doloremque dignissimos ad dolore molestias voluptate atque
-        quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
-        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
-        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
-        dolores sint fuga eos culpa saepe repudiandae neque! Lorem, ipsum dolor
-        sit amet consectetur adipisicing elit. Laudantium eius, doloremque
-        dignissimos ad dolore molestias voluptate atque quibusdam recusandae cum
-        quisquam reiciendis dolores sint fuga eos culpa saepe repudiandae neque!
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-        eius, doloremque dignissimos ad dolore molestias voluptate atque
-        quibusdam recusandae cum quisquam reiciendis dolores sint fuga eos culpa
-        saepe repudiandae neque! Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. Laudantium eius, doloremque dignissimos ad dolore
-        molestias voluptate atque quibusdam recusandae cum quisquam reiciendis
-        dolores sint fuga eos culpa saepe repudiandae neque!
-      </HistoryCardSection>
+      <HistoryCardSection>{props.children}</HistoryCardSection>
     </Fade>
   );
 };

@@ -5,6 +5,12 @@ import Result from "./pages/Result";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
+
 const Router = () => {
   return (
     <BrowserRouter>
