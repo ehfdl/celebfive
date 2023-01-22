@@ -89,6 +89,7 @@ const StatusBar = styled.div`
   height: 50px;
   top: 50px;
   border-radius: 20px;
+  transition: width 0.4s ease-in-out 0s;
   background-color: #ff6f6f;
 `;
 
