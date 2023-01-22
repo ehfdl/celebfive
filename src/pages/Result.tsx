@@ -8,10 +8,20 @@ const Result = () => {
   const [result, setResult] = useState("");
   const [resultText, setResultText] = useState("");
   console.log(state);
+
   useEffect(() => {
-    if (state >= 10) {
+    if (state >= 18) {
+      setResult(AA.results[3].result[0]);
+      setResultText(AA.results[3].result[1]);
+    } else if (state >= 15) {
       setResult(AA.results[0].result[0]);
       setResultText(AA.results[0].result[1]);
+    } else if (state >= 13) {
+      setResult(AA.results[1].result[0]);
+      setResultText(AA.results[1].result[1]);
+    } else if (state >= 10) {
+      setResult(AA.results[2].result[0]);
+      setResultText(AA.results[2].result[1]);
     }
   }, [state]);
 
