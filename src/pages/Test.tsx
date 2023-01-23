@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import AA from "../test.json";
 import { useNavigate } from "react-router-dom";
 import Snowfall from "react-snowfall";
+import { AnimationWrapper } from "react-hover-animation";
 
 interface StatusBarProps {
   count: number;
@@ -42,18 +43,36 @@ const Test = () => {
           </Image>
           <TestContainer>{AA.questions[count].question}</TestContainer>
           <AnswerContainer>
-            <Answer
-              onClick={onClickHandler}
-              value={AA.questions[count].score01[1]}
+            <AnimationWrapper
+              style={{
+                marginBottom: 30,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
             >
-              {AA.questions[count].score01[0]}
-            </Answer>
-            <Answer
-              onClick={onClickHandler}
-              value={AA.questions[count].score02[1]}
+              <Answer
+                onClick={onClickHandler}
+                value={AA.questions[count].score01[1]}
+              >
+                {AA.questions[count].score01[0]}
+              </Answer>
+            </AnimationWrapper>
+            <AnimationWrapper
+              style={{
+                marginBottom: 20,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
             >
-              {AA.questions[count].score02[0]}
-            </Answer>
+              <Answer
+                onClick={onClickHandler}
+                value={AA.questions[count].score02[1]}
+              >
+                {AA.questions[count].score02[0]}
+              </Answer>
+            </AnimationWrapper>
           </AnswerContainer>
         </Wrap>
       </BackGround>
@@ -62,7 +81,7 @@ const Test = () => {
         snowflakeCount={50}
         speed={[0.5, 1]}
         radius={[2, 4]}
-        style={{ top: 100, height: "130vh" }}
+        style={{ top: 100, height: "120vh" }}
       />
     </>
   );
@@ -137,12 +156,12 @@ const AnswerContainer = styled.div`
   width: 75%;
   background-color: #ff6f6f;
   top: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* flex-direction: column; */
   gap: 40px;
-  padding: 50px 10px 50px 10px;
+  padding: 30px 10px 30px 10px;
 `;
 
 const Answer = styled.button`
