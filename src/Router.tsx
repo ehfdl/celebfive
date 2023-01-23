@@ -6,6 +6,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CommentsList from "./components/CommentsList";
 
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
+
 const Router = () => {
   return (
     <BrowserRouter>

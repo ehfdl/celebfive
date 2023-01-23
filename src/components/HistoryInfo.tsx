@@ -1,65 +1,205 @@
-import React from "react";
 import styled from "styled-components";
 import HistoryCard from "./HistoryCard";
+import CustomButton from "../UI/CustomButton";
+import HistoryBox from "../UI/HistoryBox";
+import Login from "./Login";
+import { useEffect, useState } from "react";
+import imageA from "../assets/images/weight.png";
 import { Fade } from "react-awesome-reveal";
+import AA from "../test.json";
 
-export const HistoryInfo = () => {
+export interface DataType {
+  id: number;
+  title: string;
+  source_text: string[];
+  source: string;
+  text: string;
+}
+
+interface ItemType {
+  title?: string;
+  source_text?: string[];
+  source?: string;
+  text?: string;
+  id?: number;
+  Fade?: React.FC<typeof Fade>;
+}
+
+export const HistoryInfo = (props: ItemType) => {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [isTopButtonShow, setIsTopButtonShow] = useState<boolean>(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  // 스크롤을 위로 올려주는 버튼 함수입니다
+  const ScrollTop = () => {
+    window.scroll({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    const handleTopButtonShow = () => {
+      if (window.scrollY > 30) {
+        setIsTopButtonShow(true);
+      } else {
+        setIsTopButtonShow(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleTopButtonShow);
+    return () => {
+      window.removeEventListener("scroll", handleTopButtonShow);
+    };
+  }, []);
+  const datas = AA.description;
+  // console.log(datas);
+
   return (
     <>
-      <HistorySectionCorea>
-        <HistoryCard />
-      </HistorySectionCorea>
-      <HistorySectionJosun>
-        <HistoryCard />
-      </HistorySectionJosun>
-      <HistorySectionIljea>
-        <HistoryCard />
-      </HistorySectionIljea>
-      <HistorySectionModern>
-        <HistoryCard />
-      </HistorySectionModern>
+      {modalOpen && <Login setModalOpen={setModalOpen} />}
+
+      <HistoryBox backgroundColor={"#ffe818"}>
+        <HistoryCardSection>
+          {datas
+            .filter((data) => {
+              return data.id === 1;
+            })
+            .map((data) => (
+              <div key={data.id}>
+                <div>{data.title}</div>
+                <div>{data.text}</div>
+                <div>{data.source}</div>
+              </div>
+            ))}
+        </HistoryCardSection>
+      </HistoryBox>
+      <HistoryBox backgroundColor={"#23daaf"}>
+        <HistoryCardSection>
+          {datas
+            .filter((data) => {
+              return data.id === 2;
+            })
+            .map((data) => (
+              <div key={data.id}>
+                <div>{data.title}</div>
+                <div>{data.text}</div>
+                <div>{data.source}</div>
+              </div>
+            ))}
+        </HistoryCardSection>
+      </HistoryBox>
+      <HistoryBox backgroundColor={"#a143e8"}>
+        <HistoryCardSection>
+          {datas
+            .filter((data) => {
+              return data.id === 3;
+            })
+            .map((data) => (
+              <div key={data.id}>
+                <div>{data.title}</div>
+                <div>{data.text}</div>
+                <div>{data.source}</div>
+              </div>
+            ))}
+        </HistoryCardSection>
+      </HistoryBox>
+      <HistoryBox backgroundColor={"#e84343"}>
+        <HistoryCardSection>
+          {datas
+            .filter((data) => {
+              return data.id === 4;
+            })
+            .map((data) => (
+              <div key={data.id}>
+                <div>{data.title}</div>
+                <div>{data.text}</div>
+                <div>{data.source}</div>
+              </div>
+            ))}
+        </HistoryCardSection>
+      </HistoryBox>
+      <HistoryBox backgroundColor={"#00e6ac"}>
+        <HistoryCardSection>
+          {datas
+            .filter((data) => {
+              return data.id === 5;
+            })
+            .map((data) => (
+              <div key={data.id}>
+                <div>{data.title}</div>
+                <div>{data.text}</div>
+                <div>{data.source}</div>
+              </div>
+            ))}
+        </HistoryCardSection>
+      </HistoryBox>
+      <HistoryBox backgroundColor={"#3333ff"}>
+        <HistoryCardSection>
+          {datas
+            .filter((data) => {
+              return data.id === 6;
+            })
+            .map((data) => (
+              <div key={data.id}>
+                <div>{data.title}</div>
+                <div>{data.text}</div>
+                <div>{data.source}</div>
+              </div>
+            ))}
+        </HistoryCardSection>
+      </HistoryBox>
+
+      <ButtonBox>
+        <CustomButton onClick={openModal}>테스트 하러가기</CustomButton>
+      </ButtonBox>
+      <ScrollTopButtonContainer>
+        {isTopButtonShow ? (
+          <ScrollTopButton onClick={ScrollTop}>TOP</ScrollTopButton>
+        ) : null}
+      </ScrollTopButtonContainer>
     </>
   );
 };
 
-const HistorySectionCorea = styled.div`
+const ButtonBox = styled.div`
   display: flex;
-  flex-direction: column;
-  background-color: #ffe818;
-  height: 50%;
-  width: 100%;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  z-index: 0;
 `;
 
-const HistorySectionJosun = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #23daaf;
-  height: 50%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
+const ImageContainer = styled.div`
+  position: absolute;
+  left: 100px;
+  top: 600px;
+  width: 100px;
+  height: 100px;
+  z-index: 10;
+  /* animation: 10s opacity 1s forwards; */
+  /* transform: translate(50px, 660px); */
 `;
 
-const HistorySectionIljea = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #a143e8;
-  height: 50%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
+const ScrollTopButtonContainer = styled.div`
+  position: fixed;
+  bottom: 5%;
+  right: 3%;
 `;
 
-const HistorySectionModern = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #e84343;
-  height: 50%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
+const ScrollTopButton = styled(CustomButton)`
+  border: none;
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+`;
+
+const HistoryCardSection = styled.div`
+  width: 80%;
+  height: 80%;
+  background-color: #fff;
+  padding: 5rem;
 `;
 
 export default HistoryInfo;
