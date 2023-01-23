@@ -5,13 +5,20 @@ import HistoryBox from "../UI/HistoryBox";
 
 import { useState } from "react";
 import Modal from "./Modal";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 export const HistoryInfo = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-
+  const navigate = useNavigate();
   const openModal = () => {
-    setModalOpen(true);
-    document.body.style.overflow = "hidden";
+    if (auth.currentUser) {
+      navigate("/test");
+    }
+    if (!auth.currentUser) {
+      setModalOpen(true);
+      document.body.style.overflow = "hidden";
+    }
   };
 
   return (

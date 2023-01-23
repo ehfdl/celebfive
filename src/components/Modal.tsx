@@ -23,35 +23,33 @@ const Modal = ({ setModalOpen }: LoginProps) => {
     setModalOpen(false);
     document.body.style.overflow = "unset";
   };
+
   const handleLoginClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log("login", signDisplay);
     if (signDisplay) {
       signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           alert("로그인 성공");
+          navigate("/test");
+          setModalOpen(false);
         })
         .catch((event: any) => {
           alert(event);
         });
-      navigate("/test ");
-    }
-    if (!signDisplay) {
+    } else if (!signDisplay) {
       setSignDisplay(true);
     }
   };
 
   const handleRegisterClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log("asdf", signDisplay);
     if (!signDisplay) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          // const user = userCredential.user;
           alert("회원가입 성공");
+          navigate("/test");
         })
         .catch((event) => {
           alert(event);
         });
-      navigate("/test");
     }
     if (signDisplay) {
       setSignDisplay(false);

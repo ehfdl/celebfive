@@ -1,29 +1,6 @@
-import { useEffect, useState } from "react";
-
 import styled from "styled-components";
-import { auth } from "../firebase";
 
-const Login = ({
-  setModalOpen,
-  email,
-  setEmail,
-  password,
-  setPassword,
-}: any) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [init, setInit] = useState(false);
-
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-      setInit(true);
-    });
-  }, []);
-
+const Login = ({ email, setEmail, password, setPassword }: any) => {
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setPassword(event.target.value);
