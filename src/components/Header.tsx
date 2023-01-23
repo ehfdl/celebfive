@@ -29,9 +29,13 @@ export const Header = () => {
       });
   };
 
+  const goToMain = () => {
+    navigate("/");
+  };
+
   return (
     <HeaderWrapper>
-      <HeaderTitle>셀럽파이브</HeaderTitle>
+      <HeaderTitle onClick={goToMain}>셀럽파이브</HeaderTitle>
       {authService.currentUser ? (
         <LogoutButton onClick={logOutClick}>로그아웃</LogoutButton>
       ) : (
