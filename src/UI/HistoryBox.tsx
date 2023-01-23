@@ -4,7 +4,9 @@ interface IHistoryBoxType {
   backgroundColor?: string;
   height?: string;
   width?: string;
-  children?: JSX.Element | undefined;
+  children?: JSX.Element | undefined | string | string[];
+  Element?: Element[] | string | string[];
+  operator?: JSX.Element;
 }
 
 export const HistoryBox = (props: IHistoryBoxType) => {
@@ -16,9 +18,10 @@ export const HistoryBox = (props: IHistoryBoxType) => {
 };
 
 const HistoryBoxSection = styled.div<IHistoryBoxType>`
+  position: relative;
   display: flex;
   flex-direction: column;
-  background-color: ${(props) => props.backgroundColor || "#ffe818"};
+  background-color: ${(props) => props.backgroundColor || "#fff"};
   height: ${(props) => props.height || "50%"};
   width: ${(props) => props.width || "100%"};
   align-items: center;

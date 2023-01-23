@@ -1,16 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { Fade } from "react-awesome-reveal";
-// import HistoryContent from "./HistoryContent";
 import AA from "../test.json";
 
-export type IHIstoryType = {
-  children?: string;
-};
+export interface ICardType {
+  children?: string | string[];
+  title?: string;
+  source_text?: string[];
+  source?: string;
+  text?: string;
+}
 
 export const HistoryCard = () => {
   const datas = AA.description;
-  // console.log(datas);
 
   return (
     <Fade
@@ -24,7 +26,6 @@ export const HistoryCard = () => {
     >
       <HistoryCardSection>
         <HistoryContent>
-          ss
           {/* {datas.map((data) => (
             <>
               <div>{data.id}</div>
@@ -42,7 +43,6 @@ export const HistoryCard = () => {
 const HistoryCardSection = styled.div`
   width: 80%;
   height: 80%;
-  background-color: #fff;
   padding: 5rem;
 `;
 
