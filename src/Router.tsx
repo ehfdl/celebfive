@@ -4,6 +4,7 @@ import Test from "./pages/Test";
 import Result from "./pages/Result";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CommentsList from "./components/CommentsList";
 
 declare global {
   interface Window {
