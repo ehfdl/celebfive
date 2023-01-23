@@ -1,4 +1,12 @@
 import axios from "axios";
+import { dbService } from "./firebase";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { CommentType } from "./components/CommentsList";
+
+export interface EditParameterType {
+  commentId: string;
+  editObj: object;
+}
 
 export const getTest = async () => {
   const data = await axios.get(
@@ -15,4 +23,15 @@ export const getEventList = () => {
     .catch((error) => console.log(error));
 
   console.log(data2);
+};
+
+export const deleteComment = async (commentId: string) => {
+  await deleteDoc(doc(dbService, "comments", commentId));
+};
+
+export const editComment = async ({
+  commentId,
+  editObj,
+}: EditParameterType) => {
+  await updateDoc(doc(dbService, "comments", commentId), editObj);
 };

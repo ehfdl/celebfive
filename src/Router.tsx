@@ -4,6 +4,7 @@ import Test from "./pages/Test";
 import Result from "./pages/Result";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CommentsList from "./components/CommentsList";
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
         <Route path="/" element={<Main />} />
         <Route path="/test" element={<Test />} />
         <Route path="/result" element={<Result />} />
+        <Route path="/commentsList" element={<CommentsList />} />
       </Routes>
       <Footer />
     </BrowserRouter>
