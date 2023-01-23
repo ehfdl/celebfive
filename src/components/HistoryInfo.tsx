@@ -4,9 +4,17 @@ import CustomButton from "../UI/CustomButton";
 import HistoryBox from "../UI/HistoryBox";
 import Login from "./Login";
 import { useEffect, useState } from "react";
-// import data from "../test.json";
 import imageA from "../assets/images/weight.png";
 import { Fade } from "react-awesome-reveal";
+import AA from "../test.json";
+
+export interface DataType {
+  id: number;
+  title: string;
+  source_text: string[];
+  source: string;
+  text: string;
+}
 
 interface ItemType {
   title?: string;
@@ -45,43 +53,104 @@ export const HistoryInfo = (props: ItemType) => {
       window.removeEventListener("scroll", handleTopButtonShow);
     };
   }, []);
+  const datas = AA.description;
+  // console.log(datas);
 
   return (
     <>
       {modalOpen && <Login setModalOpen={setModalOpen} />}
-      {/* {data.description.map((item: ItemType) => {
-        return (
-          <>
-            <div>{item.title}</div>;<div>{item.text}</div>;
-            <div>{item.source_text}</div>;
-          </>
-        );
-      })} */}
-      <HistoryBox>
-        <HistoryCard />
-      </HistoryBox>
+
       <HistoryBox backgroundColor={"#ffe818"}>
-        <>
-          <Fade delay={500} duration={2000}>
-            <ImageContainer>
-              <img src={imageA} />
-            </ImageContainer>
-          </Fade>
-          <HistoryCard />
-        </>
+        <HistoryCardSection>
+          {datas
+            .filter((data) => {
+              return data.id === 1;
+            })
+            .map((data) => (
+              <div key={data.id}>
+                <div>{data.title}</div>
+                <div>{data.text}</div>
+                <div>{data.source}</div>
+              </div>
+            ))}
+        </HistoryCardSection>
       </HistoryBox>
       <HistoryBox backgroundColor={"#23daaf"}>
-        <HistoryCard />
+        <HistoryCardSection>
+          {datas
+            .filter((data) => {
+              return data.id === 2;
+            })
+            .map((data) => (
+              <div key={data.id}>
+                <div>{data.title}</div>
+                <div>{data.text}</div>
+                <div>{data.source}</div>
+              </div>
+            ))}
+        </HistoryCardSection>
       </HistoryBox>
       <HistoryBox backgroundColor={"#a143e8"}>
-        <HistoryCard />
+        <HistoryCardSection>
+          {datas
+            .filter((data) => {
+              return data.id === 3;
+            })
+            .map((data) => (
+              <div key={data.id}>
+                <div>{data.title}</div>
+                <div>{data.text}</div>
+                <div>{data.source}</div>
+              </div>
+            ))}
+        </HistoryCardSection>
       </HistoryBox>
       <HistoryBox backgroundColor={"#e84343"}>
-        <HistoryCard />
+        <HistoryCardSection>
+          {datas
+            .filter((data) => {
+              return data.id === 4;
+            })
+            .map((data) => (
+              <div key={data.id}>
+                <div>{data.title}</div>
+                <div>{data.text}</div>
+                <div>{data.source}</div>
+              </div>
+            ))}
+        </HistoryCardSection>
       </HistoryBox>
-      <HistoryBox>
-        <HistoryCard />
+      <HistoryBox backgroundColor={"#00e6ac"}>
+        <HistoryCardSection>
+          {datas
+            .filter((data) => {
+              return data.id === 5;
+            })
+            .map((data) => (
+              <div key={data.id}>
+                <div>{data.title}</div>
+                <div>{data.text}</div>
+                <div>{data.source}</div>
+              </div>
+            ))}
+        </HistoryCardSection>
       </HistoryBox>
+      <HistoryBox backgroundColor={"#3333ff"}>
+        <HistoryCardSection>
+          {datas
+            .filter((data) => {
+              return data.id === 6;
+            })
+            .map((data) => (
+              <div key={data.id}>
+                <div>{data.title}</div>
+                <div>{data.text}</div>
+                <div>{data.source}</div>
+              </div>
+            ))}
+        </HistoryCardSection>
+      </HistoryBox>
+
       <ButtonBox>
         <CustomButton onClick={openModal}>테스트 하러가기</CustomButton>
       </ButtonBox>
@@ -124,6 +193,13 @@ const ScrollTopButton = styled(CustomButton)`
   background-color: #fff;
   color: #000;
   font-weight: bold;
+`;
+
+const HistoryCardSection = styled.div`
+  width: 80%;
+  height: 80%;
+  background-color: #fff;
+  padding: 5rem;
 `;
 
 export default HistoryInfo;

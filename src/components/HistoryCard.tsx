@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Fade } from "react-awesome-reveal";
-import data from "../test.json";
+import AA from "../test.json";
 
 export interface ICardType {
   children?: string | string[];
@@ -11,89 +11,32 @@ export interface ICardType {
   text?: string;
 }
 
-export const HistoryCard = (props: ICardType) => {
+export const HistoryCard = () => {
+  const datas = AA.description;
+
   return (
-    <>
-      <Fade
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <HistoryCardSection>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus
-          dicta temporibus debitis earum, modi perferendis dolores praesentium
-          natus corrupti, reprehenderit quia cum provident amet, ea esse itaque
-          labore magnam iusto? Lorem ipsum dolor sit, amet consectetur
-          adipisicing elit. Accusamus dicta temporibus debitis earum, modi
-          perferendis dolores praesentium natus corrupti, reprehenderit quia cum
-          provident amet, ea esse itaque labore magnam iusto? Lorem ipsum dolor
-          sit, amet consectetur adipisicing elit. Accusamus dicta temporibus
-          debitis earum, modi perferendis dolores praesentium natus corrupti,
-          reprehenderit quia cum provident amet, ea esse itaque labore magnam
-          iusto? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Accusamus dicta temporibus debitis earum, modi perferendis dolores
-          praesentium natus corrupti, reprehenderit quia cum provident amet, ea
-          esse itaque labore magnam iusto? Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Accusamus dicta temporibus debitis
-          earum, modi perferendis dolores praesentium natus corrupti,
-          reprehenderit quia cum provident amet, ea esse itaque labore magnam
-          iusto? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Accusamus dicta temporibus debitis earum, modi perferendis dolores
-          praesentium natus corrupti, reprehenderit quia cum provident amet, ea
-          esse itaque labore magnam iusto? Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Accusamus dicta temporibus debitis
-          earum, modi perferendis dolores praesentium natus corrupti,
-          reprehenderit quia cum provident amet, ea esse itaque labore magnam
-          iusto? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Accusamus dicta temporibus debitis earum, modi perferendis dolores
-          praesentium natus corrupti, reprehenderit quia cum provident amet, ea
-          esse itaque labore magnam iusto? Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Accusamus dicta temporibus debitis
-          earum, modi perferendis dolores praesentium natus corrupti,
-          reprehenderit quia cum provident amet, ea esse itaque labore magnam
-          iusto? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Accusamus dicta temporibus debitis earum, modi perferendis dolores
-          praesentium natus corrupti, reprehenderit quia cum provident amet, ea
-          esse itaque labore magnam iusto? Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Accusamus dicta temporibus debitis
-          earum, modi perferendis dolores praesentium natus corrupti,
-          reprehenderit quia cum provident amet, ea esse itaque labore magnam
-          iusto? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Accusamus dicta temporibus debitis earum, modi perferendis dolores
-          praesentium natus corrupti, reprehenderit quia cum provident amet, ea
-          esse itaque labore magnam iusto? Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Accusamus dicta temporibus debitis
-          earum, modi perferendis dolores praesentium natus corrupti,
-          reprehenderit quia cum provident amet, ea esse itaque labore magnam
-          iusto? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Accusamus dicta temporibus debitis earum, modi perferendis dolores
-          praesentium natus corrupti, reprehenderit quia cum provident amet, ea
-          esse itaque labore magnam iusto? Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Accusamus dicta temporibus debitis
-          earum, modi perferendis dolores praesentium natus corrupti,
-          reprehenderit quia cum provident amet, ea esse itaque labore magnam
-          iusto? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Accusamus dicta temporibus debitis earum, modi perferendis dolores
-          praesentium natus corrupti, reprehenderit quia cum provident amet, ea
-          esse itaque labore magnam iusto? Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Accusamus dicta temporibus debitis
-          earum, modi perferendis dolores praesentium natus corrupti,
-          reprehenderit quia cum provident amet, ea esse itaque labore magnam
-          iusto? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Accusamus dicta temporibus debitis earum, modi perferendis dolores
-          praesentium natus corrupti, reprehenderit quia cum provident amet, ea
-          esse itaque labore magnam iusto? Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Accusamus dicta temporibus debitis
-          earum, modi perferendis dolores praesentium natus corrupti,
-          reprehenderit quia cum provident amet, ea esse itaque labore magnam
-          iusto?
-        </HistoryCardSection>
-      </Fade>
-    </>
+    <Fade
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <HistoryCardSection>
+        <HistoryContent>
+          {/* {datas.map((data) => (
+            <>
+              <div>{data.id}</div>
+              <div>{data.source}</div>
+              <div>{data.text}</div>
+              <div>{data.title}</div>
+            </>
+          ))} */}
+        </HistoryContent>
+      </HistoryCardSection>
+    </Fade>
   );
 };
 
@@ -102,5 +45,7 @@ const HistoryCardSection = styled.div`
   height: 80%;
   padding: 5rem;
 `;
+
+const HistoryContent = styled.div``;
 
 export default HistoryCard;
