@@ -31,7 +31,9 @@ const Test = () => {
     <BackGround>
       <Wrap>
         <StatusBarBox>
-          <StatusBar count={count} />
+          <StatusBar count={count}>
+            <StatusText>{(count + 1) * 10}%</StatusText>
+          </StatusBar>
         </StatusBarBox>
         <Image>
           <img src={AA.questions[count].image} />
@@ -84,6 +86,7 @@ const StatusBarBox = styled.div`
   border-radius: 20px;
   background-color: white;
 `;
+
 const StatusBar = styled.div`
   width: ${(props: StatusBarProps) => (props.count + 1) * 10}%;
   height: 50px;
@@ -91,6 +94,15 @@ const StatusBar = styled.div`
   border-radius: 20px;
   transition: width 0.4s ease-in-out 0s;
   background-color: #ff6f6f;
+`;
+
+const StatusText = styled.div`
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 `;
 
 const Image = styled.div`
