@@ -15,7 +15,7 @@ export interface IButtonType {
   fontWeight?: string;
 }
 
-export const Button = (props: IButtonType) => {
+export const CustomButton = (props: IButtonType) => {
   return (
     <div>
       <ButtonStyle
@@ -41,4 +41,4 @@ const ButtonStyle = styled.button<IButtonType>`
   cursor: pointer;
 `;
 
-export default Button;
+export default CustomButton;
