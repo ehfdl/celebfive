@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import kakaoShare from "../kakao";
 import Button from "../UI/CustomButton";
 import AA from "../test.json";
+import CommentsList from "../components/CommentsList";
 
 const Result = () => {
   const { state } = useLocation();
@@ -35,7 +36,9 @@ const Result = () => {
         </TitleWrap>
         <TextWrap>{resultText}</TextWrap>
         <Button onClick={kakaoShare}>공유하기</Button>
-        <CommentsWrap></CommentsWrap>
+        <CommentsWrap>
+          <CommentsList />
+        </CommentsWrap>
       </Wrap>
     </BackGround>
   );
