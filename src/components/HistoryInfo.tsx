@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import AA from "../test.json";
+import { IHistoryBoxType } from "../UI/HistoryBox";
 
 export interface DataType {
   id: number;
@@ -24,9 +25,11 @@ interface ItemType {
   text?: string;
   id?: number;
   Fade?: React.FC<typeof Fade>;
+  Colors: string[];
+  backgroundColor: string | string[];
 }
 
-export const HistoryInfo = (props: ItemType) => {
+export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [isTopButtonShow, setIsTopButtonShow] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -60,8 +63,8 @@ export const HistoryInfo = (props: ItemType) => {
       window.removeEventListener("scroll", handleTopButtonShow);
     };
   }, []);
+
   const datas = AA.description;
-  // console.log(datas);
 
   return (
     <>
@@ -69,12 +72,23 @@ export const HistoryInfo = (props: ItemType) => {
 
       {datas.map((item) => {
         return (
-          <HistoryBox key={item.id}>
-            <HistoryCardSection>
-              <div>{item.title}</div>
-              <div>{item.text}</div>
-              <div>{item.source}</div>
-            </HistoryCardSection>
+          <HistoryBox backgroundColor={item.backgroundColor} key={item.id}>
+            <Fade
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <HistoryCardSection>
+                <div>{item.title}</div>
+                <div>{item.text}</div>
+                <div>{item.source}</div>
+                <div>{item.source_text}</div>
+              </HistoryCardSection>
+            </Fade>
           </HistoryBox>
         );
       })}
@@ -106,8 +120,6 @@ const ImageContainer = styled.div`
   width: 100px;
   height: 100px;
   z-index: 10;
-  /* animation: 10s opacity 1s forwards; */
-  /* transform: translate(50px, 660px); */
 `;
 
 const ScrollTopButtonContainer = styled.div`
