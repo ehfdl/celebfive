@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import Router from "../src/Router";
-import { auth } from "./firebase";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { authService } from "./firebase";
 
 function App() {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const queryClient = new QueryClient();
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
+    authService.onAuthStateChanged((user) => {
       if (user) {
         setIsLoggedIn(true);
       } else {
@@ -18,7 +19,9 @@ function App() {
   }, []);
   return (
     <>
-      <Router />
+      <QueryClientProvider client={queryClient}>
+        <Router />
+      </QueryClientProvider>
     </>
   );
 }

@@ -5,7 +5,7 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { auth } from "../firebase";
+import { authService } from "../firebase";
 import Login from "./Login";
 import Register from "./Register";
 
@@ -26,7 +26,7 @@ const Modal = ({ setModalOpen }: LoginProps) => {
 
   const handleLoginClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (signDisplay) {
-      signInWithEmailAndPassword(auth, email, password)
+      signInWithEmailAndPassword(authService, email, password)
         .then(() => {
           alert("로그인 성공");
           navigate("/test");
@@ -42,7 +42,7 @@ const Modal = ({ setModalOpen }: LoginProps) => {
 
   const handleRegisterClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (!signDisplay) {
-      createUserWithEmailAndPassword(auth, email, password)
+      createUserWithEmailAndPassword(authService, email, password)
         .then((userCredential) => {
           alert("회원가입 성공");
           navigate("/test");

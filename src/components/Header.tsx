@@ -3,24 +3,24 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
-import { auth } from "../firebase";
+import { authService } from "../firebase";
 import Modal from "./Modal";
 
 export const Header = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const navigate = useNavigate();
   const openModal = () => {
-    if (auth.currentUser) {
+    if (authService.currentUser) {
       navigate("/test");
     }
-    if (!auth.currentUser) {
+    if (!authService.currentUser) {
       setModalOpen(true);
       document.body.style.overflow = "hidden";
     }
   };
 
   const logOutClick = () => {
-    signOut(auth)
+    signOut(authService)
       .then(() => {
         alert("로그아웃");
       })
@@ -32,7 +32,7 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <HeaderTitle>셀럽파이브</HeaderTitle>
-      {auth.currentUser ? (
+      {authService.currentUser ? (
         <LogoutButton onClick={logOutClick}>로그아웃</LogoutButton>
       ) : (
         <LoginButton onClick={openModal}>로그인</LoginButton>
