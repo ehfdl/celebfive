@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import AA from "../test.json";
 import { useNavigate } from "react-router-dom";
+import Snowfall from "react-snowfall";
 
 interface StatusBarProps {
   count: number;
@@ -28,33 +29,42 @@ const Test = () => {
   }, [count]);
 
   return (
-    <BackGround>
-      <Wrap>
-        <StatusBarBox>
-          <StatusBar count={count}>
-            <StatusText>{(count + 1) * 10}%</StatusText>
-          </StatusBar>
-        </StatusBarBox>
-        <Image>
-          <img src={AA.questions[count].image} />
-        </Image>
-        <TestContainer>{AA.questions[count].question}</TestContainer>
-        <AnswerContainer>
-          <Answer
-            onClick={onClickHandler}
-            value={AA.questions[count].score01[1]}
-          >
-            {AA.questions[count].score01[0]}
-          </Answer>
-          <Answer
-            onClick={onClickHandler}
-            value={AA.questions[count].score02[1]}
-          >
-            {AA.questions[count].score02[0]}
-          </Answer>
-        </AnswerContainer>
-      </Wrap>
-    </BackGround>
+    <>
+      <BackGround>
+        <Wrap>
+          <StatusBarBox>
+            <StatusBar count={count}>
+              <StatusText>{(count + 1) * 10}%</StatusText>
+            </StatusBar>
+          </StatusBarBox>
+          <Image>
+            <img src={AA.questions[count].image} />
+          </Image>
+          <TestContainer>{AA.questions[count].question}</TestContainer>
+          <AnswerContainer>
+            <Answer
+              onClick={onClickHandler}
+              value={AA.questions[count].score01[1]}
+            >
+              {AA.questions[count].score01[0]}
+            </Answer>
+            <Answer
+              onClick={onClickHandler}
+              value={AA.questions[count].score02[1]}
+            >
+              {AA.questions[count].score02[0]}
+            </Answer>
+          </AnswerContainer>
+        </Wrap>
+      </BackGround>
+      <Snowfall
+        color="#ff6f6f"
+        snowflakeCount={50}
+        speed={[0.5, 1]}
+        radius={[2, 4]}
+        style={{ top: 100, height: "130vh" }}
+      />
+    </>
   );
 };
 
