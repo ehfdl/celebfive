@@ -87,10 +87,6 @@ const TextWrap = styled.div`
   padding: 20px;
 `;
 
-const ShareBtn = styled.button`
-  width: 10%;
-`;
-
 const CommentsWrap = styled.div`
   width: 60%;
   min-height: 200px;
