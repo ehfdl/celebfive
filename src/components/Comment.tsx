@@ -75,7 +75,9 @@ const Comment = ({ item }: { item: CommentType }) => {
     }
 
     let editObj = {};
+
     Object.assign(editObj, { comment: inputEditComment });
+
     try {
       await reviseComment({ commentId: item.id, editObj });
       setInputEditComment("");

@@ -20,7 +20,6 @@ const Router = () => {
         <Route path="/" element={<Main />} />
         <Route path="/test" element={<Test />} />
         <Route path="/result" element={<Result />} />
-        <Route path="/commentsList" element={<CommentsList />} />
       </Routes>
       <Footer />
     </BrowserRouter>
