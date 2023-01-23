@@ -14,6 +14,7 @@ export interface DataType {
   source_text: string[];
   source: string;
   text: string;
+  item: string | number;
 }
 
 interface ItemType {
@@ -60,7 +61,19 @@ export const HistoryInfo = (props: ItemType) => {
     <>
       {modalOpen && <Login setModalOpen={setModalOpen} />}
 
-      <HistoryBox backgroundColor={"#ffe818"}>
+      {datas.map((item) => {
+        return (
+          <HistoryBox key={item.id}>
+            <HistoryCardSection>
+              <div>{item.title}</div>
+              <div>{item.text}</div>
+              <div>{item.source}</div>
+            </HistoryCardSection>
+          </HistoryBox>
+        );
+      })}
+
+      {/* <HistoryBox>
         <HistoryCardSection>
           {datas
             .filter((data) => {
@@ -74,8 +87,10 @@ export const HistoryInfo = (props: ItemType) => {
               </div>
             ))}
         </HistoryCardSection>
-      </HistoryBox>
-      <HistoryBox backgroundColor={"#23daaf"}>
+      </HistoryBox> */}
+
+      {/*
+      <HistoryBox backgroundColor={"#ffe818"}>
         <HistoryCardSection>
           {datas
             .filter((data) => {
@@ -90,7 +105,7 @@ export const HistoryInfo = (props: ItemType) => {
             ))}
         </HistoryCardSection>
       </HistoryBox>
-      <HistoryBox backgroundColor={"#a143e8"}>
+      <HistoryBox backgroundColor={"#23daaf"}>
         <HistoryCardSection>
           {datas
             .filter((data) => {
@@ -105,7 +120,7 @@ export const HistoryInfo = (props: ItemType) => {
             ))}
         </HistoryCardSection>
       </HistoryBox>
-      <HistoryBox backgroundColor={"#e84343"}>
+      <HistoryBox backgroundColor={"#a143e8"}>
         <HistoryCardSection>
           {datas
             .filter((data) => {
@@ -120,7 +135,7 @@ export const HistoryInfo = (props: ItemType) => {
             ))}
         </HistoryCardSection>
       </HistoryBox>
-      <HistoryBox backgroundColor={"#00e6ac"}>
+      <HistoryBox backgroundColor={"#e84343"}>
         <HistoryCardSection>
           {datas
             .filter((data) => {
@@ -149,7 +164,7 @@ export const HistoryInfo = (props: ItemType) => {
               </div>
             ))}
         </HistoryCardSection>
-      </HistoryBox>
+      </HistoryBox> */}
 
       <ButtonBox>
         <CustomButton onClick={openModal}>테스트 하러가기</CustomButton>
