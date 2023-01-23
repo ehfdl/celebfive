@@ -14,6 +14,7 @@ export interface DataType {
   source_text: string[];
   source: string;
   text: string;
+  item: string | number;
 }
 
 interface ItemType {
@@ -65,96 +66,18 @@ export const HistoryInfo = (props: ItemType) => {
   return (
     <>
       {modalOpen && <Modal setModalOpen={setModalOpen} />}
-      <HistoryBox backgroundColor={"#ffe818"}>
-        <HistoryCardSection>
-          {datas
-            .filter((data) => {
-              return data.id === 1;
-            })
-            .map((data) => (
-              <div key={data.id}>
-                <div>{data.title}</div>
-                <div>{data.text}</div>
-                <div>{data.source}</div>
-              </div>
-            ))}
-        </HistoryCardSection>
-      </HistoryBox>
-      <HistoryBox backgroundColor={"#23daaf"}>
-        <HistoryCardSection>
-          {datas
-            .filter((data) => {
-              return data.id === 2;
-            })
-            .map((data) => (
-              <div key={data.id}>
-                <div>{data.title}</div>
-                <div>{data.text}</div>
-                <div>{data.source}</div>
-              </div>
-            ))}
-        </HistoryCardSection>
-      </HistoryBox>
-      <HistoryBox backgroundColor={"#a143e8"}>
-        <HistoryCardSection>
-          {datas
-            .filter((data) => {
-              return data.id === 3;
-            })
-            .map((data) => (
-              <div key={data.id}>
-                <div>{data.title}</div>
-                <div>{data.text}</div>
-                <div>{data.source}</div>
-              </div>
-            ))}
-        </HistoryCardSection>
-      </HistoryBox>
-      <HistoryBox backgroundColor={"#e84343"}>
-        <HistoryCardSection>
-          {datas
-            .filter((data) => {
-              return data.id === 4;
-            })
-            .map((data) => (
-              <div key={data.id}>
-                <div>{data.title}</div>
-                <div>{data.text}</div>
-                <div>{data.source}</div>
-              </div>
-            ))}
-        </HistoryCardSection>
-      </HistoryBox>
-      <HistoryBox backgroundColor={"#00e6ac"}>
-        <HistoryCardSection>
-          {datas
-            .filter((data) => {
-              return data.id === 5;
-            })
-            .map((data) => (
-              <div key={data.id}>
-                <div>{data.title}</div>
-                <div>{data.text}</div>
-                <div>{data.source}</div>
-              </div>
-            ))}
-        </HistoryCardSection>
-      </HistoryBox>
-      <HistoryBox backgroundColor={"#3333ff"}>
-        <HistoryCardSection>
-          {datas
-            .filter((data) => {
-              return data.id === 6;
-            })
-            .map((data) => (
-              <div key={data.id}>
-                <div>{data.title}</div>
-                <div>{data.text}</div>
-                <div>{data.source}</div>
-              </div>
-            ))}
-        </HistoryCardSection>
-      </HistoryBox>
+
+      {datas.map((item) => {
+        return (
+          <HistoryBox key={item.id}>
+            <HistoryCardSection>
+              <div>{item.title}</div>
+              <div>{item.text}</div>
+              <div>{item.source}</div>
+            </HistoryCardSection>
+          </HistoryBox>
+        );
+      })}
 
       <ButtonBox>
         <CustomButton onClick={openModal}>테스트 하러가기</CustomButton>
