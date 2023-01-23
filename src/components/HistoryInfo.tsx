@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import CustomButton from "../UI/CustomButton";
 import HistoryBox from "../UI/HistoryBox";
-import Login from "./Login";
+import Modal from "./Modal";
+import { authService } from "../firebase";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import AA from "../test.json";
@@ -30,10 +32,16 @@ interface ItemType {
 export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [isTopButtonShow, setIsTopButtonShow] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const openModal = () => {
-    setModalOpen(true);
-    document.body.style.overflow = "hidden";
+    if (authService.currentUser) {
+      navigate("/test");
+    }
+    if (!authService.currentUser) {
+      setModalOpen(true);
+      document.body.style.overflow = "hidden";
+    }
   };
 
   // 스크롤을 위로 올려주는 버튼 함수입니다
@@ -60,7 +68,7 @@ export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
 
   return (
     <>
-      {modalOpen && <Login setModalOpen={setModalOpen} />}
+      {modalOpen && <Modal setModalOpen={setModalOpen} />}
 
       {datas.map((item) => {
         return (
