@@ -1,14 +1,48 @@
-import React from "react";
+import { signOut } from "firebase/auth";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import styled from "styled-components";
+import { authService } from "../firebase";
+import Modal from "./Modal";
 
 export const Header = () => {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const openModal = () => {
+    if (authService.currentUser) {
+      navigate("/test");
+    }
+    if (!authService.currentUser) {
+      setModalOpen(true);
+      document.body.style.overflow = "hidden";
+    }
+  };
+
+  const logOutClick = () => {
+    signOut(authService)
+      .then(() => {
+        alert("로그아웃");
+      })
+      .catch((event) => {
+        alert(event);
+      });
+  };
+
   return (
     <HeaderWrapper>
       <HeaderTitle>셀럽파이브</HeaderTitle>
-      <LoginButton>Login</LoginButton>
+      {authService.currentUser ? (
+        <LogoutButton onClick={logOutClick}>로그아웃</LogoutButton>
+      ) : (
+        <LoginButton onClick={openModal}>로그인</LoginButton>
+      )}
+      {modalOpen && <Modal setModalOpen={setModalOpen} />}
     </HeaderWrapper>
   );
 };
+
+export default Header;
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -32,5 +66,11 @@ const LoginButton = styled.button`
   padding: 1rem;
   cursor: pointer;
 `;
-
-export default Header;
+const LogoutButton = styled.button`
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: transparent;
+  padding: 1rem;
+  cursor: pointer;
+`;
