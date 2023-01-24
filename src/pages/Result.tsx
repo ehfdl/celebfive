@@ -5,6 +5,7 @@ import kakaoShare from "../kakao";
 import Button from "../UI/CustomButton";
 import AA from "../test.json";
 import CommentsList from "../components/CommentsList";
+import Confetti from "react-confetti";
 
 const Result = () => {
   const { state } = useLocation();
@@ -28,19 +29,22 @@ const Result = () => {
   }, [state]);
 
   return (
-    <BackGround>
-      <Wrap>
-        <TitleWrap>
-          <Title>결과</Title>
-          <SubTitle>당신은 {result} 입니다!</SubTitle>
-        </TitleWrap>
-        <TextWrap>{resultText}</TextWrap>
-        <Button onClick={kakaoShare}>공유하기</Button>
-        <CommentsWrap>
-          <CommentsList />
-        </CommentsWrap>
-      </Wrap>
-    </BackGround>
+    <>
+      <BackGround>
+        <Wrap>
+          <TitleWrap>
+            <Title>결과</Title>
+            <SubTitle>당신은 {result} 입니다!</SubTitle>
+          </TitleWrap>
+          <TextWrap>{resultText}</TextWrap>
+          <Button onClick={kakaoShare}>공유하기</Button>
+          <CommentsWrap>
+            <CommentsList />
+          </CommentsWrap>
+        </Wrap>
+      </BackGround>
+      <Confetti numberOfPieces={100} style={{ top: 100, height: "100vh" }} />
+    </>
   );
 };
 
