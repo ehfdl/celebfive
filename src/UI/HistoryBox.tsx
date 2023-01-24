@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
-interface IHistoryBoxType {
-  backgroundColor?: string;
+export interface IHistoryBoxType {
+  backgroundColor?: string | string[];
   height?: string;
   width?: string;
   children?: JSX.Element | undefined | string | string[];
   Element?: Element[] | string | string[];
   operator?: JSX.Element;
+  Colors?: string | string[];
 }
 
 export const HistoryBox = (props: IHistoryBoxType) => {
