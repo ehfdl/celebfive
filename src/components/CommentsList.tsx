@@ -77,6 +77,7 @@ const CommentsList = () => {
         <input
           type="text"
           placeholder="댓글을 입력해 주세요!"
+          maxLength={220}
           onChange={onChnageCommentHandler}
           value={inputComment}
           ref={commentRef}

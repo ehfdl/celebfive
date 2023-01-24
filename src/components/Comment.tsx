@@ -46,6 +46,7 @@ const Comment = ({ item }: { item: CommentType }) => {
 
   const onDeleteComment = async () => {
     const answer = window.confirm("정말 삭제하시겠습니까?");
+
     if (answer) {
       try {
         await removeComment(item.id);
@@ -90,7 +91,7 @@ const Comment = ({ item }: { item: CommentType }) => {
 
   return (
     <div key={item.id}>
-      <span>ID</span>
+      <p>작성자: {"ID"}</p>
       {openInput ? (
         <input onChange={onChangeEditComment} value={inputEditComment} />
       ) : (
@@ -99,6 +100,8 @@ const Comment = ({ item }: { item: CommentType }) => {
       )}
 
       <ImgStyled src={deleteImg} onClick={onDeleteComment} />
+
+      {/* 처음에 수정 이미지를 클릭하면 openInput의 불린 값을 변경하여 comment가 있던 자리에 input창이 생성되고, 이미지의 onClick에 onEditComment 함수를 실행하도록 바꿔준다. */}
       {openInput ? (
         <ImgStyled src={editImg} onClick={onEditComment} />
       ) : (
