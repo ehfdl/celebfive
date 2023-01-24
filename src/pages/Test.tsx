@@ -5,6 +5,8 @@ import AA from "../test.json";
 import { useNavigate } from "react-router-dom";
 import Snowfall from "react-snowfall";
 import { AnimationWrapper } from "react-hover-animation";
+import { CustomCursor } from "react-svg-cursor";
+import png from "../assets/images/weight.png";
 
 interface StatusBarProps {
   count: number;
@@ -83,6 +85,7 @@ const Test = () => {
         radius={[2, 4]}
         style={{ top: 100, height: "120vh" }}
       />
+      <CustomCursor component={png} width={30} height={30} zIndex={420} />
     </>
   );
 };

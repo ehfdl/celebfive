@@ -6,6 +6,8 @@ import Button from "../UI/CustomButton";
 import AA from "../test.json";
 import CommentsList from "../components/CommentsList";
 import Confetti from "react-confetti";
+import { CustomCursor } from "react-svg-cursor";
+import png from "../assets/images/weight.png";
 
 const Result = () => {
   const { state } = useLocation();
@@ -44,6 +46,7 @@ const Result = () => {
         </Wrap>
       </BackGround>
       <Confetti numberOfPieces={100} style={{ top: 100, height: "100vh" }} />
+      <CustomCursor component={png} width={30} height={30} zIndex={420} />
     </>
   );
 };
