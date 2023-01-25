@@ -9,6 +9,14 @@ import { Fade, Slide } from "react-awesome-reveal";
 import AA from "../test.json";
 import { IHistoryBoxType } from "../UI/HistoryBox";
 import weight from "../assets/images/weight.png";
+import hanbok from "../assets/images/hanbok.png";
+import hands from "../assets/images/Hands.png";
+import japan from "../assets/images/japan.png";
+import building from "../assets/images/building.png";
+import factory from "../assets/images/factory.png";
+import arrow from "../assets/images/arrow.png";
+import arrowss from "../assets/images/arrow2.png";
+
 import Location from "./Location";
 
 export interface DataType {
@@ -31,7 +39,7 @@ interface ItemType {
   backgroundColor: string | string[];
 }
 
-export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
+const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [isTopButtonShow, setIsTopButtonShow] = useState<boolean>(false);
 
@@ -75,32 +83,59 @@ export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
       {datas.map((item) => {
         return (
           <HistoryBox backgroundColor={item.backgroundColor} key={item.id}>
-            {/* <Slide direction="up" duration={2000}> */}
             <FadeStyle>
               <HistoryCardSection>
-                <div>{item.title}</div>
-                <div>{item.text}</div>
-                <div>{item.source}</div>
-                <div>{item.source_text}</div>
-                {item.longitude === 0 ? null : (
-                  <Location
-                    longitude={item.longitude}
-                    latitude={item.latitude}
-                    marker={item.marker}
-                  />
-                )}
+                <HistoryInfoTitle>{item.title}</HistoryInfoTitle>
+                <HistoryInfoTtext>{item.text}</HistoryInfoTtext>
+                <HistorySourceWrap>
+                  <div>
+                    <div>{item.source_text}</div>
+                    <div>{item.source}</div>
+                  </div>
+                  <div>
+                    {item.longitude === 0 ? null : (
+                      <Location
+                        longitude={item.longitude}
+                        latitude={item.latitude}
+                        marker={item.marker}
+                      />
+                    )}
+                  </div>
+                </HistorySourceWrap>
               </HistoryCardSection>
             </FadeStyle>
-            {/* </Slide> */}
           </HistoryBox>
         );
       })}
 
-      {/* <Aa> */}
-      <Slide direction="up">
-        <Ii src={weight} />
-      </Slide>
-      {/* </Aa> */}
+      <SlideImgStyle direction="up">
+        <ImageOne src={weight} />
+      </SlideImgStyle>
+
+      <SlideImgStyleTwo direction="up">
+        <ImageOne src={hands} />
+      </SlideImgStyleTwo>
+
+      <SlideImgStyleThree direction="up">
+        <ImageOne src={hanbok} />
+      </SlideImgStyleThree>
+
+      <SlideImgStyleFour direction="up">
+        <ImageOne src={japan} />
+      </SlideImgStyleFour>
+
+      <SlideImgStyleFive direction="up">
+        <ImageOne src={building} />
+      </SlideImgStyleFive>
+
+      <SlideImgStyleSix direction="up">
+        <ImageOne src={factory} />
+      </SlideImgStyleSix>
+
+      <FadeStar>
+        <ImageTwo src={arrowss} />
+      </FadeStar>
+
       <ButtonBox>
         <StartTestButton onClick={openModal}>테스트 하러가기</StartTestButton>
       </ButtonBox>
@@ -117,14 +152,13 @@ const ButtonBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1.5rem;
-  z-index: 0;
 `;
 
 const ScrollTopButtonContainer = styled.div`
   position: fixed;
   bottom: 5%;
   right: 3%;
+  z-index: 30;
 `;
 
 const ScrollTopButton = styled(CustomButton)`
@@ -146,6 +180,7 @@ const HistoryCardSection = styled.div`
   border-radius: 20px;
   border: 4px solid black;
   line-height: 36px;
+  padding-bottom: 4.5rem;
 `;
 
 const HistoryInfoTitle = styled.div`
@@ -161,6 +196,15 @@ const HistoryInfoTtext = styled.div`
   /* line-height: 36px; */
 `;
 
+const HistorySourceWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  color: #504949;
+  word-break: keep-all;
+`;
+
 const StartTestButton = styled(CustomButton)`
   border: none;
   border-radius: 0.3rem;
@@ -171,9 +215,14 @@ const StartTestButton = styled(CustomButton)`
   font-weight: bold;
 `;
 
-const Ii = styled.img`
-  width: 100px;
-  height: 100px;
+const ImageOne = styled.img`
+  width: 200px;
+  height: 200px;
+`;
+
+const ImageTwo = styled.img`
+  width: 200px;
+  height: 200px;
 `;
 
 const FadeStyle = styled(Fade)`
@@ -181,14 +230,49 @@ const FadeStyle = styled(Fade)`
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* height: 100%; */
 `;
 
-const Aa = styled(Fade)`
+const SlideImgStyle = styled(Slide)`
   position: absolute;
   top: 1500px;
-  /* width: 100px; */
-  /* height: 100px; */
+  left: 100px;
+`;
+
+const SlideImgStyleTwo = styled(Slide)`
+  position: absolute;
+  top: 1000px;
+  right: 300px;
+`;
+
+const SlideImgStyleThree = styled(Slide)`
+  position: absolute;
+  top: 2000px;
+  right: 100px;
+`;
+
+const SlideImgStyleFour = styled(Slide)`
+  position: absolute;
+  top: 2500px;
+  left: 100px;
+`;
+
+const SlideImgStyleFive = styled(Slide)`
+  position: absolute;
+  top: 3000px;
+  right: 300px;
+`;
+
+const SlideImgStyleSix = styled(Slide)`
+  position: absolute;
+  top: 3500px;
+  left: 100px;
+`;
+
+const FadeStar = styled(Fade)`
+  position: absolute;
+  top: 4330px;
+  right: 830px;
+  z-index: 10;
 `;
 
 export default HistoryInfo;
