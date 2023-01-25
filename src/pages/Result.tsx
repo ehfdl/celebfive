@@ -2,12 +2,19 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import kakaoShare from "../kakao";
-import Button from "../UI/CustomButton";
+import CustomButton from "../UI/CustomButton";
 import AA from "../test.json";
 import CommentsList from "../components/CommentsList";
 import Confetti from "react-confetti";
 import { CustomCursor } from "react-svg-cursor";
 import png from "../assets/images/weight.png";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  FacebookIcon,
+  TwitterIcon,
+} from "react-share";
 
 const Result = () => {
   const { state } = useLocation();
@@ -30,6 +37,8 @@ const Result = () => {
     }
   }, [state]);
 
+  const currentUrl = window.location.href;
+
   return (
     <>
       <BackGround>
@@ -39,7 +48,31 @@ const Result = () => {
             <SubTitle>당신은 {result} 입니다!</SubTitle>
           </TitleWrap>
           <TextWrap>{resultText}</TextWrap>
-          <Button onClick={kakaoShare}>공유하기</Button>
+          <ButtonWrap>
+            <FacebookShareButton url={currentUrl}>
+              <FacebookIcon round={true} size={"5rem"}>
+                FaceBook
+              </FacebookIcon>
+            </FacebookShareButton>
+            <TwitterShareButton url={currentUrl}>
+              <TwitterIcon
+                round={true}
+                size={"5rem"}
+                style={{ marginLeft: "1.5rem", marginRight: "1rem" }}
+              >
+                Twitter
+              </TwitterIcon>
+            </TwitterShareButton>
+            <ShareKakaoButton onClick={kakaoShare}>TALK</ShareKakaoButton>
+
+            <CopyToClipboard
+              text={currentUrl}
+              onCopy={() => alert("복사되었습니다")}
+            >
+              <CopyCurrentUrlBtn>URL</CopyCurrentUrlBtn>
+            </CopyToClipboard>
+          </ButtonWrap>
+
           <CommentsWrap>
             <CommentsList />
           </CommentsWrap>
@@ -104,4 +137,26 @@ const CommentsWrap = styled.div`
   background-color: #ff6f6f;
   border: 1px solid black;
   padding: 20px;
+`;
+
+const ButtonWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ShareKakaoButton = styled(CustomButton)`
+  border: none;
+  width: 5rem;
+  height: 5rem;
+  background-color: #47292a;
+  color: #f7e111;
+  font-weight: bold;
+`;
+
+const CopyCurrentUrlBtn = styled(CustomButton)`
+  border: none;
+  background-color: #8e50b8;
+  color: #fff;
+  width: 5rem;
+  height: 5rem;
 `;
