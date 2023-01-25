@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { Fade } from "react-awesome-reveal";
 import AA from "../test.json";
@@ -22,8 +21,7 @@ export const HistoryCard = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-      }}
-    >
+      }}>
       <HistoryCardSection>
         <HistoryContent>
           {/* {datas.map((data) => (
