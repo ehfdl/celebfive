@@ -2,24 +2,30 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { useRef, useState } from "react";
+import React, { Dispatch, SetStateAction, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import styled from "styled-components";
 import { authService } from "../firebase";
 import Login from "./Login";
 import Register from "./Register";
-
-interface LoginProps {
+interface ModalProps {
   modalOpen: boolean;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  email?: string;
+  setEmail?: React.Dispatch<React.SetStateAction<string>>;
+  password?: string;
+  setPassword?: Dispatch<SetStateAction<string>>;
 }
-const Modal = ({ modalOpen, setModalOpen }: LoginProps) => {
+
+const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
   const [signDisplay, setSignDisplay] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
-
   const navigate = useNavigate();
+  const emailRef = useRef<any>();
+  const passwordRef = useRef<any>();
   const modalRef = useRef<any>();
 
   const closeModal = (target: any) => {
@@ -28,19 +34,46 @@ const Modal = ({ modalOpen, setModalOpen }: LoginProps) => {
   };
   const handleLoginClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (signDisplay) {
+      if (!email && !password) {
+        emailRef.current.focus();
+        alert("이메일과 비밀번호를 입력해주세요");
+        return;
+      }
+      if (!email) {
+        emailRef.current.focus();
+        alert("이메일을 입력해주세요");
+        return;
+      }
+      if (!password) {
+        passwordRef.current.focus();
+        alert("비밀번호를 입력해주세요");
+        return;
+      }
+      if (email.indexOf("@") === -1) {
+        emailRef.current.focus();
+        alert("이메일 형식이 아닙니다.");
+      }
+      if (password.length < 6) {
+        passwordRef.current.focus();
+        alert("비밀번호는 6자리 이상 입력해주세요");
+        return;
+      }
+
+      //이메일 로그인
       signInWithEmailAndPassword(authService, email, password)
         .then(() => {
           alert("로그인 성공");
           navigate("/test");
           setModalOpen(false);
         })
-        .catch((event: any) => {
-          alert(event);
+        .catch(() => {
+          alert("아이디와 비밀번호를 확인해주세요");
         });
-    } else if (!signDisplay) {
-      setSignDisplay(true);
     }
   };
+  if (!signDisplay) {
+    setSignDisplay(true);
+  }
 
   const handleRegisterClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (!signDisplay) {
@@ -78,6 +111,8 @@ const Modal = ({ modalOpen, setModalOpen }: LoginProps) => {
           {signDisplay ? (
             <Login
               email={email}
+              emailRef={emailRef}
+              passwordRef={passwordRef}
               password={password}
               setEmail={setEmail}
               setPassword={setPassword}

@@ -1,10 +1,28 @@
 import styled from "styled-components";
 
-const Login = ({ email, setEmail, password, setPassword }: any) => {
+interface LoginProps {
+  email: string;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  password: string;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  emailRef: any;
+  passwordRef: any;
+}
+
+const Login = ({
+  email,
+  setEmail,
+  password,
+  setPassword,
+  emailRef,
+  passwordRef,
+}: LoginProps) => {
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setPassword(event.target.value);
   };
+
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setEmail(event.target.value);
@@ -17,6 +35,7 @@ const Login = ({ email, setEmail, password, setPassword }: any) => {
         <InputBox>
           아이디:
           <InputField
+            ref={emailRef}
             type="email"
             value={email}
             onChange={handleEmailChange}
@@ -28,6 +47,7 @@ const Login = ({ email, setEmail, password, setPassword }: any) => {
           <InputField
             type="password"
             value={password}
+            ref={passwordRef}
             onChange={handlePasswordChange}
             placeholder="비밀번호를 입력해주세요"
           />
