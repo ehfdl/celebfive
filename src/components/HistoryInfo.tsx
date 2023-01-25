@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import AA from "../test.json";
 import { IHistoryBoxType } from "../UI/HistoryBox";
+import weight from "../assets/images/weight.png";
+import Location from "./Location";
 
 export interface DataType {
   id: number;
@@ -32,6 +34,8 @@ interface ItemType {
 export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [isTopButtonShow, setIsTopButtonShow] = useState<boolean>(false);
+
+  const datas = AA.description;
   const navigate = useNavigate();
 
   const openModal = () => {
@@ -64,8 +68,6 @@ export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
     };
   }, []);
 
-  const datas = AA.description;
-
   return (
     <>
       {modalOpen && <Modal setModalOpen={setModalOpen} />}
@@ -73,32 +75,34 @@ export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
       {datas.map((item) => {
         return (
           <HistoryBox backgroundColor={item.backgroundColor} key={item.id}>
-            <Fade
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <FadeStyle>
               <HistoryCardSection>
                 <div>{item.title}</div>
                 <div>{item.text}</div>
                 <div>{item.source}</div>
                 <div>{item.source_text}</div>
+                {item.longitude === 0 ? null : (
+                  <Location
+                    longitude={item.longitude}
+                    latitude={item.latitude}
+                    marker={item.marker}
+                  />
+                )}
               </HistoryCardSection>
-            </Fade>
+            </FadeStyle>
           </HistoryBox>
         );
       })}
 
+      <Aa>
+        <Ii src={weight} />
+      </Aa>
       <ButtonBox>
-        <CustomButton onClick={openModal}>테스트 하러가기</CustomButton>
+        <StartTestButton onClick={openModal}>테스트 하러가기</StartTestButton>
       </ButtonBox>
       <ScrollTopButtonContainer>
         {isTopButtonShow ? (
-          <ScrollTopButton onClick={ScrollTop}>TOP</ScrollTopButton>
+          <ScrollTopButton onClick={ScrollTop}>▲</ScrollTopButton>
         ) : null}
       </ScrollTopButtonContainer>
     </>
@@ -113,15 +117,6 @@ const ButtonBox = styled.div`
   z-index: 0;
 `;
 
-const ImageContainer = styled.div`
-  position: absolute;
-  left: 100px;
-  top: 600px;
-  width: 100px;
-  height: 100px;
-  z-index: 10;
-`;
-
 const ScrollTopButtonContainer = styled.div`
   position: fixed;
   bottom: 5%;
@@ -130,7 +125,7 @@ const ScrollTopButtonContainer = styled.div`
 
 const ScrollTopButton = styled(CustomButton)`
   border: none;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
   color: #000;
   font-weight: bold;
 `;
@@ -140,6 +135,38 @@ const HistoryCardSection = styled.div`
   height: 80%;
   background-color: #fff;
   padding: 5rem;
+  border-radius: 20px;
+  border: 4px solid black;
+`;
+
+const StartTestButton = styled(CustomButton)`
+  border: none;
+  border-radius: 0.3rem;
+  width: 15rem;
+  height: 6rem;
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+`;
+
+const Ii = styled.img`
+  width: 100px;
+  height: 100px;
+`;
+
+const FadeStyle = styled(Fade)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
+const Aa = styled(Fade)`
+  position: absolute;
+  top: 1500px;
+  /* width: 100px; */
+  /* height: 100px; */
 `;
 
 export default HistoryInfo;
