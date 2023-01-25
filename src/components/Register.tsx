@@ -7,6 +7,9 @@ const Register = ({
   password,
   setPasswordCheck,
   passwordCheck,
+  passwordCheckRef,
+  passwordRef,
+  emailRef,
 }: any) => {
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -31,6 +34,7 @@ const Register = ({
           아이디:
           <InputField
             type="email"
+            ref={emailRef}
             value={email}
             onChange={handleEmailChange}
             placeholder="이메일을 입력해주세요"
@@ -41,16 +45,17 @@ const Register = ({
           <InputField
             type="password"
             value={password}
+            ref={passwordRef}
             onChange={handlePasswordChange}
             placeholder="비밀번호를 입력해주세요"
           />
         </InputBox>
         <InputBox>
-          {" "}
           비밀번호:
           <InputField
             type="password"
             value={passwordCheck}
+            ref={passwordCheckRef}
             onChange={handlePasswordCheckChange}
             placeholder="비밀번호를 다시 입력해주세요"
           />
