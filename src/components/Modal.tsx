@@ -91,7 +91,7 @@ const Modal = ({ setModalOpen }: LoginProps) => {
   );
 };
 export default Modal;
-const Container = styled.div`
+export const Container = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
@@ -104,7 +104,7 @@ const Container = styled.div`
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.7);
 `;
-const ModalContainer = styled.div`
+export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px black solid;
