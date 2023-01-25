@@ -5,6 +5,9 @@ import kakaoShare from "../kakao";
 import CustomButton from "../UI/CustomButton";
 import AA from "../test.json";
 import CommentsList from "../components/CommentsList";
+import Confetti from "react-confetti";
+import { CustomCursor } from "react-svg-cursor";
+import png from "../assets/images/weight.png";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
   FacebookShareButton,
@@ -37,43 +40,47 @@ const Result = () => {
   const currentUrl = window.location.href;
 
   return (
-    <BackGround>
-      <Wrap>
-        <TitleWrap>
-          <Title>결과</Title>
-          <SubTitle>당신은 {result} 입니다!</SubTitle>
-        </TitleWrap>
-        <TextWrap>{resultText}</TextWrap>
-        <ButtonWrap>
-          <FacebookShareButton url={currentUrl}>
-            <FacebookIcon round={true} size={"5rem"}>
-              FaceBook
-            </FacebookIcon>
-          </FacebookShareButton>
-          <TwitterShareButton url={currentUrl}>
-            <TwitterIcon
-              round={true}
-              size={"5rem"}
-              style={{ marginLeft: "1.5rem", marginRight: "1rem" }}
+    <>
+      <BackGround>
+        <Wrap>
+          <TitleWrap>
+            <Title>결과</Title>
+            <SubTitle>당신은 {result} 입니다!</SubTitle>
+          </TitleWrap>
+          <TextWrap>{resultText}</TextWrap>
+          <ButtonWrap>
+            <FacebookShareButton url={currentUrl}>
+              <FacebookIcon round={true} size={"5rem"}>
+                FaceBook
+              </FacebookIcon>
+            </FacebookShareButton>
+            <TwitterShareButton url={currentUrl}>
+              <TwitterIcon
+                round={true}
+                size={"5rem"}
+                style={{ marginLeft: "1.5rem", marginRight: "1rem" }}
+              >
+                Twitter
+              </TwitterIcon>
+            </TwitterShareButton>
+            <ShareKakaoButton onClick={kakaoShare}>TALK</ShareKakaoButton>
+
+            <CopyToClipboard
+              text={currentUrl}
+              onCopy={() => alert("복사되었습니다")}
             >
-              Twitter
-            </TwitterIcon>
-          </TwitterShareButton>
-          <ShareKakaoButton onClick={kakaoShare}>TALK</ShareKakaoButton>
+              <CopyCurrentUrlBtn>URL</CopyCurrentUrlBtn>
+            </CopyToClipboard>
+          </ButtonWrap>
 
-          <CopyToClipboard
-            text={currentUrl}
-            onCopy={() => alert("복사되었습니다")}
-          >
-            <CopyCurrentUrlBtn>URL</CopyCurrentUrlBtn>
-          </CopyToClipboard>
-        </ButtonWrap>
-
-        <CommentsWrap>
-          <CommentsList />
-        </CommentsWrap>
-      </Wrap>
-    </BackGround>
+          <CommentsWrap>
+            <CommentsList />
+          </CommentsWrap>
+        </Wrap>
+      </BackGround>
+      <Confetti numberOfPieces={100} style={{ top: 100, height: "100vh" }} />
+      <CustomCursor component={png} width={30} height={30} zIndex={420} />
+    </>
   );
 };
 

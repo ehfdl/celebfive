@@ -1,64 +1,64 @@
 {
   "questions": [
     {
-      "question": "성별이 뭐에유?",
-      "image": "http://file3.instiz.net/data/file3/2023/01/02/7/e/9/7e9307832057aa220eb451e847590232.jpg",
-      "score01": ["남자", 2],
-      "score02": ["여자", 1]
+      "question": "당신은 고려시대 문벌귀족으로 태어났습니다. 당신의 배우자는 몇명입니까?",
+      "image": "http://cdn.joongboo.com/news/photo/202008/363441806_2158488_2920.jpeg",
+      "score01": ["1명", 1],
+      "score02": ["3명", 2]
     },
     {
-      "question": "겸상할거에요?",
-      "image": "https://i.ytimg.com/vi/JBwIdrir5vw/maxresdefault.jpg",
-      "score01": ["남자2", 2],
-      "score02": ["여자2", 1]
+      "question": "당신은 조선시대 양반으로 태어났습니다. 당신의 노비는 몇명입니까?",
+      "image": "https://cdn.jjalbot.com/2016/10/Hkz4PdpIR/93_55169f483fb2f_2422.jpg",
+      "score01": ["0명", 1],
+      "score02": ["3명", 2]
     },
     {
-      "question": "셋",
-      "image": "https://img.hankyung.com/photo/202301/03.32273350.3.jpg",
-      "score01": ["남자3", 2],
-      "score02": ["여자3", 1]
+      "question": "당신은 일제강점기 교사로 태어났습니다. 한국어를 사용하는 학생을 보았습니다. 어떻게 하시겠습니까?",
+      "image": "https://img1.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202108/11/seoul/20210811195103590butb.jpg",
+      "score01": ["모른 척 넘어간다", 1],
+      "score02": ["규칙을 어긴 것이니 혼을 낸다", 2]
     },
     {
-      "question": "ㄴㅅ",
-      "image": "https://cdn.topstarnews.net/news/photo/202301/14901010_1057057_227.jpg",
-      "score01": ["남자4", 2],
-      "score02": ["여자4", 1]
+      "question": "평등과 자유 중에 무엇이 더 중요합니까?",
+      "image": "https://img.freepik.com/premium-photo/statue-of-liberty-in-new-york-usa_273643-13.jpg",
+      "score01": ["평등", 1],
+      "score02": ["자유", 2]
     },
     {
-      "question": "다섯",
-      "image": "https://cdn.topstarnews.net/news/photo/202211/14788490_1033306_392.jpg",
-      "score01": ["남자5", 2],
-      "score02": ["여자5", 1]
+      "question": "배우자와 함께 배달음식을 시켜먹었습니다. 음식을 먹은 후 취해야하는 행동은 무엇일까요?",
+      "image": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202202/09/18d03374-eb7b-4d5c-8d9f-fe1d73e0ed92.jpg",
+      "score01": ["아 맛있게 먹었다. 이제 치워야지!", 1],
+      "score02": ["아 맛있게 먹었다. 안치우고 뭐하노?", 2]
     },
     {
       "question": "여섯",
       "image": "https://i.ytimg.com/vi/60RaggLgggE/maxresdefault.jpg",
-      "score01": ["남자6", 2],
-      "score02": ["여자6", 1]
+      "score01": ["남자6", 1],
+      "score02": ["여자6", 2]
     },
     {
       "question": "일곱",
       "image": "https://i.ytimg.com/vi/0qnfBUeaeVM/maxresdefault.jpg",
-      "score01": ["남자7", 2],
-      "score02": ["여자7", 1]
+      "score01": ["남자7", 1],
+      "score02": ["여자7", 2]
     },
     {
       "question": "여달",
       "image": "이미지에용8",
-      "score01": ["남자8", 2],
-      "score02": ["여자8", 1]
+      "score01": ["남자8", 1],
+      "score02": ["여자8", 2]
     },
     {
       "question": "아홉",
       "image": "이미지에용9",
-      "score01": ["남자9", 2],
-      "score02": ["여자9", 1]
+      "score01": ["남자9", 1],
+      "score02": ["여자9", 2]
     },
     {
       "question": "열",
       "image": "이미지에용10",
-      "score01": ["남자10", 2],
-      "score02": ["여자10", 1]
+      "score01": ["남자10", 1],
+      "score02": ["여자10", 2]
     },
     {
       "question": "열허너",
