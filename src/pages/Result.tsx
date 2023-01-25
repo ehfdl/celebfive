@@ -15,7 +15,8 @@ import {
   FacebookIcon,
   TwitterIcon,
 } from "react-share";
-import Location from "../components/Location";
+
+const youtube = process.env.REACT_APP_API_KEY;
 
 const Result = () => {
   const { state } = useLocation();
