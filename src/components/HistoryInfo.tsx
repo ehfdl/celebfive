@@ -9,6 +9,7 @@ import { Fade, Slide } from "react-awesome-reveal";
 import AA from "../test.json";
 import { IHistoryBoxType } from "../UI/HistoryBox";
 import weight from "../assets/images/weight.png";
+import Location from "./Location";
 
 export interface DataType {
   id: number;
@@ -77,12 +78,17 @@ export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
             {/* <Slide direction="up" duration={2000}> */}
             <FadeStyle>
               <HistoryCardSection>
-                <HistoryInfoTitle>{item.title}</HistoryInfoTitle>
-                <HistoryInfoTtext>{item.text}</HistoryInfoTtext>
-                <div>
-                  <div>{item.source}</div>
-                  <div>{item.source_text}</div>
-                </div>
+                <div>{item.title}</div>
+                <div>{item.text}</div>
+                <div>{item.source}</div>
+                <div>{item.source_text}</div>
+                {item.longitude === 0 ? null : (
+                  <Location
+                    longitude={item.longitude}
+                    latitude={item.latitude}
+                    marker={item.marker}
+                  />
+                )}
               </HistoryCardSection>
             </FadeStyle>
             {/* </Slide> */}
