@@ -1,4 +1,17 @@
+import React from "react";
 import styled from "styled-components";
+
+interface RegisterProps {
+  email: string;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  password: string;
+  passwordCheck: string;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
+  setPasswordCheck: React.Dispatch<React.SetStateAction<string>>;
+  passwordCheckRef: React.MutableRefObject<HTMLInputElement | null>;
+  passwordRef: React.MutableRefObject<HTMLInputElement | null>;
+  emailRef: React.MutableRefObject<HTMLInputElement | null>;
+}
 
 const Register = ({
   setEmail,
@@ -10,7 +23,7 @@ const Register = ({
   passwordCheckRef,
   passwordRef,
   emailRef,
-}: any) => {
+}: RegisterProps) => {
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setEmail(event.target.value);

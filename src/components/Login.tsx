@@ -6,8 +6,8 @@ interface LoginProps {
   password: string;
   setPassword: React.Dispatch<React.SetStateAction<string>>;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  emailRef: any;
-  passwordRef: any;
+  emailRef: React.MutableRefObject<HTMLInputElement | null>;
+  passwordRef: React.MutableRefObject<HTMLInputElement | null>;
 }
 
 const Login = ({
