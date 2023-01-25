@@ -140,7 +140,7 @@ const StatusText = styled.div`
 const Image = styled.div`
   width: 250px;
   height: 250px;
-  border-radius: 50%;
+  border-radius: 5%;
   background-color: white;
   overflow: hidden;
   top: 80px;
@@ -148,17 +148,17 @@ const Image = styled.div`
 
 const TestContainer = styled.div`
   width: 75%;
-  margin-top: 70px;
+  /* margin-top: 70px; */
   background-color: white;
   padding: 30px;
   font-size: 24px;
-  top: 120px;
+  top: 80px;
 `;
 
 const AnswerContainer = styled.div`
   width: 75%;
   background-color: #ff6f6f;
-  top: 160px;
+  top: 100px;
   /* display: flex; */
   /* align-items: center; */
   /* justify-content: center; */
