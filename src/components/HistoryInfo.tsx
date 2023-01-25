@@ -32,6 +32,8 @@ interface ItemType {
 export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [isTopButtonShow, setIsTopButtonShow] = useState<boolean>(false);
+
+  const datas = AA.description;
   const navigate = useNavigate();
 
   const openModal = () => {
@@ -64,8 +66,6 @@ export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
     };
   }, []);
 
-  const datas = AA.description;
-
   return (
     <>
       {modalOpen && <Modal setModalOpen={setModalOpen} />}
@@ -94,11 +94,11 @@ export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
       })}
 
       <ButtonBox>
-        <CustomButton onClick={openModal}>테스트 하러가기</CustomButton>
+        <StartTestButton onClick={openModal}>테스트 하러가기</StartTestButton>
       </ButtonBox>
       <ScrollTopButtonContainer>
         {isTopButtonShow ? (
-          <ScrollTopButton onClick={ScrollTop}>TOP</ScrollTopButton>
+          <ScrollTopButton onClick={ScrollTop}>▲</ScrollTopButton>
         ) : null}
       </ScrollTopButtonContainer>
     </>
@@ -130,7 +130,7 @@ const ScrollTopButtonContainer = styled.div`
 
 const ScrollTopButton = styled(CustomButton)`
   border: none;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
   color: #000;
   font-weight: bold;
 `;
@@ -140,6 +140,17 @@ const HistoryCardSection = styled.div`
   height: 80%;
   background-color: #fff;
   padding: 5rem;
+  border-radius: 0.3rem;
+`;
+
+const StartTestButton = styled(CustomButton)`
+  border: none;
+  border-radius: 0.3rem;
+  width: 15rem;
+  height: 6rem;
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
 `;
 
 export default HistoryInfo;
