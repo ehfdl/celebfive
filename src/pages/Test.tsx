@@ -174,4 +174,5 @@ const Answer = styled.button`
   border-style: none;
   font-size: 24px;
   border-radius: 30px;
+  cursor: pointer;
 `;
