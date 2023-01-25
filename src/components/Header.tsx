@@ -35,7 +35,7 @@ export const Header = () => {
 
   return (
     <HeaderWrapper>
-      <HeaderTitle onClick={goToMain}>셀럽파이브</HeaderTitle>
+      <HeaderTitle onClick={goToMain}>내가 과거에 태어났다면?</HeaderTitle>
       {authService.currentUser ? (
         <LogoutButton onClick={logOutClick}>로그아웃</LogoutButton>
       ) : (
