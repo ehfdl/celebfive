@@ -155,7 +155,7 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
   );
 };
 export default Modal;
-const Container = styled.div`
+export const Container = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
@@ -176,6 +176,7 @@ const CloseButton = styled.button`
   border: none;
   cursor: pointer;
 `;
+
 const ModalContainer = styled.div`
   position: relative;
   display: flex;
