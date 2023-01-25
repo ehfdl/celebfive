@@ -5,7 +5,7 @@ import Modal from "./Modal";
 import { authService } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Fade } from "react-awesome-reveal";
+import { Fade, Slide } from "react-awesome-reveal";
 import AA from "../test.json";
 import { IHistoryBoxType } from "../UI/HistoryBox";
 import weight from "../assets/images/weight.png";
@@ -74,21 +74,27 @@ export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
       {datas.map((item) => {
         return (
           <HistoryBox backgroundColor={item.backgroundColor} key={item.id}>
+            {/* <Slide direction="up" duration={2000}> */}
             <FadeStyle>
               <HistoryCardSection>
-                <div>{item.title}</div>
-                <div>{item.text}</div>
-                <div>{item.source}</div>
-                <div>{item.source_text}</div>
+                <HistoryInfoTitle>{item.title}</HistoryInfoTitle>
+                <HistoryInfoTtext>{item.text}</HistoryInfoTtext>
+                <div>
+                  <div>{item.source}</div>
+                  <div>{item.source_text}</div>
+                </div>
               </HistoryCardSection>
             </FadeStyle>
+            {/* </Slide> */}
           </HistoryBox>
         );
       })}
 
-      <Aa>
+      {/* <Aa> */}
+      <Slide direction="up">
         <Ii src={weight} />
-      </Aa>
+      </Slide>
+      {/* </Aa> */}
       <ButtonBox>
         <StartTestButton onClick={openModal}>테스트 하러가기</StartTestButton>
       </ButtonBox>
@@ -123,12 +129,30 @@ const ScrollTopButton = styled(CustomButton)`
 `;
 
 const HistoryCardSection = styled.div`
-  width: 80%;
-  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  /* height: 100vh; */
   background-color: #fff;
-  padding: 5rem;
+  padding: 2rem;
   border-radius: 20px;
   border: 4px solid black;
+  line-height: 36px;
+`;
+
+const HistoryInfoTitle = styled.div`
+  font-size: 42px;
+  font-weight: 800;
+  margin: 1rem;
+  margin-bottom: 2rem;
+`;
+
+const HistoryInfoTtext = styled.div`
+  font-size: 22px;
+  word-break: keep-all;
+  /* line-height: 36px; */
 `;
 
 const StartTestButton = styled(CustomButton)`
@@ -151,7 +175,7 @@ const FadeStyle = styled(Fade)`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 `;
 
 const Aa = styled(Fade)`
