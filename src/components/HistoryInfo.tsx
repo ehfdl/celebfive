@@ -68,7 +68,7 @@ export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
 
   return (
     <>
-      {modalOpen && <Modal setModalOpen={setModalOpen} />}
+      {modalOpen && <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} />}
 
       {datas.map((item) => {
         return (
@@ -80,8 +80,7 @@ export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-              }}
-            >
+              }}>
               <HistoryCardSection>
                 <div>{item.title}</div>
                 <div>{item.text}</div>

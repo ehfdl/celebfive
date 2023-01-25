@@ -2,7 +2,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { authService } from "../firebase";
@@ -10,20 +10,22 @@ import Login from "./Login";
 import Register from "./Register";
 
 interface LoginProps {
+  modalOpen: boolean;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
-const Modal = ({ setModalOpen }: LoginProps) => {
+const Modal = ({ modalOpen, setModalOpen }: LoginProps) => {
   const [signDisplay, setSignDisplay] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
 
   const navigate = useNavigate();
-  const closeModal = () => {
-    setModalOpen(false);
+  const modalRef = useRef<any>();
+
+  const closeModal = (target: any) => {
+    if (modalOpen) setModalOpen(false);
     document.body.style.overflow = "unset";
   };
-
   const handleLoginClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (signDisplay) {
       signInWithEmailAndPassword(authService, email, password)
@@ -58,9 +60,21 @@ const Modal = ({ setModalOpen }: LoginProps) => {
 
   return (
     <>
-      <Container>
-        <button onClick={closeModal}>X</button>
-        <ModalContainer>
+      <Container
+        ref={modalRef}
+        onClick={(event) => {
+          closeModal(event);
+        }}>
+        <ModalContainer
+          onClick={(event) => {
+            event.stopPropagation();
+          }}>
+          <CloseButton
+            onClick={(event) => {
+              closeModal(event);
+            }}>
+            X
+          </CloseButton>
           {signDisplay ? (
             <Login
               email={email}
@@ -104,7 +118,16 @@ const Container = styled.div`
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.7);
 `;
+const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+`;
 const ModalContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   border: 1px black solid;
@@ -116,8 +139,8 @@ const ModalContainer = styled.div`
   z-index: 1000;
 `;
 const LoginButton = styled.button`
-  margin: 5px;
-  width: 150px;
+  margin: 10px;
+  width: 250px;
   height: 30px;
   border-radius: 50px;
   border: none;
@@ -125,7 +148,8 @@ const LoginButton = styled.button`
   cursor: pointer;
 `;
 const ButtonContainer = styled.div`
-  margin: 10px;
+  margin: 20px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 0px;
 `;

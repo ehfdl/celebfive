@@ -41,7 +41,7 @@ export const Header = () => {
       ) : (
         <LoginButton onClick={openModal}>로그인</LoginButton>
       )}
-      {modalOpen && <Modal setModalOpen={setModalOpen} />}
+      {modalOpen && <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} />}
     </HeaderWrapper>
   );
 };

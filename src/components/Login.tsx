@@ -45,10 +45,11 @@ const Modal = styled.form`
   align-items: center;
 `;
 const InputField = styled.input`
-  margin: 5px;
+  margin: 10px;
   height: 30px;
   width: 180px;
-  background-color: #fadedd;
+  padding: 8px;
+  border-radius: 3px;
   border: 1px solid black;
 `;
 
