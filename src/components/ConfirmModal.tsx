@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Container, ModalContainer } from "./Modal";
 import alertImg from "../assets/images/exclamation-mark.png";
 import { deleteComment } from "../api";
 import { useMutation } from "react-query";
 import { CommentType } from "./CommentsList";
-import AlertModal from "./AlertModal";
 
 const ConfirmModal = ({
   item,
@@ -31,12 +30,8 @@ const ConfirmModal = ({
   //삭제를 할것인지 아닌지에 관한 state
   const [isDeleteOk, setIsDeleteOk] = useState(false);
 
-  const [open, setOpen] = useState(false);
-
   // 모달창 닫기
   const closeConfirmModal = () => {
-    setOpen(!open);
-    console.log("open", open);
     setIsConfirmModalOpen(!isConfirmModalOpen);
     setDeleteCommentState(false);
     setEditCommentState(false);
@@ -60,11 +55,8 @@ const ConfirmModal = ({
   const clickDeleteComment = async () => {
     try {
       await removeComment(item.id);
-      // alert("삭제가 완료되었습니다.");
-      setOpen(!open);
-      console.log("open", open);
     } catch (error) {
-      console.log("에러입니다.", error);
+      alert(`에러입니다. 에러 내용: ${error}`);
     }
   };
 
@@ -81,17 +73,10 @@ const ConfirmModal = ({
           </ModalTitle>
           <ModalButtonDiv>
             <button onClick={clickDeleteComment}>YES</button>
-
             <button onClick={closeConfirmModal}>NO</button>
           </ModalButtonDiv>
         </ModalContainer>
       </Container>
-      {open ? (
-        <AlertModal
-          isAlertModalOpen={isAlertModalOpen}
-          setIsAlertModalOpen={setIsAlertModalOpen}
-        />
-      ) : null}
     </>
   );
 };
