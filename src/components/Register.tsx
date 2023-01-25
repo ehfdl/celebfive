@@ -1,16 +1,29 @@
-import React, { useState } from "react";
-
+import React from "react";
 import styled from "styled-components";
 
+interface RegisterProps {
+  email: string;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  password: string;
+  passwordCheck: string;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
+  setPasswordCheck: React.Dispatch<React.SetStateAction<string>>;
+  passwordCheckRef: React.MutableRefObject<HTMLInputElement | null>;
+  passwordRef: React.MutableRefObject<HTMLInputElement | null>;
+  emailRef: React.MutableRefObject<HTMLInputElement | null>;
+}
+
 const Register = ({
-  setModalOpen,
   setEmail,
   email,
   setPassword,
   password,
   setPasswordCheck,
   passwordCheck,
-}: any) => {
+  passwordCheckRef,
+  passwordRef,
+  emailRef,
+}: RegisterProps) => {
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setEmail(event.target.value);
@@ -34,6 +47,7 @@ const Register = ({
           아이디:
           <InputField
             type="email"
+            ref={emailRef}
             value={email}
             onChange={handleEmailChange}
             placeholder="이메일을 입력해주세요"
@@ -44,16 +58,17 @@ const Register = ({
           <InputField
             type="password"
             value={password}
+            ref={passwordRef}
             onChange={handlePasswordChange}
             placeholder="비밀번호를 입력해주세요"
           />
         </InputBox>
         <InputBox>
-          {" "}
-          비밀번호 화인:
+          비밀번호:
           <InputField
             type="password"
             value={passwordCheck}
+            ref={passwordCheckRef}
             onChange={handlePasswordCheckChange}
             placeholder="비밀번호를 다시 입력해주세요"
           />
@@ -71,22 +86,14 @@ const Modal = styled.form`
   align-items: center;
 `;
 const InputField = styled.input`
-  margin: 5px;
+  margin: 10px;
   height: 30px;
   width: 180px;
-  background-color: #fadedd;
+  padding: 8px;
+  border-radius: 3px;
   border: 1px solid black;
 `;
 
-const LoginButton = styled.button`
-  margin: 5px;
-  width: 150px;
-  height: 30px;
-  border-radius: 50px;
-  border: none;
-  background-color: #fadedd;
-  cursor: pointer;
-`;
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -97,11 +104,7 @@ const InputBox = styled.div`
   flex-direction: row;
   align-items: center;
 `;
-const ButtonContainer = styled.div`
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-`;
+
 const TitleText = styled.div`
   margin-bottom: 30px;
   font-size: 30px;

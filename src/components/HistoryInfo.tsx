@@ -70,7 +70,7 @@ export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
 
   return (
     <>
-      {modalOpen && <Modal setModalOpen={setModalOpen} />}
+      {modalOpen && <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} />}
 
       {datas.map((item) => {
         return (
