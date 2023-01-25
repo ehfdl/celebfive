@@ -9,6 +9,7 @@ import { Fade } from "react-awesome-reveal";
 import AA from "../test.json";
 import { IHistoryBoxType } from "../UI/HistoryBox";
 import weight from "../assets/images/weight.png";
+import Location from "./Location";
 
 export interface DataType {
   id: number;
@@ -80,6 +81,13 @@ export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
                 <div>{item.text}</div>
                 <div>{item.source}</div>
                 <div>{item.source_text}</div>
+                {item.longitude === 0 ? null : (
+                  <Location
+                    longitude={item.longitude}
+                    latitude={item.latitude}
+                    marker={item.marker}
+                  />
+                )}
               </HistoryCardSection>
             </FadeStyle>
           </HistoryBox>

@@ -15,6 +15,7 @@ import {
   FacebookIcon,
   TwitterIcon,
 } from "react-share";
+import Location from "../components/Location";
 
 const Result = () => {
   const { state } = useLocation();
@@ -72,14 +73,13 @@ const Result = () => {
               <CopyCurrentUrlBtn>URL</CopyCurrentUrlBtn>
             </CopyToClipboard>
           </ButtonWrap>
-
           <CommentsWrap>
             <CommentsList />
           </CommentsWrap>
         </Wrap>
       </BackGround>
       <Confetti numberOfPieces={100} style={{ top: 100, height: "100vh" }} />
-      <CustomCursor component={png} width={30} height={30} zIndex={420} />
+      <CustomCursor component={png} width={30} height={30} zIndex={9999} />
     </>
   );
 };
