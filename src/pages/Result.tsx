@@ -142,6 +142,7 @@ const CommentsWrap = styled.div`
 const ButtonWrap = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-left: 1rem;
 `;
 
 const ShareKakaoButton = styled(CustomButton)`

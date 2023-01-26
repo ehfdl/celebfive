@@ -87,7 +87,7 @@
   "description": [
     {
       "id": 1,
-      "backgroundColor": "",
+      "backgroundColor": "#114ef7 ",
       "title": "",
       "source_text": [
         "모든 국민은 법 앞에 평등하다. 누구든지 성별, 종교 또는 사회적 신분에 의하여 정치적, 경제적, 사회적, 문화적 생활의 모든 영역에 있어서 차별을 받지 아니한다."
@@ -158,7 +158,7 @@
     },
     {
       "id": 6,
-      "backgroundColor": "",
+      "backgroundColor": "#114ef7",
       "title": "",
       "source_text": [
         "평등은 그냥 이루어 진것이 아닙니다. 바쁜 일상을 살아가며 이 사실을 잊고 지내기도 하죠. 이 기회에 평등의 감사함을 생각해보면 어떨까요?",
