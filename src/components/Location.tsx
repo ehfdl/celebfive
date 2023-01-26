@@ -17,19 +17,15 @@ interface props {
 const Location = (props: props) => {
   const { longitude, latitude, marker } = props;
   return (
-    <Maps
+    <Map
       center={{ lat: latitude, lng: longitude }}
-      // style={{ width: "360px", height: "360px" }}
+      style={{ width: "360px", height: "360px" }}
     >
       <MapMarker position={{ lat: latitude, lng: longitude }}>
         <div style={{ color: "#000" }}>{marker}</div>
       </MapMarker>
-    </Maps>
+    </Map>
   );
 };
 
-const Maps = styled(Map)`
-  width: 100%;
-  height: 100%;
-`;
 export default Location;
