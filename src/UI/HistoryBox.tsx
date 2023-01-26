@@ -23,7 +23,7 @@ const HistoryBoxSection = styled.div<IHistoryBoxType>`
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.backgroundColor || "#fff"};
-  height: ${(props) => props.height || "50%"};
+  height: ${(props) => props.height || "80vh"};
   width: ${(props) => props.width || "100%"};
   align-items: center;
   justify-content: center;

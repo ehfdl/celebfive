@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-export interface IButtonType {
-  children: string;
+interface IButtonType {
+  children: string | React.ImgHTMLAttributes<HTMLImageElement>;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   backgroundColor?: string;
+  backgroundImage?: string;
+  backgroundSize?: string;
+  width?: number;
   height?: number;
   border?: string;
   borderRadius?: string | number;
@@ -13,31 +16,23 @@ export interface IButtonType {
   fontSize?: string;
   textAlign?: string;
   fontWeight?: string;
+  margin?: string;
 }
 
-export const CustomButton = (props: IButtonType) => {
-  return (
-    <div>
-      <ButtonStyle
-        backgroundColor={props.backgroundColor}
-        onClick={props.onClick}
-      >
-        {props.children}
-      </ButtonStyle>
-    </div>
-  );
-};
-
-const ButtonStyle = styled.button<IButtonType>`
-  border: ${(props) => props.border || "none"};
-  border-radius: ${(props) => props.borderRadius || "1.5rem"};
-  background-color: ${(props) => props.backgroundColor || "#FADEDD"};
-  height: ${(props) => props.height || "5rem"};
-  padding: ${(props) => props.padding || "1rem"};
-  color: ${(props) => props.color || "black"};
-  font-size: ${(props) => props.fontSize || "1.2rem"};
-  font-weight: ${(props) => props.fontWeight || "bold"};
-  text-align: ${(props) => props.textAlign || "center"};
+export const CustomButton = styled.button<IButtonType>`
+  border: "none";
+  border-radius: 7em;
+  background-color: #fadedd;
+  background-image: none;
+  background-size: cover;
+  width: 5.5rem;
+  height: 5.5rem;
+  padding: 0.5rem;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem;
   cursor: pointer;
 `;
 

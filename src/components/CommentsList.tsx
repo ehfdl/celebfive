@@ -95,7 +95,7 @@ const CommentsList = ({ result }: { result: string }) => {
     getComments();
   }, [authService.currentUser?.uid]);
 
-  // User Display Name을 result로 업데이트
+  // getComments가 일어날 때마다 user displayName을 result로 업데이트
   useEffect(() => {
     const updatUserNickname = async () => {
       if (authService.currentUser !== null) {
@@ -112,9 +112,7 @@ const CommentsList = ({ result }: { result: string }) => {
     };
 
     updatUserNickname();
-
-    console.log("nickname", authService.currentUser?.displayName);
-  }, []);
+  }, [getComments]);
 
   return (
     <div>
