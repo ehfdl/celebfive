@@ -1,4 +1,3 @@
-import { setDefaultResultOrder } from "dns";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -41,23 +40,18 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
   // 로그인 유효성 검사
   const loginValidationCheck: any = () => {
     if (!email && !password) {
-      emailRef.current?.focus();
       setError("이메일과 비밀번호를 입력해주세요.");
       return;
     } else if (email.indexOf("@") === -1) {
-      emailRef.current?.focus();
       setError("이메일 형식이 아닙니다.");
       return;
     } else if (!email) {
-      emailRef.current?.focus();
       setError("이메일을 입력해주세요.");
       return;
     } else if (!password) {
-      passwordRef.current?.focus();
       setError("비밀번호를 입력해주세요.");
       return;
     } else if (password.length < 6) {
-      passwordRef.current?.focus();
       setError("비밀번호 형식이 아닙니다.");
       return;
     }
@@ -66,16 +60,22 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
   //비밀번호 유효성 검사
   const registerValidationCheck = () => {
     loginValidationCheck();
+    if (!passwordCheck) {
+      setError("비밀번호 확인을 입력해주세요.");
+      return;
+    }
     if (password !== passwordCheck) {
       setError("비밀번호를 재확인해주세요.");
       return;
-    }
-    if (!passwordCheck) {
-      passwordCheckRef.current?.focus();
-      setError("비밀번호를 재확인을 입력해주세요.");
+    } else {
+      setError("");
       return;
     }
   };
+  useEffect(() => {
+    registerValidationCheck();
+    loginValidationCheck();
+  }, [email, password, passwordCheck]);
 
   const handleLoginClick = (
     event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>
@@ -83,6 +83,8 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
     if (signDisplay) {
       if (loginValidationCheck()) {
         return;
+      } else {
+        setError("아이디와 비밀번호를 확인해주세요");
       }
       //이메일 로그인
       signInWithEmailAndPassword(authService, email, password)
@@ -92,7 +94,7 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
           document.body.style.overflow = "unset";
         })
         .catch((error) => {
-          alert("아이디와 비밀번호를 확인해주세요");
+          console.log(error);
         });
     }
 
@@ -117,10 +119,8 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
 
         .catch((error) => {
           if (error.code === "auth/email-already-in-use") {
-            alert("이미 가입된 이메일 입니다.");
-            return;
+            setError("이미 사용중인 이메일입니다.");
           }
-          alert("이메일과 비밀번호를 확인해주세요");
         });
     }
     if (signDisplay) {

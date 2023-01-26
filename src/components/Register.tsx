@@ -46,7 +46,7 @@ const Register = ({
       <TitleText>회원가입</TitleText>
 
       <InputContainer>
-        <ErrorText style={{ padding: "0 50px" }}> {error}</ErrorText>
+        <ErrorText> {error}</ErrorText>
         <InputBox>
           아이디:
           <InputField
@@ -115,6 +115,6 @@ const TitleText = styled.div`
   margin-bottom: 30px;
   font-size: 30px;
 `;
-export const ErrorText = styled.div`
+const ErrorText = styled.div`
   color: red;
 `;
