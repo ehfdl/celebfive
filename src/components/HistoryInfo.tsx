@@ -87,8 +87,13 @@ const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
           <HistoryBox backgroundColor={item.backgroundColor} key={item.id}>
             <FadeStyle>
               <HistoryCardSection>
-                <HistoryInfoTitle>{item.title}</HistoryInfoTitle>
-                <HistoryInfoTtext>{item.text}</HistoryInfoTtext>
+                {item.title === "" ? null : (
+                  <>
+                    <HistoryInfoTitle>{item.title}</HistoryInfoTitle>
+                    <HistoryInfoTtext>{item.text}</HistoryInfoTtext>
+                  </>
+                )}
+
                 <HistorySourceWrap>
                   <div>
                     <div>{item.source_text}</div>
@@ -174,7 +179,6 @@ const HistoryCardSection = styled.div`
   width: 70%;
   background-color: #fff;
   padding: 2rem;
-  padding-bottom: 3rem;
   margin-top: 1rem;
   border-radius: 20px;
   border: 4px solid black;
