@@ -5,60 +5,22 @@ export default function kakaoShare() {
       title: "나의 결과는?",
       description: "나는 어느 시대에 잘 어울릴까?",
       imageUrl:
-        "https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg",
+        "https://velog.velcdn.com/images/j_hana01/post/27a73f4b-96b3-4086-9643-82967e73a79d/image.png",
       link: {
         mobileWebUrl: "https://developers.kakao.com",
         webUrl: "https://developers.kakao.com",
       },
     },
     itemContent: {
-      profileText: "Kakao",
+      profileText: "셀럽파이브",
       profileImageUrl:
-        "https://mud-kage.kakao.com/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png",
+        "https://velog.velcdn.com/images/j_hana01/post/4d3a2661-2a16-46a0-8526-c621199d1f26/image.JPG",
       titleImageUrl:
         "https://mud-kage.kakao.com/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png",
-      titleImageText: "Cheese cake",
-      titleImageCategory: "Cake",
-      items: [
-        {
-          item: "Cake1",
-          itemOp: "1000원",
-        },
-        {
-          item: "Cake2",
-          itemOp: "2000원",
-        },
-        {
-          item: "Cake3",
-          itemOp: "3000원",
-        },
-        {
-          item: "Cake4",
-          itemOp: "4000원",
-        },
-        {
-          item: "Cake5",
-          itemOp: "5000원",
-        },
-      ],
-      sum: "총 결제금액",
-      sumOp: "15000원",
-    },
-    social: {
-      likeCount: 10,
-      commentCount: 20,
-      sharedCount: 30,
     },
     buttons: [
       {
-        title: "웹으로 이동",
-        link: {
-          mobileWebUrl: "http://www.naver.com",
-          webUrl: "http://www.naver.com",
-        },
-      },
-      {
-        title: "앱으로 이동",
+        title: "자세히 알아보기",
         link: {
           mobileWebUrl: "http://www.naver.com",
           webUrl: "http://www.naver.com",
