@@ -13,7 +13,6 @@ import {
   FacebookIcon,
   TwitterIcon,
 } from "react-share";
-import Location from "../components/Location";
 
 const Result = () => {
   const { state } = useLocation();
@@ -118,6 +117,7 @@ const Title = styled.div`
 `;
 
 const SubTitle = styled.div`
+
   font-size: 2em;
 `;
 
@@ -129,20 +129,20 @@ const TextWrap = styled.div`
   width: 50%;
   background-color: #ff6f6f;
   color: white;
-  border: 1px solid black;
   padding: 20px;
+
   text-align: center;
   font-size: 25px;
   /* 박스에 빈 공간이 너무 많아 높이를 주석처리 했습니다. */
   /* min-height: 200px; */
+
 `;
 
 const CommentsWrap = styled.div`
   width: 60%;
   min-height: 200px;
-
+  border-radius: 3px;
   background-color: #ff6f6f;
-  border: 1px solid black;
   padding: 20px;
 `;
 

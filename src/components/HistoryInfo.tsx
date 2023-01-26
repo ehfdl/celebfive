@@ -201,6 +201,7 @@ const HistorySourceWrap = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 1.3rem;
+  justify-content: space-around;
   color: #504949;
   /* word-break: keep-all; */
   margin: 1rem auto;
@@ -407,6 +408,14 @@ const MapBox = styled.div`
     width: 30%;
     height: 30%;
   }
+`;
+const MapBox = styled.div`
+  width: 300px;
+  height: 300px;
+`;
+const TextBox = styled.div`
+  width: 300px;
+  height: 300px;
 `;
 
 export default HistoryInfo;

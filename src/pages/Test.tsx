@@ -49,9 +49,11 @@ const Test = () => {
               >
                 {AA.questions[count].score01[0]}
               </Answer>
+
             </AnswerBox>
 
             <AnswerBox>
+
               <Answer
                 onClick={onClickHandler}
                 value={AA.questions[count].score02[1]}
@@ -91,6 +93,7 @@ const Wrap = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 50px 20px 30px 20px;
+  border-radius: 3px;
   gap: 20px;
 `;
 
@@ -121,9 +124,9 @@ const StatusText = styled.div`
 `;
 
 const Image = styled.div`
-  width: 250px;
+  width: 50%;
   height: 250px;
-  border-radius: 5%;
+  border-radius: 5px;
   background-color: white;
   overflow: hidden;
   top: 80px;
@@ -134,15 +137,18 @@ const TestContainer = styled.div`
   background-color: white;
   padding: 30px;
   font-size: 24px;
+  border-radius: 3px;
   top: 80px;
 `;
 
 const AnswerContainer = styled.div`
   width: 75%;
   background-color: #ff6f6f;
+
   top: 100px;
   gap: 40px;
   padding: 30px 10px 30px 10px;
+
 `;
 
 const AnswerBox = styled.div`
@@ -158,10 +164,13 @@ const Answer = styled.button`
   background-color: white;
   padding: 20px;
   border-style: none;
+  border-radius: 20px;
   font-size: 24px;
+
   border-radius: 30px;
   &:hover {
     width: 85%;
     box-shadow: 1px 1px 20px black;
   }
+
 `;
