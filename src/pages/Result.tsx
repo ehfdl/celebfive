@@ -13,6 +13,7 @@ import {
   FacebookIcon,
   TwitterIcon,
 } from "react-share";
+import Location from "../components/Location";
 
 const Result = () => {
   const { state } = useLocation();
@@ -73,7 +74,7 @@ const Result = () => {
             </CopyToClipboard>
           </ButtonWrap>
           <CommentsWrap>
-            <CommentsList />
+            <CommentsList result={result} />
           </CommentsWrap>
         </Wrap>
       </BackGround>
@@ -117,7 +118,6 @@ const Title = styled.div`
 `;
 
 const SubTitle = styled.div`
-
   font-size: 2em;
 `;
 
@@ -135,7 +135,6 @@ const TextWrap = styled.div`
   font-size: 25px;
   /* 박스에 빈 공간이 너무 많아 높이를 주석처리 했습니다. */
   /* min-height: 200px; */
-
 `;
 
 const CommentsWrap = styled.div`
