@@ -23,7 +23,7 @@ const HistoryBoxSection = styled.div<IHistoryBoxType>`
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.backgroundColor || "#fff"};
-  height: ${(props) => props.height || "100%"};
+  height: ${(props) => props.height || "100vh"};
   width: ${(props) => props.width || "100%"};
   align-items: center;
   justify-content: center;
@@ -39,7 +39,7 @@ const HistoryBoxSection = styled.div<IHistoryBoxType>`
     font-size: 5rem;
   }
   @media ${(props) => props.theme.mobile} {
-    width: 100%;
+    width: 80%;
     margin: 0 auto;
     font-size: 1rem;
   }

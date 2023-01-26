@@ -13,21 +13,25 @@ const Comment = ({ item }: { item: CommentType }) => {
   // 댓글 수정 인풋창 관리 state
   const [openInput, setOpenInput] = useState(false);
   // 수정, 변경할 내용을 담는 state
-  const [inputEditComment, setInputEditComment] = useState("");
+  const [inputEditComment, setInputEditComment] = useState(item.comment);
   // confirm 또는 alert 창을 열고 닫는 state
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
   // 수정 또는 삭제 confirm 모달에서 텍스트를 다르게 보여줄 용도로 사용할 state
-  const [deleteCommentState, setDeleteCommentState] = useState(false);
-  const [editCommentState, setEditCommentState] = useState(false);
-  const editCommentRef = useRef<HTMLInputElement | null>(null);
+  // const [deleteCommentState, setDeleteCommentState] = useState(false);
+  // const [editCommentState, setEditCommentState] = useState(false);
+  //수정 할것인지 아닌지에 관한 state
+  // const [isEditOk, setIsEditOk] = useState(false);
+  //댓글 작성에 대한 alert인지, 댓글 수정에 관한 alert인지 구분해주는 state
+  // const [writeOrEdit, setWriteOrEdit] = useState(false);
 
+  // Comment 수정에 관련한 useMutation
   const { isLoading: isLoadingEdit, mutate: reviseComment } = useMutation(
     ["editComment", item.id],
     (body: EditParameterType) => editComment(body),
     {
       onSuccess: () => {
-        console.log("수정성공");
+        console.log("수정 성공");
       },
       onError: (err) => {
         console.log("err in edit:", err);
@@ -43,8 +47,9 @@ const Comment = ({ item }: { item: CommentType }) => {
     setInputEditComment(value);
   };
 
+  // Comment Delelte를 확인하는 Confirm Modal 오픈
   const openDeleteConfirmModal = () => {
-    setDeleteCommentState(!deleteCommentState);
+    // setDeleteCommentState(!deleteCommentState);
     setIsConfirmModalOpen(!isConfirmModalOpen);
   };
 
@@ -85,24 +90,23 @@ const Comment = ({ item }: { item: CommentType }) => {
     <CommentContainer key={item.id}>
       <UserIdContianer>
         <p>{item.userId ? item.userId : "익명사용자"}</p>
-
-        <ImgStyled src={deleteImg} onClick={openDeleteConfirmModal} />
+        <p>{item.nickName ? item.nickName : "NickName"}</p>
+        {authService.currentUser?.email?.split("@")[0] === item.userId ? (
+          <ImgStyled src={deleteImg} onClick={openDeleteConfirmModal} />
+        ) : null}
 
         {/* 처음에 수정 이미지를 클릭하면 openInput의 불린 값을 변경하여 comment가 있던 자리에 input창이 생성되고, 이미지의 onClick에 onEditComment 함수를 실행하도록 바꿔준다. */}
-        {openInput ? (
-          <ImgStyled src={editImg} onClick={onEditComment} />
-        ) : (
-          <ImgStyled src={editImg} onClick={openInputClick} />
-        )}
+        {authService.currentUser?.email?.split("@")[0] === item.userId ? (
+          openInput ? (
+            <ImgStyled src={editImg} onClick={onEditComment} />
+          ) : (
+            <ImgStyled src={editImg} onClick={openInputClick} />
+          )
+        ) : null}
       </UserIdContianer>
 
       {openInput ? (
-        <input
-          onChange={onChangeEditComment}
-          value={inputEditComment}
-          placeholder={item.comment}
-          ref={editCommentRef}
-        />
+        <input onChange={onChangeEditComment} value={inputEditComment} />
       ) : (
         <span>{item.comment}</span>
         /* <div>{new Date(item.creatAt).toLocaleDateString("kr")}</div> */
@@ -110,14 +114,8 @@ const Comment = ({ item }: { item: CommentType }) => {
       {/* Confirm에 관련된 모달 */}
       {isConfirmModalOpen ? (
         <ConfirmModal
-          deleteCommentState={deleteCommentState}
-          editCommentState={editCommentState}
           isConfirmModalOpen={isConfirmModalOpen}
           setIsConfirmModalOpen={setIsConfirmModalOpen}
-          setDeleteCommentState={setDeleteCommentState}
-          setEditCommentState={setEditCommentState}
-          isAlertModalOpen={isAlertModalOpen}
-          setIsAlertModalOpen={setIsAlertModalOpen}
           item={item}
         />
       ) : null}
@@ -125,7 +123,9 @@ const Comment = ({ item }: { item: CommentType }) => {
         <AlertModal
           isAlertModalOpen={isAlertModalOpen}
           setIsAlertModalOpen={setIsAlertModalOpen}
-        />
+        >
+          수정할 내용이 없습니다.
+        </AlertModal>
       ) : null}
     </CommentContainer>
   );

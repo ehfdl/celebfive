@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Container, ModalContainer } from "./Modal";
 import alertImg from "../assets/images/exclamation-mark.png";
@@ -8,33 +8,16 @@ import { CommentType } from "./CommentsList";
 
 const ConfirmModal = ({
   item,
-  deleteCommentState,
-  editCommentState,
   isConfirmModalOpen,
-  isAlertModalOpen,
   setIsConfirmModalOpen,
-  setDeleteCommentState,
-  setEditCommentState,
-  setIsAlertModalOpen,
 }: {
   item: CommentType;
-  deleteCommentState: boolean;
-  editCommentState: boolean;
   isConfirmModalOpen: boolean;
-  isAlertModalOpen: boolean;
   setIsConfirmModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setDeleteCommentState: React.Dispatch<React.SetStateAction<boolean>>;
-  setEditCommentState: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsAlertModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  //삭제를 할것인지 아닌지에 관한 state
-  const [isDeleteOk, setIsDeleteOk] = useState(false);
-
   // 모달창 닫기
   const closeConfirmModal = () => {
     setIsConfirmModalOpen(!isConfirmModalOpen);
-    setDeleteCommentState(false);
-    setEditCommentState(false);
   };
 
   // useMutation (delete 기능)
@@ -63,19 +46,21 @@ const ConfirmModal = ({
   return (
     <>
       <Container>
-        <ModalContainer>
-          <img src={alertImg} style={{ width: "80px", height: "80px" }} />
-          <ModalTitle>
-            {deleteCommentState ? "해당 댓글을 삭제하시겠습니까?" : null}
-          </ModalTitle>
-          <ModalTitle>
-            {editCommentState ? "해당 댓글을 수정하시겠습니까?" : null}
-          </ModalTitle>
-          <ModalButtonDiv>
-            <button onClick={clickDeleteComment}>YES</button>
-            <button onClick={closeConfirmModal}>NO</button>
-          </ModalButtonDiv>
-        </ModalContainer>
+        {isLoadingDeleting ? (
+          /* '로딩 화면'에서 안내 메시지 */
+          <ModalContainer>
+            댓글을 삭제하고 있습니다! 조금만 기다려주세요!
+          </ModalContainer>
+        ) : (
+          <ModalContainer>
+            <img src={alertImg} style={{ width: "80px", height: "80px" }} />
+            <ModalTitle>해당 댓글을 삭제하시겠습니까?</ModalTitle>
+            <ModalButtonDiv>
+              <button onClick={clickDeleteComment}>YES</button>
+              <button onClick={closeConfirmModal}>NO</button>
+            </ModalButtonDiv>
+          </ModalContainer>
+        )}
       </Container>
     </>
   );
