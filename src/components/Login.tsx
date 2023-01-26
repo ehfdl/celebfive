@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ErrorText } from "./Register";
 
 interface LoginProps {
   email: string;
@@ -8,6 +9,7 @@ interface LoginProps {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   emailRef: React.MutableRefObject<HTMLInputElement | null>;
   passwordRef: React.MutableRefObject<HTMLInputElement | null>;
+  error: string;
 }
 
 const Login = ({
@@ -17,6 +19,7 @@ const Login = ({
   setPassword,
   emailRef,
   passwordRef,
+  error,
 }: LoginProps) => {
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -32,6 +35,7 @@ const Login = ({
     <Modal>
       <TitleText>로그인</TitleText>
       <InputContainer>
+        <ErrorText>{error}</ErrorText>
         <InputBox>
           아이디:
           <InputField

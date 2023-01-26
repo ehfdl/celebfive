@@ -59,8 +59,7 @@ const Result = () => {
               <TwitterIcon
                 round={true}
                 size={"5rem"}
-                style={{ marginLeft: "1.5rem", marginRight: "1rem" }}
-              >
+                style={{ marginLeft: "1.5rem", marginRight: "1rem" }}>
                 Twitter
               </TwitterIcon>
             </TwitterShareButton>
@@ -68,8 +67,7 @@ const Result = () => {
 
             <CopyToClipboard
               text={currentUrl}
-              onCopy={() => alert("복사되었습니다")}
-            >
+              onCopy={() => alert("복사되었습니다")}>
               <CopyCurrentUrlBtn>URL</CopyCurrentUrlBtn>
             </CopyToClipboard>
           </ButtonWrap>
@@ -126,16 +124,20 @@ const TextWrap = styled.div`
   min-height: 200px;
   background-color: #ff6f6f;
   color: white;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  filter: drop-shadow(3px 3px 3px #ff6f6f);
+  border-radius: 5px;
   padding: 20px;
 `;
 
 const CommentsWrap = styled.div`
   width: 60%;
   min-height: 200px;
+  filter: drop-shadow(3px 3px 3px #ff6f6f);
 
   background-color: #ff6f6f;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  border-radius: 5px;
   padding: 20px;
 `;
 

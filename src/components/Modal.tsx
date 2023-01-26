@@ -1,8 +1,9 @@
+import { setDefaultResultOrder } from "dns";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
@@ -16,9 +17,12 @@ interface ModalProps {
   setEmail?: React.Dispatch<React.SetStateAction<string>>;
   password?: string;
   setPassword?: React.Dispatch<React.SetStateAction<string>>;
+  error?: string;
+  setError?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
+  const [error, setError] = useState("");
   const [signDisplay, setSignDisplay] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,39 +37,53 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
     if (modalOpen) setModalOpen(false);
     document.body.style.overflow = "unset";
   };
-  const validationCheck = () => {
+
+  // 로그인 유효성 검사
+  const loginValidationCheck: any = () => {
     if (!email && !password) {
       emailRef.current?.focus();
-      alert("이메일과 비밀번호를 입력해주세요.");
+      setError("이메일과 비밀번호를 입력해주세요.");
       return;
-    }
-    if (email.indexOf("@") === -1) {
+    } else if (email.indexOf("@") === -1) {
       emailRef.current?.focus();
-      alert("이메일 형식이 아닙니다.");
+      setError("이메일 형식이 아닙니다.");
       return;
-    }
-    if (!email) {
+    } else if (!email) {
       emailRef.current?.focus();
-      alert("이메일을 입력해주세요.");
+      setError("이메일을 입력해주세요.");
       return;
-    }
-    if (!password) {
+    } else if (!password) {
       passwordRef.current?.focus();
-      alert("비밀번호를 입력해주세요.");
+      setError("비밀번호를 입력해주세요.");
       return;
-    }
-
-    if (password.length < 6) {
+    } else if (password.length < 6) {
       passwordRef.current?.focus();
-      alert("비밀번호는 6자리 이상 입력해주세요.");
+      setError("비밀번호 형식이 아닙니다.");
       return;
     }
   };
+
+  //비밀번호 유효성 검사
+  const registerValidationCheck = () => {
+    loginValidationCheck();
+    if (password !== passwordCheck) {
+      setError("비밀번호를 재확인해주세요.");
+      return;
+    }
+    if (!passwordCheck) {
+      passwordCheckRef.current?.focus();
+      setError("비밀번호를 재확인을 입력해주세요.");
+      return;
+    }
+  };
+
   const handleLoginClick = (
     event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>
   ) => {
     if (signDisplay) {
-      validationCheck();
+      if (loginValidationCheck()) {
+        return;
+      }
       //이메일 로그인
       signInWithEmailAndPassword(authService, email, password)
         .then(() => {
@@ -73,13 +91,16 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
           setModalOpen(false);
           document.body.style.overflow = "unset";
         })
-        .catch(() => {
+        .catch((error) => {
           alert("아이디와 비밀번호를 확인해주세요");
         });
     }
 
     if (!signDisplay) {
       setSignDisplay(true);
+      setPassword("");
+      setEmail("");
+      setError("");
     }
   };
 
@@ -87,7 +108,7 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     if (!signDisplay) {
-      validationCheck();
+      registerValidationCheck();
       createUserWithEmailAndPassword(authService, email, password)
         .then((userCredential) => {
           alert("회원가입 성공");
@@ -95,21 +116,18 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
         })
 
         .catch((error) => {
-          if (password !== passwordCheck) {
-            alert("비밀번호를 재확인해주세요.");
-          }
           if (error.code === "auth/email-already-in-use") {
             alert("이미 가입된 이메일 입니다.");
-          }
-          if (!passwordCheck) {
-            passwordCheckRef.current?.focus();
-            alert("비밀번호를 재확인을 입력해주세요.");
             return;
           }
+          alert("이메일과 비밀번호를 확인해주세요");
         });
     }
     if (signDisplay) {
       setSignDisplay(false);
+      setPassword("");
+      setEmail("");
+      setError("");
     }
   };
 
@@ -119,8 +137,7 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
         <ModalContainer
           onClick={(event) => {
             event.stopPropagation();
-          }}
-        >
+          }}>
           <CloseButton onClick={closeModal}>X</CloseButton>
           {signDisplay ? (
             <Login
@@ -131,6 +148,7 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
               setEmail={setEmail}
               setPassword={setPassword}
               setModalOpen={setModalOpen}
+              error={error}
             />
           ) : (
             <Register
@@ -143,6 +161,7 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
               setPasswordCheck={setPasswordCheck}
               password={password}
               email={email}
+              error={error}
             />
           )}
 
