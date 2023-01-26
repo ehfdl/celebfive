@@ -61,6 +61,9 @@ const HeaderTitle = styled.div`
   align-items: center;
   font-size: 1.2rem;
   font-weight: bold;
+  &:hover {
+    font-size: 1.3rem;
+  }
   cursor: pointer;
 `;
 
@@ -70,13 +73,20 @@ const LoginButton = styled.button`
   font-weight: bold;
   background-color: transparent;
   padding: 1rem;
+  &:hover {
+    font-size: 1.3rem;
+  }
   cursor: pointer;
 `;
+
 const LogoutButton = styled.button`
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   font-weight: bold;
   background-color: transparent;
   padding: 1rem;
+  &:hover {
+    font-size: 1.3rem;
+  }
   cursor: pointer;
 `;

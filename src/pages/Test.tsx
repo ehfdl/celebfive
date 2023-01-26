@@ -4,9 +4,6 @@ import { useEffect } from "react";
 import AA from "../test.json";
 import { useNavigate } from "react-router-dom";
 import Snowfall from "react-snowfall";
-import { AnimationWrapper } from "react-hover-animation";
-import { CustomCursor } from "react-svg-cursor";
-import png from "../assets/images/weight.png";
 
 interface StatusBarProps {
   count: number;
@@ -45,35 +42,25 @@ const Test = () => {
           </Image>
           <TestContainer>{AA.questions[count].question}</TestContainer>
           <AnswerContainer>
-            <AnimationWrapper
-              style={{
-                marginBottom: 30,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <AnswerBox>
               <Answer
                 onClick={onClickHandler}
                 value={AA.questions[count].score01[1]}
               >
                 {AA.questions[count].score01[0]}
               </Answer>
-            </AnimationWrapper>
-            <AnimationWrapper
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+
+            </AnswerBox>
+
+            <AnswerBox>
+
               <Answer
                 onClick={onClickHandler}
                 value={AA.questions[count].score02[1]}
               >
                 {AA.questions[count].score02[0]}
               </Answer>
-            </AnimationWrapper>
+            </AnswerBox>
           </AnswerContainer>
         </Wrap>
       </BackGround>
@@ -84,7 +71,6 @@ const Test = () => {
         radius={[2, 4]}
         style={{ top: 100, height: "120vh" }}
       />
-      <CustomCursor component={png} width={30} height={30} zIndex={420} />
     </>
   );
 };
@@ -148,7 +134,6 @@ const Image = styled.div`
 
 const TestContainer = styled.div`
   width: 75%;
-  /* margin-top: 70px; */
   background-color: white;
   padding: 30px;
   font-size: 24px;
@@ -159,8 +144,19 @@ const TestContainer = styled.div`
 const AnswerContainer = styled.div`
   width: 75%;
   background-color: #ff6f6f;
-  padding: 40px 10px 40px 10px;
-  border-radius: 3px;
+
+  top: 100px;
+  gap: 40px;
+  padding: 30px 10px 30px 10px;
+
+`;
+
+const AnswerBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
 `;
 
 const Answer = styled.button`
@@ -170,5 +166,11 @@ const Answer = styled.button`
   border-style: none;
   border-radius: 20px;
   font-size: 24px;
-  cursor: pointer;
+
+  border-radius: 30px;
+  &:hover {
+    width: 85%;
+    box-shadow: 1px 1px 20px black;
+  }
+
 `;

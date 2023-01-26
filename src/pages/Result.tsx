@@ -6,8 +6,6 @@ import CustomButton from "../UI/CustomButton";
 import AA from "../test.json";
 import CommentsList from "../components/CommentsList";
 import Confetti from "react-confetti";
-import { CustomCursor } from "react-svg-cursor";
-import png from "../assets/images/weight.png";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
   FacebookShareButton,
@@ -45,7 +43,9 @@ const Result = () => {
         <Wrap>
           <TitleWrap>
             <Title>결과</Title>
-            <SubTitle>당신은 {result} 입니다!</SubTitle>
+            <SubTitle>
+              당신은 <SubResult>{result}</SubResult> 입니다!
+            </SubTitle>
           </TitleWrap>
           <TextWrap>{resultText}</TextWrap>
           <ButtonWrap>
@@ -78,7 +78,6 @@ const Result = () => {
         </Wrap>
       </BackGround>
       <Confetti numberOfPieces={100} style={{ top: 100, height: "100vh" }} />
-      <CustomCursor component={png} width={30} height={30} zIndex={9999} />
     </>
   );
 };
@@ -116,17 +115,27 @@ const Title = styled.div`
   font-size: 3em;
   font-weight: bold;
 `;
-const SubTitle = styled.div`/news/photo/202008/363441806_2158488_2920.jpeg
+
+const SubTitle = styled.div`
+
   font-size: 2em;
+`;
+
+const SubResult = styled.span`
+  color: red;
 `;
 
 const TextWrap = styled.div`
   width: 50%;
-  min-height: 200px;
   background-color: #ff6f6f;
   color: white;
   padding: 20px;
-  border-radius: 3px;
+
+  text-align: center;
+  font-size: 25px;
+  /* 박스에 빈 공간이 너무 많아 높이를 주석처리 했습니다. */
+  /* min-height: 200px; */
+
 `;
 
 const CommentsWrap = styled.div`
@@ -140,6 +149,7 @@ const CommentsWrap = styled.div`
 const ButtonWrap = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-left: 1rem;
 `;
 
 const ShareKakaoButton = styled(CustomButton)`

@@ -5,7 +5,15 @@ import { authService } from "./firebase";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 
+import { CustomCursor } from "react-svg-cursor";
+import png from "./assets/images/flower.png";
+
 function App() {
+  console.warn = console.error = () => {};
+  (() => {
+    console.warn = console.error = () => {};
+  })();
+
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const queryClient = new QueryClient();
@@ -26,6 +34,7 @@ function App() {
           <Router />
         </QueryClientProvider>
       </ThemeProvider>
+      <CustomCursor component={png} width={30} height={30} zIndex={1000} />
     </>
   );
 }

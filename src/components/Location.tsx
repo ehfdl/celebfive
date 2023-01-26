@@ -31,12 +31,6 @@ const Maps = styled(StaticMap)`
   width: 100%;
   height: 100%;
 `;
+
 export default Location;
 
-{
-  /* <Maps center={{ lat: latitude, lng: longitude }}>
-<MapMarker position={{ lat: latitude, lng: longitude }}>
-  <div style={{ color: "#000" }}>{marker}</div>
-</MapMarker>
-</Maps> */
-}
