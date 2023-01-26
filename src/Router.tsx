@@ -4,6 +4,7 @@ import Test from "./pages/Test";
 import Result from "./pages/Result";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollToTop from "./ScrollToTop";
 
 // import { CustomCursor } from "react-svg-cursor";
 // import png from "./assets/images/flower.png";
@@ -17,6 +18,7 @@ declare global {
 const Router = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
