@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Router from "../src/Router";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { authService } from "./firebase";
+import { ThemeProvider } from "styled-components";
+import theme from "./theme";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -19,9 +21,11 @@ function App() {
   }, []);
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <Router />
-      </QueryClientProvider>
+      <ThemeProvider theme={theme}>
+        <QueryClientProvider client={queryClient}>
+          <Router />
+        </QueryClientProvider>
+      </ThemeProvider>
     </>
   );
 }

@@ -78,7 +78,7 @@ const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
 
   return (
     <>
-      {modalOpen && <Modal setModalOpen={setModalOpen} />}
+      {modalOpen && <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} />}
 
       {datas.map((item) => {
         return (
@@ -181,6 +181,41 @@ const HistoryCardSection = styled.div`
   border: 4px solid black;
   line-height: 36px;
   padding-bottom: 4.5rem;
+
+  @media ${(props) => props.theme.desktop} {
+    width: 50%;
+    margin: 0 auto;
+  }
+  @media ${(props) => props.theme.tablet} {
+    width: 50%;
+    margin: 0 auto;
+  }
+  @media ${(props) => props.theme.mobile} {
+    width: 50%;
+    margin: 0 auto;
+  }
+`;
+
+const HistorySourceWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  color: #504949;
+  word-break: keep-all;
+
+  @media ${(props) => props.theme.desktop} {
+    width: 100%;
+    margin: 0 auto;
+  }
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    margin: 0 auto;
+  }
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+    margin: 0 auto;
+  }
 `;
 
 const HistoryInfoTitle = styled.div`
@@ -194,15 +229,6 @@ const HistoryInfoTtext = styled.div`
   font-size: 22px;
   word-break: keep-all;
   /* line-height: 36px; */
-`;
-
-const HistorySourceWrap = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-top: 1rem;
-  font-size: 1.3rem;
-  color: #504949;
-  word-break: keep-all;
 `;
 
 const StartTestButton = styled(CustomButton)`
