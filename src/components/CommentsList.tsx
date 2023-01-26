@@ -10,18 +10,32 @@ import {
 } from "firebase/firestore";
 import styled from "styled-components";
 import Comment from "./Comment";
+import AlertModal from "./AlertModal";
+import { updateProfile } from "firebase/auth";
 
+// Comment 타입 지정
 export type CommentType = {
   id: string;
   userId?: string;
   comment?: string;
   creatAt?: number;
+  nickName?: string;
 };
 
-const CommentsList = () => {
+// Alert Modal창 타입 지정
+export interface AlertModalType {
+  children: string;
+  isAlertModalOpen: boolean;
+  writeOrEdit: boolean;
+  setIsAlertModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setWriteOrEdit: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const CommentsList = ({ result }: { result: string }) => {
   const [comments, setComments] = useState<CommentType[]>([]);
   const [inputComment, setInputComment] = useState("");
   const commentRef = useRef<HTMLTextAreaElement | null>(null);
+  const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
 
   const onChnageCommentHandler = (
     event: React.FormEvent<HTMLTextAreaElement>
@@ -37,7 +51,8 @@ const CommentsList = () => {
     event.preventDefault();
 
     if (inputComment === "") {
-      alert("내용을 입력해주세요!");
+      // Alert 모달창 오픈
+      setIsAlertModalOpen(!isAlertModalOpen);
       commentRef.current?.focus();
       return true;
     }
@@ -46,9 +61,15 @@ const CommentsList = () => {
       comment: inputComment,
       creatAt: Date.now(),
       userId: authService.currentUser?.email?.split("@")[0],
+      nickName: authService.currentUser?.displayName,
     };
 
-    await addDoc(collection(dbService, "comments"), newComment);
+    await addDoc(collection(dbService, "comments"), newComment)
+      .then(() => console.log("데이터 전송 성공"))
+      .catch((error) => {
+        console.log("에러 발생!", error);
+      });
+
     setInputComment("");
   };
 
@@ -72,6 +93,27 @@ const CommentsList = () => {
 
   useEffect(() => {
     getComments();
+  }, [authService.currentUser?.uid]);
+
+  // User Display Name을 result로 업데이트
+  useEffect(() => {
+    const updatUserNickname = async () => {
+      if (authService.currentUser !== null) {
+        await updateProfile(authService.currentUser, {
+          displayName: result,
+        })
+          .then(() => {
+            console.log("프로필 업데이트 성공!");
+          })
+          .catch((error) => {
+            console.log("error발생!", error);
+          });
+      }
+    };
+
+    updatUserNickname();
+
+    console.log("nickname", authService.currentUser?.displayName);
   }, []);
 
   return (
@@ -102,6 +144,14 @@ const CommentsList = () => {
           return <Comment item={item} key={item.id} />;
         })}
       </div>
+      {isAlertModalOpen ? (
+        <AlertModal
+          isAlertModalOpen={isAlertModalOpen}
+          setIsAlertModalOpen={setIsAlertModalOpen}
+        >
+          내용을 입력하셔야합니다!
+        </AlertModal>
+      ) : null}
     </div>
   );
 };

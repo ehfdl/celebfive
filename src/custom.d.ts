@@ -7,3 +7,5 @@ declare module "*.svg";
 
 //폰트 파일 확장자 선언
 declare module "*.ttf";
+
+// type

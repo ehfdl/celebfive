@@ -37,7 +37,7 @@ const Result = () => {
         <TextWrap>{resultText}</TextWrap>
         <Button onClick={kakaoShare}>공유하기</Button>
         <CommentsWrap>
-          <CommentsList />
+          <CommentsList result={result} />
         </CommentsWrap>
       </Wrap>
     </BackGround>
