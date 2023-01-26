@@ -28,9 +28,8 @@ const Location = (props: props) => {
 };
 
 const Maps = styled(StaticMap)`
-  width: 100%;
-  height: 100%;
+  width: 360px;
+  height: 360px;
 `;
 
 export default Location;
-

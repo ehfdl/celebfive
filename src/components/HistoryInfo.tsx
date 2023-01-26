@@ -409,13 +409,5 @@ const MapBox = styled.div`
     height: 30%;
   }
 `;
-const MapBox = styled.div`
-  width: 300px;
-  height: 300px;
-`;
-const TextBox = styled.div`
-  width: 300px;
-  height: 300px;
-`;
 
 export default HistoryInfo;
