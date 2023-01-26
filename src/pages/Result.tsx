@@ -15,7 +15,6 @@ import {
   FacebookIcon,
   TwitterIcon,
 } from "react-share";
-import Location from "../components/Location";
 
 const Result = () => {
   const { state } = useLocation();
@@ -117,7 +116,7 @@ const Title = styled.div`
   font-size: 3em;
   font-weight: bold;
 `;
-const SubTitle = styled.div`
+const SubTitle = styled.div`/news/photo/202008/363441806_2158488_2920.jpeg
   font-size: 2em;
 `;
 
@@ -126,16 +125,15 @@ const TextWrap = styled.div`
   min-height: 200px;
   background-color: #ff6f6f;
   color: white;
-  border: 1px solid black;
   padding: 20px;
+  border-radius: 3px;
 `;
 
 const CommentsWrap = styled.div`
   width: 60%;
   min-height: 200px;
-
+  border-radius: 3px;
   background-color: #ff6f6f;
-  border: 1px solid black;
   padding: 20px;
 `;
 

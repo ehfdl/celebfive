@@ -99,8 +99,9 @@ const Comment = ({ item }: { item: CommentType }) => {
       {openInput ? (
         <input
           onChange={onChangeEditComment}
+          defaultValue="야호"
           value={inputEditComment}
-          placeholder={item.comment}
+          // placeholder={item.comment}
           ref={editCommentRef}
         />
       ) : (

@@ -88,11 +88,11 @@ const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
                 <HistoryInfoTitle>{item.title}</HistoryInfoTitle>
                 <HistoryInfoTtext>{item.text}</HistoryInfoTtext>
                 <HistorySourceWrap>
-                  <div>
+                  <TextBox>
                     <div>{item.source_text}</div>
                     <div>{item.source}</div>
-                  </div>
-                  <div>
+                  </TextBox>
+                  <MapBox>
                     {item.longitude === 0 ? null : (
                       <Location
                         longitude={item.longitude}
@@ -100,7 +100,7 @@ const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
                         marker={item.marker}
                       />
                     )}
-                  </div>
+                  </MapBox>
                 </HistorySourceWrap>
               </HistoryCardSection>
             </FadeStyle>
@@ -201,6 +201,7 @@ const HistorySourceWrap = styled.div`
   flex-direction: row;
   margin-top: 1rem;
   font-size: 1.3rem;
+  justify-content: space-around;
   color: #504949;
   word-break: keep-all;
 
@@ -299,6 +300,14 @@ const FadeStar = styled(Fade)`
   top: 4330px;
   right: 830px;
   z-index: 10;
+`;
+const MapBox = styled.div`
+  width: 300px;
+  height: 300px;
+`;
+const TextBox = styled.div`
+  width: 300px;
+  height: 300px;
 `;
 
 export default HistoryInfo;
