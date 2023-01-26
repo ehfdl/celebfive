@@ -6,8 +6,6 @@ interface LoginProps {
   password: string;
   setPassword: React.Dispatch<React.SetStateAction<string>>;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  emailRef: React.MutableRefObject<HTMLInputElement | null>;
-  passwordRef: React.MutableRefObject<HTMLInputElement | null>;
   error: string;
 }
 
@@ -16,8 +14,7 @@ const Login = ({
   setEmail,
   password,
   setPassword,
-  emailRef,
-  passwordRef,
+
   error,
 }: LoginProps) => {
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +36,6 @@ const Login = ({
           아이디:
           <InputField
             style={{ marginLeft: "25px" }}
-            ref={emailRef}
             type="email"
             value={email}
             onChange={handleEmailChange}
@@ -51,7 +47,6 @@ const Login = ({
           <InputField
             type="password"
             value={password}
-            ref={passwordRef}
             onChange={handlePasswordChange}
             placeholder="비밀번호를 입력해주세요"
           />
