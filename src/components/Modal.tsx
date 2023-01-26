@@ -26,6 +26,7 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
+  const [isValidLogin, setIsValidLogin] = useState(false);
   const navigate = useNavigate();
   const modalRef = useRef<HTMLDivElement | null>(null);
 
@@ -35,7 +36,7 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
   };
 
   // 로그인 유효성 검사
-  const loginValidationCheck: any = () => {
+  const loginValidationCheck = () => {
     if (!email && !password) {
       setError("이메일과 비밀번호를 입력해주세요.");
       return;
@@ -50,6 +51,10 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
       return;
     } else if (password.length < 6) {
       setError("비밀번호 형식이 아닙니다.");
+      return;
+    } else {
+      setError("");
+      setIsValidLogin(true);
       return;
     }
   };
@@ -70,15 +75,18 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
     }
   };
   useEffect(() => {
-    registerValidationCheck();
-    loginValidationCheck();
+    if (passwordCheck) {
+      registerValidationCheck();
+    } else {
+      loginValidationCheck();
+    }
   }, [email, password, passwordCheck]);
 
   const handleLoginClick = (
     event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>
   ) => {
     if (signDisplay) {
-      if (loginValidationCheck()) {
+      if (!isValidLogin) {
         return;
       } else {
         setError("아이디와 비밀번호를 확인해주세요");
@@ -139,8 +147,6 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
           {signDisplay ? (
             <Login
               email={email}
-              emailRef={emailRef}
-              passwordRef={passwordRef}
               password={password}
               setEmail={setEmail}
               setPassword={setPassword}
@@ -150,9 +156,6 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
           ) : (
             <Register
               setEmail={setEmail}
-              emailRef={emailRef}
-              passwordRef={passwordRef}
-              passwordCheckRef={passwordCheckRef}
               passwordCheck={passwordCheck}
               setPassword={setPassword}
               setPasswordCheck={setPasswordCheck}
