@@ -13,7 +13,6 @@ import {
   FacebookIcon,
   TwitterIcon,
 } from "react-share";
-import Location from "../components/Location";
 
 const Result = () => {
   const { state } = useLocation();
@@ -59,8 +58,7 @@ const Result = () => {
               <TwitterIcon
                 round={true}
                 size={"5rem"}
-                style={{ marginLeft: "1.5rem", marginRight: "1rem" }}
-              >
+                style={{ marginLeft: "1.5rem", marginRight: "1rem" }}>
                 Twitter
               </TwitterIcon>
             </TwitterShareButton>
@@ -68,8 +66,7 @@ const Result = () => {
 
             <CopyToClipboard
               text={currentUrl}
-              onCopy={() => alert("복사되었습니다")}
-            >
+              onCopy={() => alert("복사되었습니다")}>
               <CopyCurrentUrlBtn>URL</CopyCurrentUrlBtn>
             </CopyToClipboard>
           </ButtonWrap>
