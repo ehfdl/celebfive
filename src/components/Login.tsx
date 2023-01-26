@@ -1,10 +1,28 @@
 import styled from "styled-components";
 
-const Login = ({ email, setEmail, password, setPassword }: any) => {
+interface LoginProps {
+  email: string;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  password: string;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  emailRef: React.MutableRefObject<HTMLInputElement | null>;
+  passwordRef: React.MutableRefObject<HTMLInputElement | null>;
+}
+
+const Login = ({
+  email,
+  setEmail,
+  password,
+  setPassword,
+  emailRef,
+  passwordRef,
+}: LoginProps) => {
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setPassword(event.target.value);
   };
+
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setEmail(event.target.value);
@@ -17,6 +35,7 @@ const Login = ({ email, setEmail, password, setPassword }: any) => {
         <InputBox>
           아이디:
           <InputField
+            ref={emailRef}
             type="email"
             value={email}
             onChange={handleEmailChange}
@@ -28,6 +47,7 @@ const Login = ({ email, setEmail, password, setPassword }: any) => {
           <InputField
             type="password"
             value={password}
+            ref={passwordRef}
             onChange={handlePasswordChange}
             placeholder="비밀번호를 입력해주세요"
           />
@@ -45,10 +65,11 @@ const Modal = styled.form`
   align-items: center;
 `;
 const InputField = styled.input`
-  margin: 5px;
+  margin: 10px;
   height: 30px;
   width: 180px;
-  background-color: #fadedd;
+  padding: 8px;
+  border-radius: 3px;
   border: 1px solid black;
 `;
 

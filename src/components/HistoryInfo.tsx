@@ -5,10 +5,15 @@ import Modal from "./Modal";
 import { authService } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Fade } from "react-awesome-reveal";
+import { Fade, Slide } from "react-awesome-reveal";
 import AA from "../test.json";
 import { IHistoryBoxType } from "../UI/HistoryBox";
 import weight from "../assets/images/weight.png";
+import hanbok from "../assets/images/hanbok.png";
+import hands from "../assets/images/Hands.png";
+import japan from "../assets/images/japan.png";
+import building from "../assets/images/building.png";
+import factory from "../assets/images/factory.png";
 import Location from "./Location";
 
 export interface DataType {
@@ -31,7 +36,12 @@ interface ItemType {
   backgroundColor: string | string[];
 }
 
-export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
+interface Iprops {
+  item: any;
+  longitude?: number;
+}
+
+const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [isTopButtonShow, setIsTopButtonShow] = useState<boolean>(false);
 
@@ -70,33 +80,60 @@ export const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
 
   return (
     <>
-      {modalOpen && <Modal setModalOpen={setModalOpen} />}
+      {modalOpen && <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} />}
 
       {datas.map((item) => {
         return (
           <HistoryBox backgroundColor={item.backgroundColor} key={item.id}>
             <FadeStyle>
               <HistoryCardSection>
-                <div>{item.title}</div>
-                <div>{item.text}</div>
-                <div>{item.source}</div>
-                <div>{item.source_text}</div>
-                {item.longitude === 0 ? null : (
-                  <Location
-                    longitude={item.longitude}
-                    latitude={item.latitude}
-                    marker={item.marker}
-                  />
-                )}
+                <HistoryInfoTitle>{item.title}</HistoryInfoTitle>
+                <HistoryInfoTtext>{item.text}</HistoryInfoTtext>
+                <HistorySourceWrap>
+                  <div>
+                    <div>{item.source_text}</div>
+                    <div>{item.source}</div>
+                  </div>
+                  <MapBox item={item.longitude}>
+                    {item.longitude === 0 ? null : (
+                      <Location
+                        longitude={item.longitude}
+                        latitude={item.latitude}
+                        marker={item.marker}
+                      />
+                    )}
+                  </MapBox>
+                </HistorySourceWrap>
               </HistoryCardSection>
             </FadeStyle>
           </HistoryBox>
         );
       })}
 
-      <Aa>
-        <Ii src={weight} />
-      </Aa>
+      <SlideImgStyle direction="up">
+        <ImageOne src={weight} />
+      </SlideImgStyle>
+
+      <SlideImgStyleTwo direction="up">
+        <ImageOne src={hands} />
+      </SlideImgStyleTwo>
+
+      <SlideImgStyleThree direction="up">
+        <ImageOne src={hanbok} />
+      </SlideImgStyleThree>
+
+      <SlideImgStyleFour direction="up">
+        <ImageOne src={japan} />
+      </SlideImgStyleFour>
+
+      <SlideImgStyleFive direction="up">
+        <ImageOne src={building} />
+      </SlideImgStyleFive>
+
+      <SlideImgStyleSix direction="up">
+        <ImageOne src={factory} />
+      </SlideImgStyleSix>
+
       <ButtonBox>
         <StartTestButton onClick={openModal}>테스트 하러가기</StartTestButton>
       </ButtonBox>
@@ -113,14 +150,13 @@ const ButtonBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1.5rem;
-  z-index: 0;
 `;
 
 const ScrollTopButtonContainer = styled.div`
   position: fixed;
   bottom: 5%;
   right: 3%;
+  z-index: 30;
 `;
 
 const ScrollTopButton = styled(CustomButton)`
@@ -131,12 +167,96 @@ const ScrollTopButton = styled(CustomButton)`
 `;
 
 const HistoryCardSection = styled.div`
-  width: 80%;
-  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
   background-color: #fff;
-  padding: 5rem;
+  padding: 2rem;
+  padding-bottom: 3rem;
+  margin-top: 1rem;
   border-radius: 20px;
   border: 4px solid black;
+  line-height: 35px;
+  box-sizing: border-box;
+
+  @media ${(props) => props.theme.desktop} {
+    width: 100%;
+    margin: 0 auto;
+  }
+  @media ${(props) => props.theme.tablet} {
+    width: 200%;
+    margin: 0 auto;
+  }
+  @media ${(props) => props.theme.mobile} {
+    width: 100vh;
+    height: 100%;
+    margin: 0 auto;
+    line-height: 23px;
+  }
+`;
+
+const HistorySourceWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  font-size: 1.3rem;
+  justify-content: space-around;
+  color: #504949;
+  /* word-break: keep-all; */
+  margin: 1rem auto;
+
+  @media ${(props) => props.theme.desktop} {
+    font-size: 15px;
+    width: 100%;
+  }
+  @media ${(props) => props.theme.tablet} {
+    flex-direction: column;
+    font-size: 13px;
+    width: 100%;
+  }
+  @media ${(props) => props.theme.mobile} {
+    flex-direction: column;
+    font-size: 10px;
+    width: 100%;
+  }
+`;
+
+const HistoryInfoTitle = styled.div`
+  font-size: 42px;
+  font-weight: 800;
+  margin: 1rem;
+  margin-bottom: 2rem;
+  @media ${(props) => props.theme.desktop} {
+    font-size: 30px;
+    margin: 0 auto;
+  }
+  @media ${(props) => props.theme.tablet} {
+    font-size: 20px;
+    margin: 0 auto;
+  }
+  @media ${(props) => props.theme.mobile} {
+    font-size: 18px;
+    margin: 0 auto;
+  }
+`;
+
+const HistoryInfoTtext = styled.div`
+  font-size: 22px;
+  word-break: keep-all;
+  /* line-height: 36px; */
+  @media ${(props) => props.theme.desktop} {
+    font-size: 20px;
+    margin: 0 auto;
+  }
+  @media ${(props) => props.theme.tablet} {
+    font-size: 15px;
+    margin: 0 auto;
+  }
+  @media ${(props) => props.theme.mobile} {
+    font-size: 10x;
+    margin: 0 auto;
+  }
 `;
 
 const StartTestButton = styled(CustomButton)`
@@ -149,9 +269,14 @@ const StartTestButton = styled(CustomButton)`
   font-weight: bold;
 `;
 
-const Ii = styled.img`
-  width: 100px;
-  height: 100px;
+const ImageOne = styled.img`
+  width: 200px;
+  height: 200px;
+`;
+
+const ImageTwo = styled.img`
+  width: 200px;
+  height: 200px;
 `;
 
 const FadeStyle = styled(Fade)`
@@ -159,14 +284,130 @@ const FadeStyle = styled(Fade)`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
 `;
 
-const Aa = styled(Fade)`
+const SlideImgStyle = styled(Slide)`
   position: absolute;
-  top: 1500px;
-  /* width: 100px; */
-  /* height: 100px; */
+  top: 1800px;
+  left: 100px;
+  @media ${(props) => props.theme.desktop} {
+    display: none;
+  }
+  @media ${(props) => props.theme.tablet} {
+    display: none;
+  }
+  @media ${(props) => props.theme.mobile} {
+    display: none;
+  }
+`;
+
+const SlideImgStyleTwo = styled(Slide)`
+  position: absolute;
+  top: 1000px;
+  right: 100px;
+  @media ${(props) => props.theme.desktop} {
+    display: none;
+  }
+  @media ${(props) => props.theme.tablet} {
+    display: none;
+  }
+  @media ${(props) => props.theme.mobile} {
+    display: none;
+  }
+`;
+
+const SlideImgStyleThree = styled(Slide)`
+  position: absolute;
+  top: 2300px;
+  right: 100px;
+  @media ${(props) => props.theme.desktop} {
+    display: none;
+  }
+  @media ${(props) => props.theme.tablet} {
+    display: none;
+  }
+  @media ${(props) => props.theme.mobile} {
+    display: none;
+  }
+`;
+
+const SlideImgStyleFour = styled(Slide)`
+  position: absolute;
+  top: 3000px;
+  left: 50px;
+  @media ${(props) => props.theme.desktop} {
+    display: none;
+  }
+  @media ${(props) => props.theme.tablet} {
+    display: none;
+  }
+  @media ${(props) => props.theme.mobile} {
+    display: none;
+  }
+`;
+
+const SlideImgStyleFive = styled(Slide)`
+  position: absolute;
+  top: 3800px;
+  right: 100px;
+  @media ${(props) => props.theme.desktop} {
+    display: none;
+  }
+  @media ${(props) => props.theme.tablet} {
+    display: none;
+  }
+  @media ${(props) => props.theme.mobile} {
+    display: none;
+  }
+`;
+
+const SlideImgStyleSix = styled(Slide)`
+  position: absolute;
+  top: 4000px;
+  left: 30px;
+  @media ${(props) => props.theme.desktop} {
+    display: none;
+  }
+  @media ${(props) => props.theme.tablet} {
+    display: none;
+  }
+  @media ${(props) => props.theme.mobile} {
+    display: none;
+  }
+`;
+
+const FadeArrow = styled(Fade)`
+  position: absolute;
+  top: 5400px;
+  right: 830px;
+  z-index: 10;
+  @media ${(props) => props.theme.desktop} {
+    display: none;
+  }
+  @media ${(props) => props.theme.tablet} {
+    display: none;
+  }
+  @media ${(props) => props.theme.mobile} {
+    display: none;
+  }
+`;
+
+const MapBox = styled.div`
+  width: ${(props: Iprops) => (props.longitude === 0 ? null : props.longitude)};
+  height: 100%;
+  box-sizing: border-box;
+  @media ${(props) => props.theme.desktop} {
+    width: 100%;
+    height: 100%;
+  }
+  @media ${(props) => props.theme.tablet} {
+    width: 50%;
+    height: 50%;
+  }
+  @media ${(props) => props.theme.mobile} {
+    width: 30%;
+    height: 30%;
+  }
 `;
 
 export default HistoryInfo;

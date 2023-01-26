@@ -11,7 +11,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const openModal = () => {
     if (authService.currentUser) {
-      navigate("/test");
+      navigate("/");
     }
     if (!authService.currentUser) {
       setModalOpen(true);
@@ -23,6 +23,7 @@ export const Header = () => {
     signOut(authService)
       .then(() => {
         alert("로그아웃");
+        navigate("/");
       })
       .catch((event) => {
         alert(event);
@@ -41,7 +42,7 @@ export const Header = () => {
       ) : (
         <LoginButton onClick={openModal}>로그인</LoginButton>
       )}
-      {modalOpen && <Modal setModalOpen={setModalOpen} />}
+      {modalOpen && <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} />}
     </HeaderWrapper>
   );
 };
@@ -60,6 +61,10 @@ const HeaderTitle = styled.div`
   align-items: center;
   font-size: 1.2rem;
   font-weight: bold;
+  &:hover {
+    font-size: 1.3rem;
+  }
+  cursor: pointer;
 `;
 
 const LoginButton = styled.button`
@@ -68,13 +73,20 @@ const LoginButton = styled.button`
   font-weight: bold;
   background-color: transparent;
   padding: 1rem;
+  &:hover {
+    font-size: 1.3rem;
+  }
   cursor: pointer;
 `;
+
 const LogoutButton = styled.button`
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   font-weight: bold;
   background-color: transparent;
   padding: 1rem;
+  &:hover {
+    font-size: 1.3rem;
+  }
   cursor: pointer;
 `;

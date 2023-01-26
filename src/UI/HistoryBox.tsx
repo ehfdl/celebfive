@@ -23,11 +23,26 @@ const HistoryBoxSection = styled.div<IHistoryBoxType>`
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.backgroundColor || "#fff"};
-  height: ${(props) => props.height || "80vh"};
+  height: ${(props) => props.height || "100vh"};
   width: ${(props) => props.width || "100%"};
   align-items: center;
   justify-content: center;
   padding: 50px;
+  @media ${(props) => props.theme.desktop} {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 10rem;
+  }
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 5rem;
+  }
+  @media ${(props) => props.theme.mobile} {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1rem;
+  }
 `;
 
 export default HistoryBox;
