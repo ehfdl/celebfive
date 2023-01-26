@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     // "typeRoots": ["node_modules/@types", "src/types"],
-    "types": ["kakao.maps.d.ts"],
+    // "types": ["kakao.maps.d.ts"],
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

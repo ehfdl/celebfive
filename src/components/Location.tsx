@@ -1,6 +1,7 @@
 /*global kakao*/
 import React, { useEffect } from "react";
 import { MapMarker, Map } from "react-kakao-maps-sdk";
+import styled from "styled-components";
 
 declare global {
   interface Window {
@@ -16,15 +17,19 @@ interface props {
 const Location = (props: props) => {
   const { longitude, latitude, marker } = props;
   return (
-    <Map
+    <Maps
       center={{ lat: latitude, lng: longitude }}
-      style={{ width: "360px", height: "360px" }}
+      // style={{ width: "360px", height: "360px" }}
     >
       <MapMarker position={{ lat: latitude, lng: longitude }}>
         <div style={{ color: "#000" }}>{marker}</div>
       </MapMarker>
-    </Map>
+    </Maps>
   );
 };
 
+const Maps = styled(Map)`
+  width: 100%;
+  height: 100%;
+`;
 export default Location;

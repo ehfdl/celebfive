@@ -119,7 +119,8 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
         <ModalContainer
           onClick={(event) => {
             event.stopPropagation();
-          }}>
+          }}
+        >
           <CloseButton onClick={closeModal}>X</CloseButton>
           {signDisplay ? (
             <Login
@@ -177,7 +178,7 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-const ModalContainer = styled.div`
+export const ModalContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;

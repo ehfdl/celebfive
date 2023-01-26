@@ -61,6 +61,7 @@ const HeaderTitle = styled.div`
   align-items: center;
   font-size: 1.2rem;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 const LoginButton = styled.button`
