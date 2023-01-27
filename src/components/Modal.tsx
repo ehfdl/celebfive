@@ -142,7 +142,8 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
         <ModalContainer
           onClick={(event) => {
             event.stopPropagation();
-          }}>
+          }}
+        >
           <CloseButton onClick={closeModal}>X</CloseButton>
           {signDisplay ? (
             <Login

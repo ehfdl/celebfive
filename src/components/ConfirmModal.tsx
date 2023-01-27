@@ -5,6 +5,7 @@ import alertImg from "../assets/images/exclamation-mark.png";
 import { deleteComment } from "../api";
 import { useMutation } from "react-query";
 import { CommentType } from "./CommentsList";
+import { AlertImgStyle } from "./AlertModal";
 
 const ConfirmModal = ({
   item,
@@ -48,18 +49,22 @@ const ConfirmModal = ({
       <Container>
         {isLoadingDeleting ? (
           /* '로딩 화면'에서 안내 메시지 */
-          <ModalContainer>
+          <ConfirmModalContainer>
             댓글을 삭제하고 있습니다! 조금만 기다려주세요!
-          </ModalContainer>
+          </ConfirmModalContainer>
         ) : (
-          <ModalContainer>
-            <img src={alertImg} style={{ width: "80px", height: "80px" }} />
-            <ModalTitle>해당 댓글을 삭제하시겠습니까?</ModalTitle>
-            <ModalButtonDiv>
-              <button onClick={clickDeleteComment}>YES</button>
-              <button onClick={closeConfirmModal}>NO</button>
-            </ModalButtonDiv>
-          </ModalContainer>
+          <ConfirmModalContainer>
+            <AlertImgStyle src={alertImg} />
+            <ConfirmModalTitle>댓글을 삭제하시겠습니까?</ConfirmModalTitle>
+            <ConfirmModalButtonDiv>
+              <ConfirmModalButton onClick={clickDeleteComment}>
+                YES
+              </ConfirmModalButton>
+              <ConfirmModalButton onClick={closeConfirmModal}>
+                NO
+              </ConfirmModalButton>
+            </ConfirmModalButtonDiv>
+          </ConfirmModalContainer>
         )}
       </Container>
     </>
@@ -68,8 +73,41 @@ const ConfirmModal = ({
 
 export default ConfirmModal;
 
-const ModalTitle = styled.p``;
+const ConfirmModalContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px black solid;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 20rem;
+  height: 20rem;
+  background-color: white;
+  z-index: 1000;
+`;
 
-const ModalButtonDiv = styled.div`
-  margin-top: 2rem;
+const ConfirmModalTitle = styled.p`
+  font-size: 1.2rem;
+`;
+
+const ConfirmModalButtonDiv = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1.8rem;
+  width: 11rem;
+`;
+
+const ConfirmModalButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 4rem;
+  height: 2rem;
+  cursor: pointer;
+  &:hover {
+    background-color: #e76662;
+    color: white;
+  }
 `;
