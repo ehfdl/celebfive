@@ -162,8 +162,6 @@ const AddButton = styled.button`
   align-items: center;
   padding: 12px;
   border-radius: 0.7rem;
-  /* height: 2.5rem;
-  width: 30%; */
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 1rem;

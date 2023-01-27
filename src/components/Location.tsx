@@ -1,6 +1,4 @@
-/*global kakao*/
-import React, { useEffect } from "react";
-import { MapMarker, Map, StaticMap } from "react-kakao-maps-sdk";
+import { StaticMap } from "react-kakao-maps-sdk";
 import styled from "styled-components";
 
 interface props {

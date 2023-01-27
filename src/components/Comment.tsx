@@ -17,16 +17,9 @@ const Comment = ({ item }: { item: CommentType }) => {
   // confirm 또는 alert 창을 열고 닫는 state
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
-  // 수정 또는 삭제 confirm 모달에서 텍스트를 다르게 보여줄 용도로 사용할 state
-  // const [deleteCommentState, setDeleteCommentState] = useState(false);
-  // const [editCommentState, setEditCommentState] = useState(false);
-  //수정 할것인지 아닌지에 관한 state
-  // const [isEditOk, setIsEditOk] = useState(false);
-  //댓글 작성에 대한 alert인지, 댓글 수정에 관한 alert인지 구분해주는 state
-  // const [writeOrEdit, setWriteOrEdit] = useState(false);
 
   // Comment 수정에 관련한 useMutation
-  const { isLoading: isLoadingEdit, mutate: reviseComment } = useMutation(
+  const { mutate: reviseComment } = useMutation(
     ["editComment", item.id],
     (body: EditParameterType) => editComment(body),
     {
@@ -49,24 +42,17 @@ const Comment = ({ item }: { item: CommentType }) => {
 
   // Comment Delelte를 확인하는 Confirm Modal 오픈
   const openDeleteConfirmModal = () => {
-    // setDeleteCommentState(!deleteCommentState);
     setIsConfirmModalOpen(!isConfirmModalOpen);
   };
 
   // Comment 수정 인풋창, 확인 버튼 활성화
   const openInputClick = () => {
     setOpenInput(!openInput);
-    // const answer = window.confirm("수정하시겠습니까?");
-    // if (answer) {
-    //   setOpenInput(!openInput);
-    // }
-    // editCommentRef.current?.focus();
   };
 
   // Comment edit
   const onEditComment = async () => {
     if (inputEditComment === "") {
-      // alert("수정할 내용이 없습니다.");
       setIsAlertModalOpen(!isAlertModalOpen);
       setOpenInput(!openInput);
       return;
@@ -113,7 +99,6 @@ const Comment = ({ item }: { item: CommentType }) => {
         <InputStyle onChange={onChangeEditComment} value={inputEditComment} />
       ) : (
         <CommentText>{item.comment}</CommentText>
-        /* <div>{new Date(item.creatAt).toLocaleDateString("kr")}</div> */
       )}
       {/* Confirm에 관련된 모달 */}
       {isConfirmModalOpen ? (

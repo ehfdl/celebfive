@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import kakaoShare from "../kakao";
@@ -138,8 +138,6 @@ const TextWrap = styled.div`
   white-space: pre-wrap;
   text-align: center;
   font-size: 25px;
-  /* 박스에 빈 공간이 너무 많아 높이를 주석처리 했습니다. */
-  /* min-height: 200px; */
 `;
 
 const CommentsWrap = styled.div`

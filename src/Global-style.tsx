@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import GugiFont from "./assets/fonts/Gugi-Regular.ttf";
 
 export const GlobalStyle = createGlobalStyle`
 ${reset}
