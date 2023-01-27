@@ -38,10 +38,7 @@ const Test = () => {
             </StatusBar>
           </StatusBarBox>
           <Image>
-            <img
-              style={{ objectFit: "contain" }}
-              src={AA.questions[count].image}
-            />
+            <ImgObject src={AA.questions[count].image} />
           </Image>
           <TestContainer>{AA.questions[count].question}</TestContainer>
           <AnswerContainer>
@@ -85,6 +82,10 @@ const BackGround = styled.div`
   background-color: #fcdddd;
   display: flex;
   justify-content: center;
+  @media ${(props) => props.theme.mobile} {
+    width: 375px;
+    height: 600px;
+  }
 `;
 
 const Wrap = styled.div`
@@ -98,6 +99,9 @@ const Wrap = styled.div`
   padding: 50px 20px 30px 20px;
   border-radius: 20px;
   gap: 20px;
+  @media ${(props) => props.theme.mobile} {
+    padding: 40px 10px 30px 10px;
+  }
 `;
 
 const StatusBarBox = styled.div`
@@ -106,6 +110,9 @@ const StatusBarBox = styled.div`
   top: 50px;
   border-radius: 20px;
   background-color: #eee;
+  @media ${(props) => props.theme.mobile} {
+    height: 20px;
+  }
 `;
 
 const StatusBar = styled.div`
@@ -113,26 +120,44 @@ const StatusBar = styled.div`
   height: 50px;
   top: 50px;
   border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: width 0.4s ease-in-out 0s;
   background-color: #ff6f6f;
+  @media ${(props) => props.theme.mobile} {
+    height: 20px;
+  }
 `;
 
 const StatusText = styled.div`
   font-weight: bold;
   color: white;
   text-align: center;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  @media ${(props) => props.theme.mobile} {
+    display: none;
+  }
 `;
 
 const Image = styled.div`
-  width: 50%;
+  width: 70%;
   height: 250px;
   border-radius: 10px;
   background-color: white;
   overflow: hidden;
+
   top: 80px;
+  @media ${(props) => props.theme.mobile} {
+    width: 60%;
+    height: 180px;
+  }
+`;
+
+const ImgObject = styled.img`
+  object-fit: contain;
+  @media ${(props) => props.theme.mobile} {
+    object-fit: fill;
+  }
 `;
 
 const TestContainer = styled.div`
@@ -145,15 +170,23 @@ const TestContainer = styled.div`
   text-align: center;
   white-space: pre-wrap;
   top: 80px;
+  @media ${(props) => props.theme.mobile} {
+    font-size: 10px;
+    line-height: 15px;
+    padding: 10px;
+  }
 `;
 
 const AnswerContainer = styled.div`
   width: 75%;
   background-color: #ff6f6f;
-
   top: 100px;
   gap: 40px;
   padding: 30px 10px 30px 10px;
+  border-radius: 5px;
+  @media ${(props) => props.theme.mobile} {
+    padding: 15px 5px 15px 5px;
+  }
 `;
 
 const AnswerBox = styled.div`
@@ -162,6 +195,10 @@ const AnswerBox = styled.div`
   justify-content: center;
   margin-top: 10px;
   margin-bottom: 20px;
+  @media ${(props) => props.theme.mobile} {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
 `;
 
 const Answer = styled.button`
@@ -172,10 +209,14 @@ const Answer = styled.button`
   border-radius: 20px;
   font-size: 24px;
   white-space: pre-wrap;
-
   border-radius: 30px;
   &:hover {
     width: 85%;
     box-shadow: 1px 1px 20px black;
+  }
+  @media ${(props) => props.theme.mobile} {
+    font-size: 8px;
+    padding: 10px;
+    border-radius: 10px;
   }
 `;
