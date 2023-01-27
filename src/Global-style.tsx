@@ -6,6 +6,12 @@ export const GlobalStyle = createGlobalStyle`
 ${reset}
 * {
   box-sizing: border-box;
+  @font-face {
+      font-family: 'GmarketSansMedium';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+  }
 }
 body{
   background-color: #ffffff;
@@ -16,7 +22,7 @@ a {
 }
 input, button {
   background-color: transparent;
-  /* border: none; */
+  font-family: "GmarketSansMedium";
   outline: none;
 }
 h1, h2, h3, h4, h5, h6{
@@ -30,10 +36,8 @@ img {
   width: 100%;
   height: 100%;
 }
-@font-face {
-        font-family: 'GugiFont';
-        src: local('GugiFont'), local('GugiFont');
-        font-style: normal;
-        src: url(${GugiFont}) format('truetype');
-  }
+div{
+  font-family: "GmarketSansMedium";
+}
+
 `;
