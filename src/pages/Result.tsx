@@ -55,13 +55,9 @@ const Result = () => {
               </FacebookIcon>
             </FacebookShareButton>
             <TwitterShareButton url={currentUrl}>
-              <TwitterIcon
-                round={true}
-                size={"5rem"}
-                style={{ marginLeft: "1.5rem", marginRight: "1rem" }}
-              >
+              <StTwiterIcon round={true} size={"5rem"}>
                 Twitter
-              </TwitterIcon>
+              </StTwiterIcon>
             </TwitterShareButton>
             <ShareKakaoButton onClick={kakaoShare}>TALK</ShareKakaoButton>
 
@@ -77,12 +73,17 @@ const Result = () => {
           </CommentsWrap>
         </Wrap>
       </BackGround>
-      <Confetti numberOfPieces={100} style={{ top: 100, height: "100vh" }} />
+      <ConfettiStyle numberOfPieces={100} style={{ top: 100 }} />
     </>
   );
 };
 
 export default Result;
+
+const ConfettiStyle = styled(Confetti)`
+  height: 100%;
+  width: 100%;
+`;
 
 const BackGround = styled.div`
   max-width: 100vw;
@@ -103,7 +104,9 @@ const Wrap = styled.div`
   align-items: center;
   padding: 50px 20px 30px 20px;
   border-radius: 20px;
-  gap: 20px;
+  @media ${(props) => props.theme.mobile} {
+    gap: 5px;
+  }
 `;
 
 const TitleWrap = styled.div`
@@ -112,20 +115,29 @@ const TitleWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   gap: 10px;
 `;
+
 const Title = styled.div`
   font-size: 3em;
   font-weight: bold;
+  @media ${(props) => props.theme.mobile} {
+    font-size: 2em;
+  }
 `;
 
 const SubTitle = styled.div`
   font-size: 2em;
+  @media ${(props) => props.theme.mobile} {
+    font-size: 1em;
+  }
 `;
 
 const SubResult = styled.span`
   color: red;
+  @media ${(props) => props.theme.mobile} {
+    font-size: 1.5em;
+  }
 `;
 
 const TextWrap = styled.div`
@@ -138,20 +150,45 @@ const TextWrap = styled.div`
   white-space: pre-wrap;
   text-align: center;
   font-size: 25px;
-`;
-
-const CommentsWrap = styled.div`
-  width: 60%;
-  min-height: 200px;
-  border-radius: 3px;
-  background-color: #ff6f6f;
-  padding: 20px;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+    /* font-size: 20px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    padding: 5px;
+    height: 50px;
+  }
+  @media ${(props) => props.theme.desktop} {
+    font-size: 25px;
+  }
+  @media ${(props) => props.theme.tablet} {
+    font-size: 15px;
+  }
 `;
 
 const ButtonWrap = styled.div`
   display: flex;
   justify-content: space-between;
   margin-left: 1rem;
+  @media ${(props) => props.theme.mobile} {
+    /* display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin-left: 0; */
+    scale: 0.5;
+    /* height: 50px; */
+  }
+`;
+
+const StTwiterIcon = styled(TwitterIcon)`
+  margin-left: 2rem;
+  margin-right: 1rem;
+  /* @media ${(props) => props.theme.mobile} {
+    margin-left: 0;
+    margin-right: 0;
+  } */
 `;
 
 const ShareKakaoButton = styled(CustomButton)`
@@ -169,4 +206,15 @@ const CopyCurrentUrlBtn = styled(CustomButton)`
   color: #fff;
   width: 5rem;
   height: 5rem;
+`;
+
+const CommentsWrap = styled.div`
+  width: 60%;
+  min-height: 200px;
+  border-radius: 3px;
+  background-color: #ff6f6f;
+  padding: 20px;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
 `;

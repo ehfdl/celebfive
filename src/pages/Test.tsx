@@ -70,7 +70,7 @@ const Test = () => {
         snowflakeCount={50}
         speed={[0.5, 1]}
         radius={[2, 4]}
-        style={{ top: 100, height: "120vh" }}
+        style={{ top: 100, height: "85%" }}
       />
     </>
   );
