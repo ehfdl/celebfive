@@ -89,26 +89,30 @@ const Comment = ({ item }: { item: CommentType }) => {
   return (
     <CommentContainer key={item.id}>
       <UserIdContianer>
-        <p>{item.userId ? item.userId : "익명사용자"}</p>
-        <p>{item.nickName ? item.nickName : "NickName"}</p>
-        {authService.currentUser?.email?.split("@")[0] === item.userId ? (
-          <ImgStyled src={deleteImg} onClick={openDeleteConfirmModal} />
-        ) : null}
+        <div>
+          <UserId>{item.userId ? item.userId : "익명사용자"}</UserId>
+          <UserId>{`(${item.nickName ? item.nickName : "NickName"})`}</UserId>
+        </div>
+        <ImgContainer>
+          {authService.currentUser?.email?.split("@")[0] === item.userId ? (
+            <ImgStyled src={deleteImg} onClick={openDeleteConfirmModal} />
+          ) : null}
 
-        {/* 처음에 수정 이미지를 클릭하면 openInput의 불린 값을 변경하여 comment가 있던 자리에 input창이 생성되고, 이미지의 onClick에 onEditComment 함수를 실행하도록 바꿔준다. */}
-        {authService.currentUser?.email?.split("@")[0] === item.userId ? (
-          openInput ? (
-            <ImgStyled src={editImg} onClick={onEditComment} />
-          ) : (
-            <ImgStyled src={editImg} onClick={openInputClick} />
-          )
-        ) : null}
+          {/* 처음에 수정 이미지를 클릭하면 openInput의 불린 값을 변경하여 comment가 있던 자리에 input창이 생성되고, 이미지의 onClick에 onEditComment 함수를 실행하도록 바꿔준다. */}
+          {authService.currentUser?.email?.split("@")[0] === item.userId ? (
+            openInput ? (
+              <ImgStyled src={editImg} onClick={onEditComment} />
+            ) : (
+              <ImgStyled src={editImg} onClick={openInputClick} />
+            )
+          ) : null}
+        </ImgContainer>
       </UserIdContianer>
 
       {openInput ? (
         <input onChange={onChangeEditComment} value={inputEditComment} />
       ) : (
-        <span>{item.comment}</span>
+        <CommentText>{item.comment}</CommentText>
         /* <div>{new Date(item.creatAt).toLocaleDateString("kr")}</div> */
       )}
       {/* Confirm에 관련된 모달 */}
@@ -134,18 +138,42 @@ const Comment = ({ item }: { item: CommentType }) => {
 export default Comment;
 
 const ImgStyled = styled.img`
-  width: 25px;
-  height: 25px;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
+  &:hover {
+    scale: 1.1;
+  }
 `;
 
 const CommentContainer = styled.div`
-  margin-bottom: 1rem;
+  padding: 10px;
+  border: 1px solid black;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  margin-bottom: 2rem;
 `;
 
 const UserIdContianer = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+`;
+
+const ImgContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 5rem;
+  /* background-color: green; */
+`;
+
+const UserId = styled.span`
+  font-weight: bold;
+`;
+
+const CommentText = styled.span`
+  font-size: large;
 `;
