@@ -8,7 +8,6 @@ interface props {
 }
 const Location = (props: props) => {
   const { longitude, latitude, marker } = props;
-  console.log();
   return (
     <Maps // 지도를 표시할 Container
       center={{
@@ -28,6 +27,16 @@ const Location = (props: props) => {
 const Maps = styled(StaticMap)`
   width: 360px;
   height: 360px;
+  margin: 0 auto;
+
+  @media ${(props) => props.theme.tablet} {
+    width: 250px;
+    height: 250px;
+  }
+  @media ${(props) => props.theme.mobile} {
+    width: 250px;
+    height: 250px;
+  }
 `;
 
 export default Location;
