@@ -109,6 +109,13 @@ const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
                   </MapBox>
                 </HistorySourceWrap>
               </HistoryCardSection>
+              {item.source === "" ? (
+                <ButtonBox>
+                  <StartTestButton onClick={openModal}>
+                    테스트 하러가기
+                  </StartTestButton>
+                </ButtonBox>
+              ) : null}
             </FadeStyle>
           </HistoryBox>
         );
@@ -138,9 +145,6 @@ const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
         <ImageOne src={factory} />
       </SlideImgStyleSix>
 
-      <ButtonBox>
-        <StartTestButton onClick={openModal}>테스트 하러가기</StartTestButton>
-      </ButtonBox>
       <ScrollTopButtonContainer>
         {isTopButtonShow ? (
           <ScrollTopButton onClick={ScrollTop}>▲</ScrollTopButton>
@@ -154,6 +158,8 @@ const ButtonBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 100px;
 `;
 
 const ScrollTopButtonContainer = styled.div`
@@ -270,6 +276,9 @@ const StartTestButton = styled(CustomButton)`
   padding: 0.5rem;
   font-size: 1.3rem;
   font-weight: bold;
+  background-color: #fff;
+  border: 4px solid black;
+  border-radius: 20px;
 `;
 
 const ImageOne = styled.img`
