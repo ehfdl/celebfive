@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { ErrorText } from "./Register";
 
 interface LoginProps {
   email: string;
@@ -7,8 +6,6 @@ interface LoginProps {
   password: string;
   setPassword: React.Dispatch<React.SetStateAction<string>>;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  emailRef: React.MutableRefObject<HTMLInputElement | null>;
-  passwordRef: React.MutableRefObject<HTMLInputElement | null>;
   error: string;
 }
 
@@ -17,8 +14,7 @@ const Login = ({
   setEmail,
   password,
   setPassword,
-  emailRef,
-  passwordRef,
+
   error,
 }: LoginProps) => {
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +35,7 @@ const Login = ({
         <InputBox>
           아이디:
           <InputField
-            ref={emailRef}
+            style={{ marginLeft: "25px" }}
             type="email"
             value={email}
             onChange={handleEmailChange}
@@ -51,7 +47,6 @@ const Login = ({
           <InputField
             type="password"
             value={password}
-            ref={passwordRef}
             onChange={handlePasswordChange}
             placeholder="비밀번호를 입력해주세요"
           />
@@ -71,7 +66,7 @@ const Modal = styled.form`
 const InputField = styled.input`
   margin: 10px;
   height: 30px;
-  width: 180px;
+  width: 200px;
   padding: 8px;
   border-radius: 3px;
   border: 1px solid black;
@@ -80,7 +75,8 @@ const InputField = styled.input`
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  /* align-items: flex-end; */
+  justify-content: center;
 `;
 const InputBox = styled.div`
   display: flex;
@@ -91,4 +87,7 @@ const InputBox = styled.div`
 const TitleText = styled.div`
   margin-bottom: 30px;
   font-size: 30px;
+`;
+const ErrorText = styled.div`
+  color: red;
 `;
