@@ -199,7 +199,7 @@ const HistoryCardSection = styled.div`
     margin: 0 auto;
   }
   @media ${(props) => props.theme.mobile} {
-    width: 100vh;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
     line-height: 23px;
@@ -385,18 +385,6 @@ const MapBox = styled.div`
   width: ${(props: Iprops) => (props.item === 0 ? null : props.item)};
   height: 100%;
   box-sizing: border-box;
-  @media ${(props) => props.theme.desktop} {
-    width: 100%;
-    height: 100%;
-  }
-  @media ${(props) => props.theme.tablet} {
-    width: 50%;
-    height: 50%;
-  }
-  @media ${(props) => props.theme.mobile} {
-    width: 30%;
-    height: 30%;
-  }
 `;
 
 export default HistoryInfo;
