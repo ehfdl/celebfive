@@ -110,7 +110,7 @@ const Comment = ({ item }: { item: CommentType }) => {
       </UserIdContianer>
 
       {openInput ? (
-        <input onChange={onChangeEditComment} value={inputEditComment} />
+        <InputStyle onChange={onChangeEditComment} value={inputEditComment} />
       ) : (
         <CommentText>{item.comment}</CommentText>
         /* <div>{new Date(item.creatAt).toLocaleDateString("kr")}</div> */
@@ -167,7 +167,6 @@ const ImgContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   width: 5rem;
-  /* background-color: green; */
 `;
 
 const UserId = styled.span`
@@ -176,4 +175,14 @@ const UserId = styled.span`
 
 const CommentText = styled.span`
   font-size: large;
+`;
+
+const InputStyle = styled.input`
+  height: 2.5rem;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 3px;
+  filter: drop-shadow(3px 3px 3px #c42c2c);
+  padding: 0.5rem;
 `;

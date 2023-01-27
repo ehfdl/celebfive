@@ -160,10 +160,10 @@ const AddButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 12px;
   border-radius: 0.7rem;
-  height: 2.5rem;
-  width: 30%;
+  /* height: 2.5rem;
+  width: 30%; */
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -171,7 +171,7 @@ const AddButton = styled.button`
   background-color: whitesmoke;
   border: none;
   gap: 10px;
-  filter: drop-shadow(3px 3px 3px #534a4a);
+  filter: drop-shadow(3px 3px 3px #c42c2c);
   cursor: pointer;
 `;
 
@@ -180,10 +180,10 @@ const StyledTextArea = styled.textarea`
   width: 100%;
   height: 5rem;
   border: none;
-  border-radius: 0.7rem;
+  border-radius: 3px;
   padding: 10px;
   margin-bottom: 1rem;
-  filter: drop-shadow(3px 3px 3px #534a4a);
+  filter: drop-shadow(3px 3px 3px #bd2727);
 `;
 
 const StyledButtonDiv = styled.div`
