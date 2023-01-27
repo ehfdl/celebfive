@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Container, ModalContainer } from "./Modal";
+import { Container } from "./Modal";
 import alertImg from "../assets/images/exclamation-mark.png";
 import { deleteComment } from "../api";
 import { useMutation } from "react-query";

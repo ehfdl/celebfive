@@ -60,7 +60,7 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
     }
   };
 
-  //비밀번호 유효성 검사
+  //회원가입 유효성 검사
   const registerValidationCheck = () => {
     loginValidationCheck();
     if (!passwordCheck) {
@@ -144,7 +144,8 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
         <ModalContainer
           onClick={(event) => {
             event.stopPropagation();
-          }}>
+          }}
+        >
           <CloseButton onClick={closeModal}>
             <CloseIcon />
           </CloseButton>

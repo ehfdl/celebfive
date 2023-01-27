@@ -6,9 +6,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./ScrollToTop";
 
-// import { CustomCursor } from "react-svg-cursor";
-// import png from "./assets/images/flower.png";
-
 declare global {
   interface Window {
     Kakao: any;
@@ -25,7 +22,6 @@ const Router = () => {
         <Route path="/test" element={<Test />} />
         <Route path="/result" element={<Result />} />
       </Routes>
-      {/* <CustomCursor component={png} width={30} height={30} zIndex={420} /> */}
       <Footer />
     </BrowserRouter>
   );

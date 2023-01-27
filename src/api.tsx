@@ -1,7 +1,6 @@
 import axios from "axios";
 import { dbService } from "./firebase";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
-import { CommentType } from "./components/CommentsList";
 
 export interface EditParameterType {
   commentId: string;

@@ -212,7 +212,6 @@ const HistorySourceWrap = styled.div`
   font-size: 1.3rem;
   justify-content: space-around;
   color: #504949;
-  /* word-break: keep-all; */
   margin: 1rem auto;
 
   @media ${(props) => props.theme.desktop} {
@@ -253,7 +252,6 @@ const HistoryInfoTitle = styled.div`
 const HistoryInfoTtext = styled.div`
   font-size: 22px;
   word-break: keep-all;
-  /* line-height: 36px; */
   @media ${(props) => props.theme.desktop} {
     font-size: 20px;
     margin: 0 auto;
@@ -282,11 +280,6 @@ const StartTestButton = styled(CustomButton)`
 `;
 
 const ImageOne = styled.img`
-  width: 200px;
-  height: 200px;
-`;
-
-const ImageTwo = styled.img`
   width: 200px;
   height: 200px;
 `;
@@ -377,22 +370,6 @@ const SlideImgStyleSix = styled(Slide)`
   position: absolute;
   top: 4000px;
   left: 30px;
-  @media ${(props) => props.theme.desktop} {
-    display: none;
-  }
-  @media ${(props) => props.theme.tablet} {
-    display: none;
-  }
-  @media ${(props) => props.theme.mobile} {
-    display: none;
-  }
-`;
-
-const FadeArrow = styled(Fade)`
-  position: absolute;
-  top: 5400px;
-  right: 830px;
-  z-index: 10;
   @media ${(props) => props.theme.desktop} {
     display: none;
   }
