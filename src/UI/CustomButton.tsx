@@ -34,6 +34,9 @@ export const CustomButton = styled.button<IButtonType>`
   text-align: center;
   margin: 1rem;
   cursor: pointer;
+  /* @media ${(props) => props.theme.mobile} {
+    margin: 0;
+  } */
 `;
 
 export default CustomButton;
