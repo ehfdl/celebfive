@@ -37,8 +37,7 @@ interface ItemType {
 }
 
 interface Iprops {
-  item: any;
-  longitude?: number;
+  item: number;
 }
 
 const HistoryInfo = (props: ItemType | IHistoryBoxType) => {
@@ -397,7 +396,7 @@ const FadeArrow = styled(Fade)`
 `;
 
 const MapBox = styled.div`
-  width: ${(props: Iprops) => (props.longitude === 0 ? null : props.longitude)};
+  width: ${(props: Iprops) => (props.item === 0 ? null : props.item)};
   height: 100%;
   box-sizing: border-box;
   @media ${(props) => props.theme.desktop} {
