@@ -38,7 +38,10 @@ const Test = () => {
             </StatusBar>
           </StatusBarBox>
           <Image>
-            <img src={AA.questions[count].image} />
+            <img
+              style={{ objectFit: "contain" }}
+              src={AA.questions[count].image}
+            />
           </Image>
           <TestContainer>{AA.questions[count].question}</TestContainer>
           <AnswerContainer>
@@ -49,11 +52,9 @@ const Test = () => {
               >
                 {AA.questions[count].score01[0]}
               </Answer>
-
             </AnswerBox>
 
             <AnswerBox>
-
               <Answer
                 onClick={onClickHandler}
                 value={AA.questions[count].score02[1]}
@@ -80,20 +81,22 @@ export default Test;
 const BackGround = styled.div`
   max-width: 100vw;
   width: 100%;
-  background-color: white;
+  padding: 30px;
+  background-color: #fcdddd;
   display: flex;
   justify-content: center;
 `;
 
 const Wrap = styled.div`
-  max-width: 1100px;
+  max-width: 1000px;
   width: 100%;
-  background-color: #fcdddd;
+  background-color: white;
+  border: 4px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 50px 20px 30px 20px;
-  border-radius: 3px;
+  border-radius: 20px;
   gap: 20px;
 `;
 
@@ -102,7 +105,7 @@ const StatusBarBox = styled.div`
   height: 50px;
   top: 50px;
   border-radius: 20px;
-  background-color: white;
+  background-color: #eee;
 `;
 
 const StatusBar = styled.div`
@@ -126,7 +129,7 @@ const StatusText = styled.div`
 const Image = styled.div`
   width: 50%;
   height: 250px;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: white;
   overflow: hidden;
   top: 80px;
@@ -134,10 +137,13 @@ const Image = styled.div`
 
 const TestContainer = styled.div`
   width: 75%;
-  background-color: white;
+  line-height: 40px;
+  background-color: #eee;
   padding: 30px;
   font-size: 24px;
   border-radius: 3px;
+  text-align: center;
+  white-space: pre-wrap;
   top: 80px;
 `;
 
@@ -148,7 +154,6 @@ const AnswerContainer = styled.div`
   top: 100px;
   gap: 40px;
   padding: 30px 10px 30px 10px;
-
 `;
 
 const AnswerBox = styled.div`
@@ -166,11 +171,11 @@ const Answer = styled.button`
   border-style: none;
   border-radius: 20px;
   font-size: 24px;
+  white-space: pre-wrap;
 
   border-radius: 30px;
   &:hover {
     width: 85%;
     box-shadow: 1px 1px 20px black;
   }
-
 `;

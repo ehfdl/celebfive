@@ -58,7 +58,8 @@ const Result = () => {
               <TwitterIcon
                 round={true}
                 size={"5rem"}
-                style={{ marginLeft: "1.5rem", marginRight: "1rem" }}>
+                style={{ marginLeft: "1.5rem", marginRight: "1rem" }}
+              >
                 Twitter
               </TwitterIcon>
             </TwitterShareButton>
@@ -66,7 +67,8 @@ const Result = () => {
 
             <CopyToClipboard
               text={currentUrl}
-              onCopy={() => alert("복사되었습니다")}>
+              onCopy={() => alert("복사되었습니다")}
+            >
               <CopyCurrentUrlBtn>URL</CopyCurrentUrlBtn>
             </CopyToClipboard>
           </ButtonWrap>
@@ -85,19 +87,22 @@ export default Result;
 const BackGround = styled.div`
   max-width: 100vw;
   width: 100%;
-  background-color: white;
+  padding: 30px;
+  background-color: #fcdddd;
   display: flex;
   justify-content: center;
 `;
 
 const Wrap = styled.div`
-  max-width: 1100px;
+  max-width: 1000px;
   width: 100%;
-  background-color: #fcdddd;
+  background-color: white;
+  border: 4px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 50px 20px 30px 20px;
+  border-radius: 20px;
   gap: 20px;
 `;
 
@@ -107,6 +112,7 @@ const TitleWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   gap: 10px;
 `;
 const Title = styled.div`
@@ -123,11 +129,13 @@ const SubResult = styled.span`
 `;
 
 const TextWrap = styled.div`
-  width: 50%;
+  width: 60%;
   background-color: #ff6f6f;
   color: white;
+  line-height: 50px;
   padding: 20px;
-
+  border-radius: 3px;
+  white-space: pre-wrap;
   text-align: center;
   font-size: 25px;
   /* 박스에 빈 공간이 너무 많아 높이를 주석처리 했습니다. */
