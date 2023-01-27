@@ -39,7 +39,7 @@ const HistoryBoxSection = styled.div<IHistoryBoxType>`
     font-size: 5rem;
   }
   @media ${(props) => props.theme.mobile} {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     font-size: 1rem;
   }
