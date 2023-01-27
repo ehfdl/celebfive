@@ -182,6 +182,9 @@ const StyledTextArea = styled.textarea`
   padding: 10px;
   margin-bottom: 1rem;
   filter: drop-shadow(3px 3px 3px #bd2727);
+  @media ${(props) => props.theme.mobile} {
+    margin-bottom: 0;
+  }
 `;
 
 const StyledButtonDiv = styled.div`
@@ -189,4 +192,7 @@ const StyledButtonDiv = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  @media ${(props) => props.theme.mobile} {
+    scale: 0.7;
+  }
 `;

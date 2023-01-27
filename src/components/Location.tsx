@@ -34,8 +34,8 @@ const Maps = styled(StaticMap)`
     height: 250px;
   }
   @media ${(props) => props.theme.mobile} {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
   }
 `;
 

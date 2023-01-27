@@ -156,10 +156,17 @@ const ImgContainer = styled.div`
 
 const UserId = styled.span`
   font-weight: bold;
+  font-size: 15px;
+  @media ${(props) => props.theme.mobile} {
+    font-size: 10px;
+  }
 `;
 
 const CommentText = styled.span`
   font-size: large;
+  @media ${(props) => props.theme.mobile} {
+    font-size: 15px;
+  }
 `;
 
 const InputStyle = styled.input`

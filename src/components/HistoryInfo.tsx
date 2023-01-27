@@ -160,6 +160,19 @@ const ButtonBox = styled.div`
   align-items: center;
   position: absolute;
   bottom: 100px;
+  word-break: keep-all;
+  @media ${(props) => props.theme.desktop} {
+    margin: 0 auto;
+    bottom: 60px;
+  }
+  @media ${(props) => props.theme.tablet} {
+    margin: 0 auto;
+    bottom: 45px;
+  }
+  @media ${(props) => props.theme.mobile} {
+    margin: 0 auto;
+    bottom: 27px;
+  }
 `;
 
 const ScrollTopButtonContainer = styled.div`
@@ -167,6 +180,15 @@ const ScrollTopButtonContainer = styled.div`
   bottom: 5%;
   right: 3%;
   z-index: 30;
+  @media ${(props) => props.theme.desktop} {
+    scale: 1.5;
+  }
+  @media ${(props) => props.theme.tablet} {
+    scale: 1.3;
+  }
+  @media ${(props) => props.theme.mobile} {
+    scale: 0.8;
+  }
 `;
 
 const ScrollTopButton = styled(CustomButton)`
@@ -195,14 +217,15 @@ const HistoryCardSection = styled.div`
     margin: 0 auto;
   }
   @media ${(props) => props.theme.tablet} {
-    width: 200%;
+    width: 100%;
     margin: 0 auto;
+    line-height: 20px;
   }
   @media ${(props) => props.theme.mobile} {
     width: 100%;
-    height: 100%;
+    height: 90%;
     margin: 0 auto;
-    line-height: 23px;
+    line-height: 15px;
   }
 `;
 
@@ -217,16 +240,21 @@ const HistorySourceWrap = styled.div`
   @media ${(props) => props.theme.desktop} {
     font-size: 15px;
     width: 100%;
+    margin-bottom: 3rem;
   }
   @media ${(props) => props.theme.tablet} {
     flex-direction: column;
-    font-size: 13px;
+    font-size: 10px;
     width: 100%;
+    line-height: 20px;
+    margin-bottom: 1.5rem;
   }
   @media ${(props) => props.theme.mobile} {
     flex-direction: column;
     font-size: 10px;
     width: 100%;
+    line-height: 15px;
+    margin-bottom: 1.3rem;
   }
 `;
 
@@ -235,17 +263,20 @@ const HistoryInfoTitle = styled.div`
   font-weight: 800;
   margin: 1rem;
   margin-bottom: 2rem;
+
   @media ${(props) => props.theme.desktop} {
     font-size: 30px;
     margin: 0 auto;
   }
   @media ${(props) => props.theme.tablet} {
-    font-size: 20px;
+    font-size: 15px;
     margin: 0 auto;
+    margin-bottom: 1rem;
   }
   @media ${(props) => props.theme.mobile} {
-    font-size: 18px;
+    font-size: 13px;
     margin: 0 auto;
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -257,11 +288,11 @@ const HistoryInfoTtext = styled.div`
     margin: 0 auto;
   }
   @media ${(props) => props.theme.tablet} {
-    font-size: 15px;
+    font-size: 13px;
     margin: 0 auto;
   }
   @media ${(props) => props.theme.mobile} {
-    font-size: 10x;
+    font-size: 8x;
     margin: 0 auto;
   }
 `;
@@ -277,6 +308,30 @@ const StartTestButton = styled(CustomButton)`
   background-color: #fff;
   border: 4px solid black;
   border-radius: 20px;
+
+  @media ${(props) => props.theme.desktop} {
+    width: 100%;
+    height: 4rem;
+    margin: 0 auto;
+    border: 2px solid black;
+    color: #f72c11;
+  }
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+    height: 2.7rem;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: #f72c11;
+    border: 2px solid black;
+  }
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+    height: 2.5rem;
+    margin: 0 auto;
+    font-size: 0.5rem;
+    color: #f72c11;
+    border: 2px solid black;
+  }
 `;
 
 const ImageOne = styled.img`
