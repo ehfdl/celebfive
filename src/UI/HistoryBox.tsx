@@ -30,6 +30,7 @@ const HistoryBoxSection = styled.div<IHistoryBoxType>`
   padding: 50px;
   @media ${(props) => props.theme.desktop} {
     width: 100%;
+    height: 100%;
     margin: 0 auto;
     font-size: 10rem;
   }
@@ -37,11 +38,13 @@ const HistoryBoxSection = styled.div<IHistoryBoxType>`
     width: 100%;
     margin: 0 auto;
     font-size: 5rem;
+    padding: 30px;
   }
   @media ${(props) => props.theme.mobile} {
     width: 100%;
     margin: 0 auto;
     font-size: 1rem;
+    padding: 20px;
   }
 `;
 
