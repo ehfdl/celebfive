@@ -4,11 +4,12 @@ import {
 } from "firebase/auth";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import CloseIcon from "@mui/icons-material/Close";
 import styled from "styled-components";
 import { authService } from "../firebase";
 import Login from "./Login";
 import Register from "./Register";
+
 interface ModalProps {
   modalOpen: boolean;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -88,8 +89,6 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
     if (signDisplay) {
       if (!isValidLogin) {
         return;
-      } else {
-        setError("아이디와 비밀번호를 확인해주세요");
       }
       //이메일 로그인
       signInWithEmailAndPassword(authService, email, password)
@@ -100,6 +99,7 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
         })
         .catch((error) => {
           console.log(error);
+          setError("아이디와 비밀번호를 확인해주세요");
         });
     }
 
@@ -107,6 +107,7 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
       setSignDisplay(true);
       setPassword("");
       setEmail("");
+      setPasswordCheck("");
       setError("");
     }
   };
@@ -133,6 +134,7 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
       setPassword("");
       setEmail("");
       setError("");
+      setPasswordCheck("");
     }
   };
 
@@ -142,9 +144,10 @@ const Modal = ({ modalOpen, setModalOpen }: ModalProps) => {
         <ModalContainer
           onClick={(event) => {
             event.stopPropagation();
-          }}
-        >
-          <CloseButton onClick={closeModal}>X</CloseButton>
+          }}>
+          <CloseButton onClick={closeModal}>
+            <CloseIcon />
+          </CloseButton>
           {signDisplay ? (
             <Login
               email={email}
