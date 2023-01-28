@@ -1,5 +1,9 @@
 import React, { useState, useRef } from "react";
-import { CommentType } from "./CommentsList";
+import {
+  AlertModalType,
+  CommentType,
+  AlertModalWithItemType,
+} from "./CommentsList";
 import { useMutation } from "react-query";
 import { editComment, EditParameterType } from "../api";
 import editImg from "../assets/images/edit.png";
@@ -9,14 +13,28 @@ import { authService } from "../firebase";
 import ConfirmModal from "./ConfirmModal";
 import AlertModal from "./AlertModal";
 
-const Comment = ({ item }: { item: CommentType }) => {
+const Comment = (props: AlertModalWithItemType) => {
+  // props
+  const {
+    isAlertModalOpen,
+    isNoComment,
+    item,
+    isEqualEdit,
+    isNoEidt,
+    setIsAlertModalOpen,
+    setIsEqualEdit,
+    setIsNoComment,
+    setIsNoEdit,
+  } = props;
+
   // 댓글 수정 인풋창 관리 state
   const [openInput, setOpenInput] = useState(false);
+
   // 수정, 변경할 내용을 담는 state
   const [inputEditComment, setInputEditComment] = useState(item.comment);
+
   // confirm 또는 alert 창을 열고 닫는 state
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
 
   // Comment 수정에 관련한 useMutation
   const { mutate: reviseComment } = useMutation(
@@ -111,7 +129,13 @@ const Comment = ({ item }: { item: CommentType }) => {
       {isAlertModalOpen ? (
         <AlertModal
           isAlertModalOpen={isAlertModalOpen}
+          isNoComment={isNoComment}
+          isNoEidt={isNoEidt}
+          isEqualEdit={isEqualEdit}
           setIsAlertModalOpen={setIsAlertModalOpen}
+          setIsNoComment={setIsNoComment}
+          setIsNoEdit={setIsNoEdit}
+          setIsEqualEdit={setIsEqualEdit}
         >
           수정할 내용이 없습니다.
         </AlertModal>

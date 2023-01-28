@@ -23,19 +23,43 @@ export type CommentType = {
 };
 
 // Alert Modal창 타입 지정
-export interface AlertModalType {
-  children: string;
-  isAlertModalOpen: boolean;
-  writeOrEdit: boolean;
+export type AlertModalType = {
+  isAlertModalOpen: boolean; // 모달 열고 닫음
+  isEqualEdit: boolean; // false-> null / true -> 변경 내용이 없습니다!
+  isNoComment: boolean; // false-> 댓글 작성 완료! / true -> 댓글 내용을 입력하세요!
+  isNoEidt: boolean; // false-> 댓글 수정 완료! / true -> 수정 내용을 입력하세요!
   setIsAlertModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setWriteOrEdit: React.Dispatch<React.SetStateAction<boolean>>;
-}
+  setIsEqualEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsNoComment: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsNoEdit: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+// 다른 2개의 부모 컴포넌트(CommentsList.tsx, Comment.tsx)에서 Alert Modal 사용하려니
+// 자식인 Alert Modal에 두 컴포넌트에서 동일한 props를 내려줘야했다. (type 에러 때문에..)
+// CommentsList.tsx는 Comment.tsx의 부모 컴포넌트이므로 CommentsList.tsx에서 필요한 state를 다 만들고
+// Comment.tsx에 props로 내려서 state를 공유했다. 너무 비효율적이다.
+export type AlertModalWithItemType = {
+  item: CommentType;
+  isAlertModalOpen: boolean;
+  isEqualEdit: boolean;
+  isNoComment: boolean;
+  isNoEidt: boolean;
+  setIsAlertModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsEqualEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsNoComment: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsNoEdit: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 const CommentsList = ({ result }: { result: string }) => {
   const [comments, setComments] = useState<CommentType[]>([]);
   const [inputComment, setInputComment] = useState("");
   const commentRef = useRef<HTMLTextAreaElement | null>(null);
+
+  // 모달을 위한 state
   const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
+  const [isNoComment, setIsNoComment] = useState(false);
+  const [isEqualEdit, setIsEqualEdit] = useState(false);
+  const [isNoEidt, setIsNoEdit] = useState(false);
 
   const onChnageCommentHandler = (
     event: React.FormEvent<HTMLTextAreaElement>
@@ -52,6 +76,7 @@ const CommentsList = ({ result }: { result: string }) => {
 
     if (inputComment === "") {
       // Alert 모달창 오픈
+      setIsNoComment(!isNoComment);
       setIsAlertModalOpen(!isAlertModalOpen);
       commentRef.current?.focus();
       return true;
@@ -139,15 +164,34 @@ const CommentsList = ({ result }: { result: string }) => {
       </form>
       <div>
         {comments?.map((item): JSX.Element => {
-          return <Comment item={item} key={item.id} />;
+          return (
+            <Comment
+              key={item.id}
+              item={item}
+              isAlertModalOpen={isAlertModalOpen}
+              isEqualEdit={isEqualEdit}
+              isNoComment={isNoComment}
+              isNoEidt={isNoEidt}
+              setIsAlertModalOpen={setIsAlertModalOpen}
+              setIsEqualEdit={setIsEqualEdit}
+              setIsNoComment={setIsNoComment}
+              setIsNoEdit={setIsNoEdit}
+            />
+          );
         })}
       </div>
       {isAlertModalOpen ? (
         <AlertModal
           isAlertModalOpen={isAlertModalOpen}
+          isNoComment={isNoComment}
+          isNoEidt={isNoEidt}
+          isEqualEdit={isEqualEdit}
           setIsAlertModalOpen={setIsAlertModalOpen}
+          setIsNoComment={setIsNoComment}
+          setIsNoEdit={setIsNoEdit}
+          setIsEqualEdit={setIsEqualEdit}
         >
-          내용을 입력하셔야합니다!
+          {isNoComment ? "내용을 입력하셔야합니다!" : "작성 완료!"}
         </AlertModal>
       ) : null}
     </div>
