@@ -25,10 +25,12 @@ export type CommentType = {
 // Alert Modal창 타입 지정
 export type AlertModalType = {
   isAlertModalOpen: boolean; // 모달 열고 닫음
-  isEqualEdit: boolean; // false-> null / true -> 변경 내용이 없습니다!
+  isAlertModalOpen2: boolean;
+  isEqualEdit: boolean; // false-> isNoEdit 평가 / true -> 변경 내용이 없습니다!
   isNoComment: boolean; // false-> 댓글 작성 완료! / true -> 댓글 내용을 입력하세요!
   isNoEidt: boolean; // false-> 댓글 수정 완료! / true -> 수정 내용을 입력하세요!
   setIsAlertModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsAlertModalOpen2: React.Dispatch<React.SetStateAction<boolean>>;
   setIsEqualEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setIsNoComment: React.Dispatch<React.SetStateAction<boolean>>;
   setIsNoEdit: React.Dispatch<React.SetStateAction<boolean>>;
@@ -41,10 +43,12 @@ export type AlertModalType = {
 export type AlertModalWithItemType = {
   item: CommentType;
   isAlertModalOpen: boolean;
+  isAlertModalOpen2: boolean;
   isEqualEdit: boolean;
   isNoComment: boolean;
   isNoEidt: boolean;
   setIsAlertModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsAlertModalOpen2: React.Dispatch<React.SetStateAction<boolean>>;
   setIsEqualEdit: React.Dispatch<React.SetStateAction<boolean>>;
   setIsNoComment: React.Dispatch<React.SetStateAction<boolean>>;
   setIsNoEdit: React.Dispatch<React.SetStateAction<boolean>>;
@@ -60,6 +64,9 @@ const CommentsList = ({ result }: { result: string }) => {
   const [isNoComment, setIsNoComment] = useState(false);
   const [isEqualEdit, setIsEqualEdit] = useState(false);
   const [isNoEidt, setIsNoEdit] = useState(false);
+
+  // Comment 컴포넌트에서 Alert Modal 오픈하는 state
+  const [isAlertModalOpen2, setIsAlertModalOpen2] = useState(false);
 
   const onChnageCommentHandler = (
     event: React.FormEvent<HTMLTextAreaElement>
@@ -169,10 +176,12 @@ const CommentsList = ({ result }: { result: string }) => {
               key={item.id}
               item={item}
               isAlertModalOpen={isAlertModalOpen}
+              isAlertModalOpen2={isAlertModalOpen2}
               isEqualEdit={isEqualEdit}
               isNoComment={isNoComment}
               isNoEidt={isNoEidt}
               setIsAlertModalOpen={setIsAlertModalOpen}
+              setIsAlertModalOpen2={setIsAlertModalOpen2}
               setIsEqualEdit={setIsEqualEdit}
               setIsNoComment={setIsNoComment}
               setIsNoEdit={setIsNoEdit}
@@ -183,10 +192,12 @@ const CommentsList = ({ result }: { result: string }) => {
       {isAlertModalOpen ? (
         <AlertModal
           isAlertModalOpen={isAlertModalOpen}
+          isAlertModalOpen2={isAlertModalOpen2}
           isNoComment={isNoComment}
           isNoEidt={isNoEidt}
           isEqualEdit={isEqualEdit}
           setIsAlertModalOpen={setIsAlertModalOpen}
+          setIsAlertModalOpen2={setIsAlertModalOpen2}
           setIsNoComment={setIsNoComment}
           setIsNoEdit={setIsNoEdit}
           setIsEqualEdit={setIsEqualEdit}

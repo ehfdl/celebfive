@@ -1,16 +1,24 @@
 import { PropsWithChildren } from "react";
-import { Container } from "./Modal";
 import alertImg from "../assets/images/exclamation-mark.png";
 import styled from "styled-components";
 import { AlertModalType } from "./CommentsList";
 
 const AlertModal = (props: PropsWithChildren<AlertModalType>) => {
-  const { setIsAlertModalOpen, setIsNoComment, isAlertModalOpen, children } =
-    props;
+  const {
+    setIsAlertModalOpen,
+    setIsAlertModalOpen2,
+    setIsNoComment,
+    setIsNoEdit,
+    setIsEqualEdit,
+    children,
+  } = props;
 
   const closeAlert = () => {
-    setIsAlertModalOpen(!isAlertModalOpen);
+    setIsAlertModalOpen(false);
+    setIsAlertModalOpen2(false);
     setIsNoComment(false);
+    setIsNoEdit(false);
+    setIsEqualEdit(false);
   };
 
   return (
@@ -25,6 +33,20 @@ const AlertModal = (props: PropsWithChildren<AlertModalType>) => {
 };
 
 export default AlertModal;
+
+const Container = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.1);
+`;
 
 const AlertModalContainer = styled.div`
   position: relative;

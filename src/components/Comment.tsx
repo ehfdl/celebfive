@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   AlertModalType,
   CommentType,
@@ -17,11 +17,13 @@ const Comment = (props: AlertModalWithItemType) => {
   // props
   const {
     isAlertModalOpen,
+    isAlertModalOpen2,
     isNoComment,
     item,
     isEqualEdit,
     isNoEidt,
     setIsAlertModalOpen,
+    setIsAlertModalOpen2,
     setIsEqualEdit,
     setIsNoComment,
     setIsNoEdit,
@@ -70,8 +72,18 @@ const Comment = (props: AlertModalWithItemType) => {
 
   // Comment edit
   const onEditComment = async () => {
-    if (inputEditComment === "") {
-      setIsAlertModalOpen(!isAlertModalOpen);
+    setInputEditComment(item.comment);
+
+    if (inputEditComment === item.comment) {
+      setIsEqualEdit(!isEqualEdit);
+      setIsAlertModalOpen2(!isAlertModalOpen2);
+      setOpenInput(!openInput);
+      return;
+    }
+
+    if (!inputEditComment) {
+      setIsNoEdit(false);
+      setIsAlertModalOpen2(!isAlertModalOpen2);
       setOpenInput(!openInput);
       return;
     }
@@ -83,12 +95,17 @@ const Comment = (props: AlertModalWithItemType) => {
     try {
       await reviseComment({ commentId: item.id, editObj });
       setInputEditComment("");
+      setIsNoEdit(!isNoEidt);
+      setIsAlertModalOpen2(!isAlertModalOpen2);
       setOpenInput(!openInput);
-      alert("수정이 완료되었습니다.");
     } catch (error) {
       console.log("에러입니다.", error);
     }
   };
+
+  useEffect(() => {
+    setInputEditComment(item.comment);
+  }, [isAlertModalOpen2]);
 
   return (
     <CommentContainer key={item.id}>
@@ -114,7 +131,10 @@ const Comment = (props: AlertModalWithItemType) => {
       </UserIdContianer>
 
       {openInput ? (
-        <InputStyle onChange={onChangeEditComment} value={inputEditComment} />
+        <InputStyle
+          onChange={onChangeEditComment}
+          defaultValue={item.comment}
+        />
       ) : (
         <CommentText>{item.comment}</CommentText>
       )}
@@ -126,18 +146,24 @@ const Comment = (props: AlertModalWithItemType) => {
           item={item}
         />
       ) : null}
-      {isAlertModalOpen ? (
+      {isAlertModalOpen2 ? (
         <AlertModal
           isAlertModalOpen={isAlertModalOpen}
+          isAlertModalOpen2={isAlertModalOpen2}
           isNoComment={isNoComment}
           isNoEidt={isNoEidt}
           isEqualEdit={isEqualEdit}
           setIsAlertModalOpen={setIsAlertModalOpen}
+          setIsAlertModalOpen2={setIsAlertModalOpen2}
           setIsNoComment={setIsNoComment}
           setIsNoEdit={setIsNoEdit}
           setIsEqualEdit={setIsEqualEdit}
         >
-          수정할 내용이 없습니다.
+          {isEqualEdit
+            ? "변경 내용이 없습니다."
+            : isNoEidt
+            ? "수정이 완료되었습니다."
+            : "내용을 입력해 주세요!"}
         </AlertModal>
       ) : null}
     </CommentContainer>
