@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+<div align="center">
+<img src="https://user-images.githubusercontent.com/116064922/215367731-619092ca-8f9f-459f-9005-299adb77053a.png" width:"50%" height: "50%">       
+  
+# 과거에 내가 태어났다면?
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 설명
+평등에 관한 역사적 사실을 제공 및 간단한 테스트를 통해 사용자에게 가장 어울리는 시대를 알려주는 페이지입니다.</br>
+webpage는 [여기](https://celebfive-snowy.vercel.app/)에서 보실 수 있습니다
 
-## Available Scripts
+</br>
 
-In the project directory, you can run:
+## 협업
 
-### `npm start`
+### 피그마
+[피그마](https://www.figma.com/file/1TWBRMaGt5W7wT8RtXqdRa?node-id=0:1)를 사용하여 와이어프레임을 제작하였습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### github
+[github](https://github.com/ehfdl/celebfive) commit과 PR [convention](https://www.notion.so/df6187c19d644e9489244636910e411a)을 미리 지정해놓았습니다.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### github Issue & Project
+깃허브 이슈와 프로젝트 칸을 이용하였으나 끝으로 갈수록 흐지부지해졌습니다.
+그래도 깃허브 이슈와 프로젝트를 같이 사용하면서 task관리에 대해서 알 수 있었습니다.
 
-### `npm test`
+</br>
+  
+## 구현 기능
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 로그인 / 회원가입
+- 댓글 CRUD
+- 설문조사(테스트)
+- 카카오 맵 API 연동
+- 카카오톡 공유하기 API 연동
+- SNS(페이스북, 트위터) 공유하기 연동
+- 클립보드 복사 기능
+- 스테이터스 바
+- 애니메이션(눈 내림, 커서 이미지)
+- 반응형 웹(모바일, 태블릿, 데스크탑)
+- 오픈메타태그 적용
 
-### `npm run build`
+</br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 역할
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+|이름|역할|
+|---|---|
+|하나|메인 페이지 UI, 공유하기 기능, 반응형 웹, 스크롤업 버튼|
+|기동|카카오 맵 API 연동, 애니메이션, 반응형 웹|
+|지영|회원가입& 로그아웃 기능, 모달, 반응형 웹|
+|영진|테스트 기능, 카카오맵 API, 상태 바, 반응형 웹|
+|영주|댓글 crud, alert/confirm 모달 재사용, 반응형 웹|
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+</br>
 
-### `npm run eject`
+## 어려웠던 점
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- 리액트에서 props를 전달할 때 타입을 지정하는 것이 어려웠습니다.
+- 처음으로 미디어 쿼리를 이용해 반응형 웹 앱을 구성해보느라 힘든 점이 있었습니다 (생각보다 신경써야 할 부분이 많았다).
+- 공식문서를 보고 API를 적용하는 것이 어려웠습니다.
+- 상태 바 로직을 생각하는 것이 어려웠습니다.
+- 유효성 검사를 UI/UX 적으로 생각하며 만드는 게 생각보다 신경 써야 할 것이 많고 오래 걸림.
+- Map을 돌려 화면을 구성하는 로직을 생각하는 것이 어려웠습니다.
+- 컴포넌트의 재사용성을 좀 더 고민해보지 못한 게 아쉬웠다(어려운 점은 아니지만 일단 씀)
+- hooks 의 원할한 사용이 어려워 많이 사용해보지 못한 것이 아쉬웠습니다.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+</br> 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 시연영상
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[YOUTUBE](https://youtu.be/-39cS-8eCR4)
