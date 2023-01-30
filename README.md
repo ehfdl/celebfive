@@ -2,7 +2,20 @@
 <img src="https://user-images.githubusercontent.com/116064922/215367731-619092ca-8f9f-459f-9005-299adb77053a.png" width="50%" height="50%">       
   
 # 과거에 내가 태어났다면?
+  
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=fff"/>
+  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=Firebase&logoColor=fff"/>
+   <img src="https://img.shields.io/badge/React-0088CC?style=flat-square&logo=React&logoColor=fff"/>
+  <img src="https://img.shields.io/badge/React Query-FF4154?style=flat-square&logo=React Query&logoColor=fff"/>
+  <img src="https://img.shields.io/badge/React Router-CA4245?style=flat-square&logo=React Router&logoColor=fff"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=fff"/>
+    <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat-square&logo=Visual Studio Code&logoColor=fff"/>
+   <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=Figma&logoColor=fff"/>
+  <img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=Notion&logoColor=fff"/>
+ 
+  
 </div>
+
 
 ## 프로젝트 설명
 평등에 관한 역사적 사실을 제공 및 간단한 테스트를 통해 사용자에게 가장 어울리는 시대를 알려주는 페이지입니다.</br>
