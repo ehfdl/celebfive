@@ -32,7 +32,7 @@ webpage는 [여기](https://celebfive-snowy.vercel.app/)에서 보실 수 있습
 [github](https://github.com/ehfdl/celebfive) commit과 PR [convention](https://www.notion.so/df6187c19d644e9489244636910e411a)을 미리 지정해놓았습니다.
 
 ### github Issue & Project
-깃허브 이슈와 프로젝트 칸을 이용하였으나 끝으로 갈수록 흐지부지해졌습니다.
+깃허브 이슈와 프로젝트 칸을 이용하였으나 끝으로 갈수록 흐지부지해졌습니다.</br>
 그래도 깃허브 이슈와 프로젝트를 같이 사용하면서 task관리에 대해서 알 수 있었습니다.
 
 </br>
