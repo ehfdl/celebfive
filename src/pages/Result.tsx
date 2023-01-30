@@ -35,7 +35,7 @@ const Result = () => {
     }
   }, [state]);
 
-  const currentUrl = window.location.href;
+  const currentUrl = "https://celebfive-snowy.vercel.app/";
 
   return (
     <>
