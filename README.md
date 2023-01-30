@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://user-images.githubusercontent.com/116064922/215367731-619092ca-8f9f-459f-9005-299adb77053a.png" width:"50%" height: "50%">       
+<img src="https://user-images.githubusercontent.com/116064922/215367731-619092ca-8f9f-459f-9005-299adb77053a.png" width="50%" height="50%">       
   
 # 과거에 내가 태어났다면?
 </div>
